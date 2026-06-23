@@ -14,7 +14,7 @@ export function Logo({ className = "" }: { className?: string }) {
         </svg>
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-display text-[17px] font-bold tracking-tight text-white">
+        <span className="text-[17px] font-bold tracking-tight text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Try<span className="text-gradient">Verse</span>
         </span>
       </span>
