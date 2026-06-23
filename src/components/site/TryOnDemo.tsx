@@ -82,7 +82,7 @@ export function TryOnDemo() {
         <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
           <div className="text-white">
             <div className="eyebrow !text-white/70">Result</div>
-            <div className="font-display text-2xl sm:text-3xl italic leading-tight mt-1">
+            <div className="font-display text-2xl sm:text-3xl leading-tight mt-1">
               Lavender Oversized Blazer
             </div>
             <div className="text-xs text-white/70 mt-1">Maison Studio · on you</div>

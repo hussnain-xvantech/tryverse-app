@@ -85,7 +85,7 @@ function Hero() {
           </div>
           <h1 className="mt-6 font-display text-[56px] sm:text-[88px] lg:text-[112px] leading-[0.95] tracking-[-0.02em]">
             Try it on.<br />
-            <span className="italic text-gradient">Before</span> you buy it.
+            <span className="text-gradient">Before</span> you buy it.
           </h1>
           <p className="mt-7 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
             TryVerse helps shoppers see how clothes look on themselves — and helps fashion
@@ -219,7 +219,7 @@ function Workflow() {
           <div className="max-w-2xl">
             <div className="eyebrow">The product</div>
             <h2 className="mt-4 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] tracking-[-0.02em]">
-              See TryVerse <span className="italic text-gradient">in action.</span>
+              See TryVerse <span className="text-gradient">in action.</span>
             </h2>
           </div>
           <p className="text-muted-foreground max-w-md text-base leading-relaxed">
@@ -241,7 +241,7 @@ function ChoosePath() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="Two audiences"
-          title={<>One platform.<br /><span className="italic text-gradient">Two ways</span> to use it.</>}
+          title={<>One platform.<br /><span className="text-gradient">Two ways</span> to use it.</>}
         />
 
         <div className="mt-16 grid gap-6 md:gap-8 md:grid-cols-2">
@@ -356,7 +356,7 @@ function Toolkit() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="The toolkit"
-          title={<>Built for <span className="italic text-gradient">clothing</span>. Nothing else.</>}
+          title={<>Built for <span className="text-gradient">clothing</span>. Nothing else.</>}
         />
 
         <div className="mt-14 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
@@ -397,7 +397,7 @@ function Gallery() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="Gallery"
-          title={<>From product shots to <span className="italic text-gradient">fashion-ready</span> visuals.</>}
+          title={<>From product shots to <span className="text-gradient">fashion-ready</span> visuals.</>}
         />
       </div>
 
@@ -434,7 +434,7 @@ function Storefront() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="On your storefront"
-          title={<>A try-on button worth <span className="italic text-gradient">tapping.</span></>}
+          title={<>A try-on button worth <span className="text-gradient">tapping.</span></>}
         />
 
         <div className="mt-16 grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
@@ -498,7 +498,7 @@ function Storefront() {
           {/* Copy */}
           <div className="max-w-md">
             <h3 className="font-display text-4xl sm:text-5xl leading-[1.02]">
-              Drop it into your <span className="italic text-gradient">product page</span>.
+              Drop it into your <span className="text-gradient">product page</span>.
             </h3>
             <p className="mt-5 text-muted-foreground leading-relaxed">
               A single line of code adds a virtual try-on to any clothing product —
@@ -535,7 +535,7 @@ function FinalCTA() {
             <div>
               <div className="eyebrow">Free to start</div>
               <h2 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98]">
-                Ready to see it <span className="italic text-gradient">on you?</span>
+                Ready to see it <span className="text-gradient">on you?</span>
               </h2>
               <p className="mt-6 text-lg text-muted-foreground max-w-lg">
                 Try clothes before buying, or create AI visuals for your fashion brand.
