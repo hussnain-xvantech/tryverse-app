@@ -23,62 +23,73 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-2" : "py-4"
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled
+          ? "bg-background/75 backdrop-blur-xl border-b border-white/[0.06]"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div
-          className={`glass flex items-center justify-between rounded-2xl px-3 py-2.5 sm:px-5 transition-all ${
-            scrolled ? "shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]" : ""
-          }`}
-        >
-          <Logo />
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center h-[72px] gap-6">
+          {/* Left: Logo */}
+          <div className="flex items-center">
+            <Logo />
+          </div>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Center: Nav */}
+          <nav className="hidden lg:flex items-center justify-center gap-1">
             {NAV.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-white"
+                className="rounded-full px-4 py-2 text-[14px] font-medium text-white/70 transition-colors hover:text-white hover:bg-white/[0.04]"
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <a href="#login" className="hidden sm:inline-flex text-sm text-muted-foreground hover:text-white px-3 py-1.5">
+          {/* Right: Auth + CTA */}
+          <div className="flex items-center gap-2 justify-end">
+            <a
+              href="#login"
+              className="hidden sm:inline-flex text-[14px] font-medium text-white/70 hover:text-white px-4 py-2"
+            >
               Login
             </a>
-            <a href="#try" className="btn-primary !py-2 !px-4 !text-sm">
+            <a href="#try" className="btn-primary !py-2.5 !px-5 !text-[14px]">
               Try Free
             </a>
             <button
               type="button"
               aria-label="Open menu"
               onClick={() => setOpen((v) => !v)}
-              className="lg:hidden grid h-9 w-9 place-items-center rounded-full border border-white/10 text-white"
+              className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white"
             >
               {open ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
 
+        {/* Mobile menu */}
         {open && (
-          <div className="lg:hidden mt-2 glass rounded-2xl p-3 animate-fade-up">
+          <div className="lg:hidden mb-3 glass rounded-2xl p-3 animate-fade-up">
             <nav className="flex flex-col">
               {NAV.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-2.5 text-sm text-muted-foreground hover:text-white hover:bg-white/5"
+                  className="rounded-xl px-3 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
                 >
                   {item.label}
                 </a>
               ))}
-              <a href="#login" className="sm:hidden rounded-xl px-3 py-2.5 text-sm text-muted-foreground hover:text-white hover:bg-white/5">
+              <a
+                href="#login"
+                onClick={() => setOpen(false)}
+                className="sm:hidden rounded-xl px-3 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
+              >
                 Login
               </a>
             </nav>
