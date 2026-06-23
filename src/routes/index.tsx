@@ -204,7 +204,7 @@ function Workflow() {
         />
       </div>
 
-      <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
+      <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-12 sm:mb-16">
           <div className="max-w-2xl">
             <div className="eyebrow">The product</div>
@@ -218,8 +218,11 @@ function Workflow() {
           </p>
         </div>
 
-        <TryOnDemo />
+        <div className="relative rounded-[2.25rem] border border-white/[0.08] bg-gradient-to-b from-[#0e0c16] to-[#08070d] p-4 sm:p-6 lg:p-8">
+          <TryOnDemo />
+        </div>
       </div>
+
     </section>
   );
 }
