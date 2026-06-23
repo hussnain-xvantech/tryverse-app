@@ -12,8 +12,6 @@ import {
   Wand2,
   Link2,
   Upload,
-  Play,
-  Image as ImageIcon,
   Store,
   BarChart3,
   Palette,
