@@ -10,6 +10,7 @@ import {
   Plus,
   Equal,
   ShoppingBag,
+  Wand2,
 } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
@@ -68,40 +69,37 @@ function Home() {
 function Hero() {
   return (
     <section className="relative">
-      {/* soft glow */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
-          className="absolute left-1/2 top-[-220px] h-[820px] w-[1100px] -translate-x-1/2 rounded-full opacity-80"
+          className="absolute left-1/2 top-[-220px] h-[820px] w-[1100px] -translate-x-1/2 rounded-full opacity-70"
           style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
         />
       </div>
 
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
-        {/* eyebrow + headline */}
         <div className="max-w-4xl animate-fade-up">
           <div className="eyebrow flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-violet" />
             AI fashion · clothing only
           </div>
-          <h1 className="mt-6 font-display text-[56px] sm:text-[88px] lg:text-[112px] leading-[0.95] tracking-[-0.02em]">
-            Try it on.<br />
-            <span className="italic text-gradient">Before</span> you buy it.
+          <h1 className="font-display mt-6 text-[44px] sm:text-[72px] lg:text-[92px] leading-[1.02]">
+            Try Clothes On<br />Before You Buy
           </h1>
-          <p className="mt-7 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            TryVerse helps shoppers see how clothes look on themselves — and helps fashion
-            brands create AI visuals that sell. Built only for apparel.
+          <p className="mt-7 text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+            Upload your photo, choose an outfit, and see how it looks on you instantly.
+            For fashion brands, TryVerse creates AI clothing visuals and virtual try-on
+            experiences that help products sell faster.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <a href="#workflow" className="btn-primary !py-3.5 !px-7 !text-base">
+            <a href="#workflow" className="btn-primary !py-3.5 !px-7 !text-sm">
               Try It Free <ArrowRight size={16} />
             </a>
-            <a href="#brands" className="btn-secondary !py-3.5 !px-7 !text-base">
-              For Brands
+            <a href="#brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
+              Explore Brand Studio
             </a>
           </div>
         </div>
 
-        {/* Equation visual */}
         <HeroEquation />
       </div>
     </section>
@@ -112,21 +110,15 @@ function HeroEquation() {
   return (
     <div className="mt-20 sm:mt-28">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1.35fr] items-center gap-5 md:gap-6">
-        <EquationCard label="Your photo" img={userRef} tone="light" />
+        <EquationCard label="Your photo" img={userRef} />
         <Operator>
           <Plus size={18} strokeWidth={2.5} />
         </Operator>
-        <EquationCard label="Clothing product" img={garmentFlat} tone="light" subdued />
+        <EquationCard label="Clothing product" img={garmentFlat} />
         <Operator highlight>
           <Equal size={18} strokeWidth={2.5} />
         </Operator>
-        <EquationCard
-          label="AI try-on result"
-          img={editorialHero}
-          tone="light"
-          tall
-          result
-        />
+        <EquationCard label="AI try-on result" img={editorialHero} tall result />
       </div>
 
       <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
@@ -145,8 +137,6 @@ function EquationCard({
 }: {
   label: string;
   img: string;
-  tone?: "light" | "dark";
-  subdued?: boolean;
   tall?: boolean;
   result?: boolean;
 }) {
@@ -209,7 +199,7 @@ function Workflow() {
     <section id="workflow" className="relative py-32 sm:py-44">
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
-          className="absolute right-[-200px] top-1/3 h-[600px] w-[600px] rounded-full opacity-60"
+          className="absolute right-[-200px] top-1/3 h-[600px] w-[600px] rounded-full opacity-50"
           style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
         />
       </div>
@@ -218,8 +208,8 @@ function Workflow() {
         <div className="flex items-end justify-between flex-wrap gap-6 mb-12 sm:mb-16">
           <div className="max-w-2xl">
             <div className="eyebrow">The product</div>
-            <h2 className="mt-4 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] tracking-[-0.02em]">
-              See TryVerse <span className="italic text-gradient">in action.</span>
+            <h2 className="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
+              See TryVerse In Action
             </h2>
           </div>
           <p className="text-muted-foreground max-w-md text-base leading-relaxed">
@@ -241,23 +231,23 @@ function ChoosePath() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="Two audiences"
-          title={<>One platform.<br /><span className="italic text-gradient">Two ways</span> to use it.</>}
+          title="One Platform, Two Ways To Use It"
         />
 
         <div className="mt-16 grid gap-6 md:gap-8 md:grid-cols-2">
           <PathColumn
             id="shoppers-card"
             tag="For shoppers"
-            title="Try outfits on yourself in seconds."
-            text="Upload your photo, browse supported stores, and see how anything looks on you — before you spend a penny."
-            cta="Start trying outfits"
+            title="Try Outfits On Yourself In Seconds"
+            text="Try outfits from supported stores before checkout. Upload your photo and see how clothes look on you before buying."
+            cta="Start Trying Outfits"
             img={editorialHero}
           />
           <PathColumn
             id="brands"
             tag="For brands"
-            title="AI visuals that sell more clothes."
-            text="Photoshoots, ghost mannequins, pose variations, and a virtual try-on widget for your store — all from a single product photo."
+            title="AI Visuals That Sell More Clothes"
+            text="Create AI clothing photoshoots, ghost mannequin images, pose variations, and virtual try-on experiences for your ecommerce store."
             cta="Explore Brand Studio"
             img={g2a}
             dark
@@ -312,12 +302,14 @@ function PathColumn({
         </span>
       </div>
 
-      <div className="mt-7 grid sm:grid-cols-[1fr_auto] gap-6 items-end">
+      <div className="mt-7 grid sm:grid-cols-[minmax(0,1fr)_auto] gap-6 items-end">
         <div className="min-w-0">
-          <h3 className="font-display text-3xl sm:text-4xl leading-[1.05] tracking-[-0.015em]">
+          <h3 className="font-display text-2xl sm:text-3xl leading-[1.1]">
             {title}
           </h3>
-          <p className="mt-3 text-muted-foreground leading-relaxed max-w-md">{text}</p>
+          <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-md">
+            {text}
+          </p>
         </div>
         <a href="#workflow" className="btn-secondary !py-2.5 !px-5 !text-sm shrink-0">
           {cta} <ArrowRight size={14} />
@@ -333,33 +325,38 @@ function Toolkit() {
     {
       icon: <Shirt size={18} />,
       title: "Virtual Try-On",
-      text: "Shoppers see clothing on themselves in real time.",
+      text: "Let shoppers see clothing on themselves before buying.",
     },
     {
       icon: <Camera size={18} />,
       title: "AI Photoshoot",
-      text: "Turn a product photo into a full editorial model shot.",
+      text: "Turn clothing product photos into realistic model visuals.",
     },
     {
       icon: <Ghost size={18} />,
       title: "Ghost Mannequin",
-      text: "Clean ecommerce apparel shots — no model, no studio.",
+      text: "Create clean apparel product shots without models.",
     },
     {
       icon: <Move3d size={18} />,
-      title: "Pose Studio",
-      text: "Multiple angles and poses for the same outfit.",
+      title: "AI Pose Studio",
+      text: "Generate multiple model poses and angles for the same outfit.",
+    },
+    {
+      icon: <Wand2 size={18} />,
+      title: "Stylo AI Stylist",
+      text: "Help shoppers discover outfits and styling ideas with an AI fashion assistant.",
     },
   ];
   return (
-    <section id="pricing" className="py-32 sm:py-40">
+    <section id="features" className="py-32 sm:py-40">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="The toolkit"
-          title={<>Built for <span className="italic text-gradient">clothing</span>. Nothing else.</>}
+          title="Everything Clothing Brands And Shoppers Need"
         />
 
-        <div className="mt-14 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
           {items.map((f) => (
             <div
               key={f.title}
@@ -368,7 +365,7 @@ function Toolkit() {
               <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white">
                 {f.icon}
               </span>
-              <h4 className="mt-7 font-display text-2xl leading-tight">{f.title}</h4>
+              <h4 className="font-display mt-7 text-xl leading-tight">{f.title}</h4>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                 {f.text}
               </p>
@@ -384,11 +381,11 @@ function Toolkit() {
 function Gallery() {
   const items = [
     { src: g1a, tag: "AI Photoshoot" },
-    { src: g2a, tag: "Try-On" },
-    { src: editorialHero, tag: "Editorial" },
+    { src: g2a, tag: "Virtual Try-On" },
+    { src: editorialHero, tag: "Model Visual" },
     { src: g3a, tag: "Ghost Mannequin" },
     { src: g4a, tag: "Pose Variation" },
-    { src: g5a, tag: "Knitwear" },
+    { src: g5a, tag: "Catalog Shot" },
     { src: g6a, tag: "Lookbook" },
   ];
   const loop = [...items, ...items];
@@ -397,7 +394,8 @@ function Gallery() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="Gallery"
-          title={<>From product shots to <span className="italic text-gradient">fashion-ready</span> visuals.</>}
+          title="From Product Photos To Fashion-Ready Visuals"
+          sub="See how TryVerse turns simple clothing images into try-on results, model photos, and ecommerce-ready visuals."
         />
       </div>
 
@@ -429,12 +427,14 @@ function Gallery() {
 
 /* =================== STOREFRONT =================== */
 function Storefront() {
+  const stores = ["Maison Studio", "Atelier Nord", "Linea", "Form & Co", "Verso", "House of Wren"];
   return (
     <section id="stores" className="py-32 sm:py-40">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="On your storefront"
-          title={<>A try-on button worth <span className="italic text-gradient">tapping.</span></>}
+          title="Try Outfits From Your Favorite Stores"
+          sub="Shoppers can discover and try clothing from supported fashion stores. Brands can bring TryVerse virtual try-on directly to their own store."
         />
 
         <div className="mt-16 grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
@@ -459,7 +459,7 @@ function Storefront() {
               </div>
               <div className="flex flex-col">
                 <div className="text-xs text-muted-foreground">Maison Studio</div>
-                <h5 className="font-display text-2xl mt-1 leading-tight">
+                <h5 className="font-display text-xl mt-1 leading-tight">
                   Lavender Oversized Blazer
                 </h5>
                 <div className="mt-2 text-sm">
@@ -486,7 +486,7 @@ function Storefront() {
                   <ShoppingBag size={14} /> Add to bag
                 </button>
                 <button className="mt-2 btn-primary !py-3 !text-sm">
-                  <Sparkles size={14} /> Try it on with TryVerse
+                  <Sparkles size={14} /> Try It On With TryVerse
                 </button>
                 <div className="mt-3 flex items-center gap-1.5 text-[11px] text-muted-foreground">
                   <Check size={12} className="text-emerald-400" /> Powered by TryVerse · 0.8s
@@ -495,25 +495,33 @@ function Storefront() {
             </div>
           </div>
 
-          {/* Copy */}
+          {/* Copy + store tiles */}
           <div className="max-w-md">
-            <h3 className="font-display text-4xl sm:text-5xl leading-[1.02]">
-              Drop it into your <span className="italic text-gradient">product page</span>.
+            <h3 className="font-display text-3xl sm:text-4xl leading-[1.05]">
+              A Try-On Button Worth Tapping
             </h3>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
-              A single line of code adds a virtual try-on to any clothing product —
-              works with the platforms your store already runs on.
+            <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
+              A single line of code adds a virtual try-on to any clothing product — works
+              with the platforms your store already runs on.
             </p>
-            <div className="mt-7 flex flex-wrap gap-2">
-              {["Shopify", "WooCommerce", "Centra", "Custom"].map((s) => (
-                <span key={s} className="chip">
+            <div className="mt-7 grid grid-cols-2 gap-2">
+              {stores.map((s) => (
+                <div
+                  key={s}
+                  className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-xs text-white/85 text-center"
+                >
                   {s}
-                </span>
+                </div>
               ))}
             </div>
-            <a href="#" className="btn-secondary mt-8 !py-2.5 !px-5 !text-sm">
-              Add TryVerse to your store <ArrowRight size={14} />
-            </a>
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              <a href="#" className="btn-secondary !py-2.5 !px-5 !text-sm">
+                View Supported Stores
+              </a>
+              <a href="#" className="btn-primary !py-2.5 !px-5 !text-sm">
+                Add TryVerse To Your Store <ArrowRight size={14} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -528,23 +536,23 @@ function FinalCTA() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <div className="relative rounded-[2.5rem] overflow-hidden p-10 sm:p-16 lg:p-20 bg-gradient-to-b from-[#15131c] to-[#0c0a14] border border-white/10">
           <div
-            className="absolute -inset-32 -z-0 opacity-80"
+            className="absolute -inset-32 -z-0 opacity-70"
             style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
           />
           <div className="relative grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
             <div>
               <div className="eyebrow">Free to start</div>
-              <h2 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98]">
-                Ready to see it <span className="italic text-gradient">on you?</span>
+              <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
+                Ready To See It On You?
               </h2>
-              <p className="mt-6 text-lg text-muted-foreground max-w-lg">
-                Try clothes before buying, or create AI visuals for your fashion brand.
+              <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-lg">
+                Try clothes before buying or create AI visuals for your fashion brand with TryVerse.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <a href="#" className="btn-primary !py-3.5 !px-7 !text-base">
+                <a href="#" className="btn-primary !py-3.5 !px-7 !text-sm">
                   Try It Free <ArrowRight size={16} />
                 </a>
-                <a href="#" className="btn-secondary !py-3.5 !px-7 !text-base">
+                <a href="#" className="btn-secondary !py-3.5 !px-7 !text-sm">
                   Book Brand Demo
                 </a>
               </div>
@@ -583,16 +591,23 @@ function FinalCTA() {
 function SectionHead({
   eyebrow,
   title,
+  sub,
 }: {
   eyebrow: string;
   title: React.ReactNode;
+  sub?: string;
 }) {
   return (
     <div className="max-w-3xl">
       <div className="eyebrow">{eyebrow}</div>
-      <h2 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] tracking-[-0.02em]">
+      <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
         {title}
       </h2>
+      {sub && (
+        <p className="mt-5 text-base text-muted-foreground max-w-2xl leading-relaxed">
+          {sub}
+        </p>
+      )}
     </div>
   );
 }
