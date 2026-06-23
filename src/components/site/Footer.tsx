@@ -9,28 +9,29 @@ const COLUMNS: { title: string; links: string[] }[] = [
       "Virtual Try-On",
       "AI Photoshoot",
       "Ghost Mannequin",
-      "AI Pose Studio",
+      "Pose Studio",
+      "Video Studio",
       "Stylo AI Stylist",
-      "Brand Widget",
     ],
   },
   {
     title: "For Shoppers",
-    links: ["Try Outfits", "Supported Stores", "AI Stylist", "How It Works"],
+    links: ["AI Fashion Store", "Try Outfits", "AI Stylist", "Showcase Video"],
   },
   {
     title: "For Brands",
     links: [
       "Brand Studio",
-      "Product Photoshoots",
-      "Store Widget",
-      "Bulk Catalog Visuals",
+      "Fabric Studio",
+      "Widget",
+      "Stores",
+      "Analytics",
       "Book Demo",
     ],
   },
   {
-    title: "Resources",
-    links: ["Pricing", "FAQs", "Contact", "Privacy Policy", "Terms"],
+    title: "Company",
+    links: ["Pricing", "Contact", "Privacy Policy", "Terms"],
   },
 ];
 
