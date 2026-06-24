@@ -298,6 +298,7 @@ function FlowCard({
           alt={label}
           className="h-full w-full object-cover"
           loading="lazy"
+          decoding="async"
         />
         <div className="absolute top-1.5 left-1.5">
           <span className="inline-flex items-center gap-1 rounded-md bg-black/55 backdrop-blur px-1.5 py-0.5 text-[9.5px] text-white">
@@ -570,6 +571,7 @@ function MarqueeRow({
               alt=""
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
               loading="lazy"
+          decoding="async"
             />
             <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/70 via-black/15 to-transparent">
               <span className="chip backdrop-blur bg-black/40 text-white !text-[10px]">
@@ -642,6 +644,7 @@ function Storefront() {
                   alt=""
                   className="w-full aspect-[3/4] object-cover"
                   loading="lazy"
+          decoding="async"
                 />
               </div>
               <div className="flex flex-col">
@@ -731,6 +734,7 @@ function FinalCTA() {
                   alt="Try-on result"
                   className="h-full w-full object-cover"
                   loading="lazy"
+          decoding="async"
                 />
               </div>
               <div className="absolute -bottom-4 -left-4 glass rounded-xl px-3 py-2 text-xs flex items-center gap-2">
