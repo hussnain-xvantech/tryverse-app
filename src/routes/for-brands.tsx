@@ -44,7 +44,7 @@ import g6a from "@/assets/g6-after.jpg";
 import g1b from "@/assets/g1-before.jpg";
 import g2b from "@/assets/g2-before.jpg";
 
-export const Route = createFileRoute("/brands")({
+export const Route = createFileRoute("/for-brands")({
   head: () => ({
     meta: [
       { title: "For Brands — TryVerse AI Clothing Studio" },
