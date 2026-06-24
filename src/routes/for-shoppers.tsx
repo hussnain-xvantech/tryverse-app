@@ -175,7 +175,7 @@ function ShopperHero() {
 }
 
 function ShopperAppMockup() {
-  const steps = ["Upload", "Match", "Generate", "Ready"];
+  const steps = ["Link detected", "Photo uploaded", "Outfit matched", "Try-on ready"];
   const tabs = [
     { label: "Virtual Try-On", icon: <Shirt size={11} /> },
     { label: "Stylo Stylist", icon: <MessageCircle size={11} /> },
