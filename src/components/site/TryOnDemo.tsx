@@ -23,11 +23,37 @@ const FEATURES = [
 
 export function TryOnDemo() {
   const [tick, setTick] = useState(0);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const [active, setActive] = useState(false);
+
+  // Only run the workflow loop while the panel is on-screen and the tab is visible.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setActive(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    const onVis = () => {
+      if (document.visibilityState !== "visible") setActive(false);
+    };
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
+    };
+  }, []);
 
   useEffect(() => {
-    const id = setInterval(() => setTick((t) => (t + 1) % 64), 220);
+    if (!active) return;
+    const id = setInterval(() => setTick((t) => (t + 1) % 64), 260);
     return () => clearInterval(id);
-  }, []);
+  }, [active]);
+
 
   const step = useMemo(() => {
     if (tick < 12) return -1;          // idle
