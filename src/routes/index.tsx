@@ -87,54 +87,40 @@ function Hero() {
         />
       </div>
 
-      <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <div className="grid items-center gap-14 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
-          {/* LEFT — copy */}
-          <div className="animate-fade-up">
-            <div className="eyebrow flex items-center gap-2">
-              <span className="h-1 w-1 rounded-full bg-violet" />
-              AI Fashion Try-On Studio
-            </div>
-            <h1 className="font-display mt-6 text-[44px] sm:text-[64px] lg:text-[80px] leading-[1.02]">
-              <RevealLines
-                lines={["Try Clothes On", "Before You Buy"]}
-                accentIndices={[1]}
-                step={130}
-              />
-            </h1>
-            <Reveal as="p" delay={420} className="mt-6 text-base sm:text-[17px] text-muted-foreground max-w-xl leading-relaxed">
-              Paste a product link, upload your photo, and see the outfit on you
-              instantly. For brands, TryVerse turns clothing photos into model shots,
-              videos, poses, and store-ready visuals.
-            </Reveal>
-            <Reveal delay={560} className="mt-8 flex flex-wrap gap-3">
-              <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
-                Try It Free <ArrowRight size={16} />
-              </Link>
-              <Link to="/for-brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
-                Explore Brand Studio
-              </Link>
-            </Reveal>
-
-            <div className="mt-8 flex flex-wrap gap-2">
-              {["Virtual Try-On", "AI Stylist", "Photoshoot", "Brand Widget"].map(
-                (c, i) => (
-                  <span
-                    key={c}
-                    className="chip animate-fade-up"
-                    style={{ animationDelay: `${300 + i * 90}ms` }}
-                  >
-                    {c}
-                  </span>
-                ),
-              )}
-            </div>
+      <div className="mx-auto max-w-[1320px] px-6 sm:px-10 pb-20 sm:pb-24">
+        <div className="mx-auto max-w-3xl text-center animate-fade-up">
+          <div className="eyebrow inline-flex items-center justify-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-violet" />
+            AI Fashion Try-On Studio
           </div>
+          <h1 className="font-display mt-6 text-[44px] sm:text-[64px] lg:text-[80px] leading-[1.02]">
+            <RevealLines
+              lines={["Try Clothes On", "Before You Buy"]}
+              accentIndices={[1]}
+              step={130}
+            />
+          </h1>
+          <Reveal as="p" delay={420} className="mx-auto mt-6 max-w-2xl text-base sm:text-[17px] text-muted-foreground leading-relaxed">
+            Paste a product link, upload your photo, and instantly see how the
+            outfit looks on you. For brands, TryVerse creates AI photoshoots,
+            ghost mannequin visuals, videos, and store-ready content.
+          </Reveal>
+          <Reveal delay={560} className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+              Try It Free <ArrowRight size={16} />
+            </Link>
+            <Link to="/for-brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
+              Book Brand Demo
+            </Link>
+          </Reveal>
+        </div>
 
-          {/* RIGHT — studio mockup */}
+        {/* Centered carousel below the copy */}
+        <div className="mt-14 sm:mt-16">
           <HeroCarousel />
         </div>
       </div>
+
     </section>
   );
 }
@@ -166,7 +152,7 @@ function HeroCarousel() {
 
       {/* DESKTOP / TABLET — curved arc */}
       <div
-        className="group relative hidden sm:block h-[520px] lg:h-[560px] overflow-hidden"
+        className="group relative hidden sm:block h-[400px] lg:h-[440px] overflow-hidden"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
