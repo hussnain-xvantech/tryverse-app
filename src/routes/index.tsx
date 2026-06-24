@@ -599,8 +599,9 @@ function Storefront() {
           {/* Left: store tiles */}
           <div>
             <h3 className="font-display text-2xl sm:text-3xl leading-tight">
-              Supported Clothing Stores
+              <RevealLines lines={["Supported Clothing Stores"]} step={100} />
             </h3>
+
             <p className="mt-3 text-sm text-muted-foreground max-w-md leading-relaxed">
               Try outfits from the brands you already love — with more added every week.
             </p>
