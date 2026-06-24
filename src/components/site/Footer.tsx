@@ -38,95 +38,91 @@ const COLUMNS: { title: string; links: string[] }[] = [
 export function Footer() {
   return (
     <footer className="relative mt-24">
-      {/* Glowing TryVerse Studio interface merged into footer */}
-      <div className="relative overflow-hidden">
-        {/* ambient purple/magenta glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 h-[420px] w-[85%] rounded-[3rem] animate-corner-sweep"
-          style={{
-            background:
-              "radial-gradient(60% 100% at 50% 0%, rgba(217,70,239,0.55), rgba(168,85,247,0.45) 40%, rgba(109,40,255,0.25) 65%, transparent 80%)",
-          }}
-        />
+      {/* Glowing TryVerse Studio interface — blended into page background */}
+      <div className="relative">
         <div className="mx-auto max-w-[1280px] px-6 sm:px-10 pt-16 sm:pt-24">
-          <div className="relative rounded-t-[2rem] overflow-hidden">
-            {/* corner strokes — purple */}
+          <div className="relative">
+            {/* soft static purple glow behind the panel */}
             <div
               aria-hidden
-              className="pointer-events-none absolute top-0 left-0 h-px w-[55%]"
+              className="pointer-events-none absolute -inset-x-10 -top-10 h-[60%] -z-0"
               style={{
                 background:
-                  "linear-gradient(90deg, rgba(217,70,239,0.95), rgba(168,85,247,0.7) 50%, transparent)",
-                boxShadow: "0 0 18px rgba(168,85,247,0.7)",
-              }}
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute top-0 left-0 w-px h-[55%]"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(217,70,239,0.95), rgba(168,85,247,0.6) 50%, transparent)",
-                boxShadow: "0 0 18px rgba(168,85,247,0.7)",
+                  "radial-gradient(60% 70% at 50% 0%, rgba(217,70,239,0.28), rgba(168,85,247,0.18) 45%, transparent 78%)",
               }}
             />
 
-            {/* running scan line along the top edge */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute top-0 left-0 right-0 h-[2px] overflow-hidden"
-            >
+            <div className="relative rounded-t-[2rem] overflow-hidden">
+              {/* corner strokes — purple */}
               <div
-                className="h-full w-[28%] animate-runline rounded-full"
+                aria-hidden
+                className="pointer-events-none absolute top-0 left-0 h-px w-[55%]"
                 style={{
                   background:
-                    "linear-gradient(90deg, transparent, rgba(217,70,239,0.95), rgba(168,85,247,0.9), transparent)",
-                  boxShadow:
-                    "0 0 14px rgba(217,70,239,0.85), 0 0 28px rgba(168,85,247,0.55)",
+                    "linear-gradient(90deg, rgba(217,70,239,0.95), rgba(168,85,247,0.7) 50%, transparent)",
+                  boxShadow: "0 0 14px rgba(168,85,247,0.55)",
                 }}
               />
-            </div>
+              <div
+                aria-hidden
+                className="pointer-events-none absolute top-0 left-0 w-px h-[45%]"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(217,70,239,0.95), rgba(168,85,247,0.6) 50%, transparent)",
+                  boxShadow: "0 0 14px rgba(168,85,247,0.55)",
+                }}
+              />
 
-            <img
-              src={footerVisual}
-              alt="TryVerse Studio interface"
-              className="block w-full h-auto"
-              loading="lazy"
-              width={1920}
-              height={896}
-            />
+              {/* running scan line along the top edge */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute top-0 left-0 right-0 h-[2px] overflow-hidden"
+              >
+                <div
+                  className="h-full w-[28%] animate-runline rounded-full"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(217,70,239,0.95), rgba(168,85,247,0.9), transparent)",
+                    boxShadow:
+                      "0 0 10px rgba(217,70,239,0.7), 0 0 18px rgba(168,85,247,0.4)",
+                  }}
+                />
+              </div>
 
-            {/* purple tint overlay to neutralize any blue */}
-            <div
-              aria-hidden
-              className="absolute inset-0 mix-blend-color opacity-60"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(168,85,247,0.35), rgba(217,70,239,0.25) 50%, transparent 100%)",
-              }}
-            />
+              <img
+                src={footerVisual}
+                alt="TryVerse Studio interface"
+                className="block w-full h-auto"
+                loading="lazy"
+                decoding="async"
+                width={1920}
+                height={896}
+              />
 
-            {/* fade to background so it merges with footer */}
-            <div
-              className="absolute inset-x-0 bottom-0 h-3/4"
-              style={{
-                background:
-                  "linear-gradient(180deg, transparent 0%, rgba(8,7,13,0.85) 55%, rgba(8,7,13,1) 100%)",
-              }}
-            />
+              {/* fade image bottom into page background */}
+              <div
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 h-[85%]"
+                style={{
+                  background:
+                    "linear-gradient(180deg, transparent 0%, var(--color-background) 78%, var(--color-background) 100%)",
+                }}
+              />
 
-            {/* small premium URL label */}
-            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 flex justify-center">
-              <span className="font-display text-[15px] sm:text-base tracking-wide text-white/85">
-                tryverse.app
-              </span>
+              {/* small premium URL label */}
+              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 flex justify-center">
+                <span className="font-display text-[15px] sm:text-base tracking-wide text-white/85">
+                  tryverse.app
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
+
       {/* Link columns — no gap, merges with glowing interface */}
-      <div className="bg-background/80 border-t border-white/[0.06] -mt-px">
+      <div className="-mt-px">
         <div className="mx-auto max-w-[1280px] px-6 sm:px-10 pt-10 sm:pt-12 pb-14 sm:pb-16">
           <div className="grid gap-12 lg:gap-16 md:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
             <div className="md:col-span-1">

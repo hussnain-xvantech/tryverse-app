@@ -83,7 +83,7 @@ function Hero() {
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute left-1/2 top-[-260px] h-[900px] w-[1200px] -translate-x-1/2 rounded-full opacity-70"
-          style={{ background: "var(--gradient-glow)", filter: "blur(50px)" }}
+          style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
         />
       </div>
 
@@ -148,7 +148,7 @@ function HeroStudio() {
       <div
         aria-hidden
         className="absolute -inset-10 -z-10 opacity-80"
-        style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
+        style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
       />
 
       {/* APP WINDOW — everything stays inside */}
@@ -298,6 +298,7 @@ function FlowCard({
           alt={label}
           className="h-full w-full object-cover"
           loading="lazy"
+          decoding="async"
         />
         <div className="absolute top-1.5 left-1.5">
           <span className="inline-flex items-center gap-1 rounded-md bg-black/55 backdrop-blur px-1.5 py-0.5 text-[9.5px] text-white">
@@ -344,7 +345,7 @@ function Workflow() {
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute right-[-200px] top-1/3 h-[600px] w-[600px] rounded-full opacity-50"
-          style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
+          style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
         />
       </div>
 
@@ -570,6 +571,7 @@ function MarqueeRow({
               alt=""
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
               loading="lazy"
+          decoding="async"
             />
             <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/70 via-black/15 to-transparent">
               <span className="chip backdrop-blur bg-black/40 text-white !text-[10px]">
@@ -642,6 +644,7 @@ function Storefront() {
                   alt=""
                   className="w-full aspect-[3/4] object-cover"
                   loading="lazy"
+          decoding="async"
                 />
               </div>
               <div className="flex flex-col">
@@ -695,7 +698,7 @@ function FinalCTA() {
         <div className="relative rounded-[2.5rem] overflow-hidden p-10 sm:p-16 lg:p-20 bg-gradient-to-b from-[#15131c] to-[#0c0a14] border border-white/10">
           <div
             className="absolute -inset-32 -z-0 opacity-70"
-            style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
+            style={{ background: "var(--gradient-glow)", filter: "blur(24px)" }}
           />
           <div className="relative grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
             <div>
@@ -731,6 +734,7 @@ function FinalCTA() {
                   alt="Try-on result"
                   className="h-full w-full object-cover"
                   loading="lazy"
+          decoding="async"
                 />
               </div>
               <div className="absolute -bottom-4 -left-4 glass rounded-xl px-3 py-2 text-xs flex items-center gap-2">

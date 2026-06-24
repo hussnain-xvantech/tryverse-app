@@ -115,10 +115,11 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     background-image:
-      radial-gradient(60% 50% at 80% -10%, rgba(217, 70, 239, 0.10), transparent 60%),
-      radial-gradient(50% 40% at 0% 10%, rgba(109, 40, 255, 0.12), transparent 60%);
-    background-attachment: fixed;
+      radial-gradient(60% 50% at 80% -10%, rgba(217, 70, 239, 0.08), transparent 60%),
+      radial-gradient(50% 40% at 0% 10%, rgba(109, 40, 255, 0.10), transparent 60%);
+    background-repeat: no-repeat;
   }
+
 
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
@@ -259,14 +260,12 @@
 @utility animate-glow-pulse { animation: glow-pulse 2.4s ease-in-out infinite; }
 @utility animate-fade-up { animation: fade-up 0.7s ease-out both; }
 @utility animate-marquee { animation: marquee 40s linear infinite; }
-@utility animate-scan { animation: scan-down 3.2s ease-in-out infinite; }
-@utility animate-progress { animation: progress-fill 3.2s ease-in-out infinite; }
+@utility animate-scan { animation: scan-down 4s ease-in-out infinite; }
+@utility animate-progress { animation: progress-fill 4s ease-in-out infinite; }
 
-@keyframes corner-sweep {
-  0%, 100% { opacity: 0.55; filter: blur(28px); }
-  50% { opacity: 1; filter: blur(34px); }
-}
-@utility animate-corner-sweep { animation: corner-sweep 4.5s ease-in-out infinite; }
+/* corner-sweep replaced with a static soft glow — continuous blur animation
+   on a large element caused major scroll jank. */
+
 
 @utility soft-card {
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
@@ -281,8 +280,9 @@
   transition:
     opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
 }
+.reveal[data-visible="true"] { will-change: auto; }
+
 .reveal[data-visible="true"] {
   opacity: 1;
   transform: translateY(0);
@@ -307,7 +307,9 @@
 .reveal-lines[data-visible="true"] .reveal-line-inner {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
+
 .reveal-accent .reveal-line-inner {
   background: linear-gradient(
     90deg,
