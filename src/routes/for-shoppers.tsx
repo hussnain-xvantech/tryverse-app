@@ -814,7 +814,25 @@ function SupportedStores() {
           align="center"
         />
 
-        <div className="mt-12 grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <Reveal delay={120} className="mx-auto mt-10 max-w-2xl">
+          <div className="flex items-center gap-2 rounded-2xl border border-violet/35 bg-white/[0.03] px-4 py-3 shadow-[0_0_0_4px_rgba(168,85,247,0.08)] hover:border-violet/55 transition-colors">
+            <LinkIcon size={15} className="text-violet shrink-0" />
+            <input
+              type="text"
+              disabled
+              placeholder="Paste any clothing product link…"
+              className="flex-1 bg-transparent text-[13.5px] text-white/80 placeholder-white/40 outline-none min-w-0"
+            />
+            <button
+              type="button"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-violet to-magenta px-3.5 py-2 text-[12.5px] font-medium text-white shadow-[0_8px_24px_-8px_rgba(168,85,247,0.7)]"
+            >
+              <Wand2 size={12} /> Try On
+            </button>
+          </div>
+        </Reveal>
+
+        <div className="mt-8 grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
           {stores.map((s, i) => (
             <Reveal
               key={s}
