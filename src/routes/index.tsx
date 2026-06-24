@@ -24,6 +24,8 @@ import {
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { TryOnDemo } from "@/components/site/TryOnDemo";
+import { Reveal, RevealLines } from "@/components/site/Reveal";
+
 
 import editorialHero from "@/assets/editorial-hero.jpg";
 import userRef from "@/assets/user-reference.jpg";
@@ -94,21 +96,26 @@ function Hero() {
               AI Fashion Try-On Studio
             </div>
             <h1 className="font-display mt-6 text-[44px] sm:text-[64px] lg:text-[80px] leading-[1.02]">
-              Try Clothes On<br />Before You Buy
+              <RevealLines
+                lines={["Try Clothes On", "Before You Buy"]}
+                accentIndices={[1]}
+                step={130}
+              />
             </h1>
-            <p className="mt-6 text-base sm:text-[17px] text-muted-foreground max-w-xl leading-relaxed">
+            <Reveal as="p" delay={420} className="mt-6 text-base sm:text-[17px] text-muted-foreground max-w-xl leading-relaxed">
               Paste a product link, upload your photo, and see the outfit on you
               instantly. For brands, TryVerse turns clothing photos into model shots,
               videos, poses, and store-ready visuals.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            </Reveal>
+            <Reveal delay={560} className="mt-8 flex flex-wrap gap-3">
               <a href="#try" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Try It Free <ArrowRight size={16} />
               </a>
               <a href="#brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
                 Explore Brand Studio
               </a>
-            </div>
+            </Reveal>
+
             <div className="mt-8 flex flex-wrap gap-2">
               {["Virtual Try-On", "AI Stylist", "Photoshoot", "Brand Widget"].map(
                 (c, i) => (
@@ -346,8 +353,9 @@ function Workflow() {
           <div className="max-w-2xl">
             <div className="eyebrow">The product</div>
             <h2 className="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-              See TryVerse In Action
+              <RevealLines lines={["See TryVerse", "In Action"]} accentIndices={[0]} step={120} />
             </h2>
+
           </div>
           <p className="text-muted-foreground max-w-md text-base leading-relaxed">
             One photo. One garment. A photorealistic try-on in under a second — fabric,
@@ -451,8 +459,9 @@ function Features() {
           <div className="max-w-2xl">
             <div className="eyebrow">The toolkit</div>
             <h2 className="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-              Built For Shoppers<br />And Fashion Brands
+              <RevealLines lines={["Built For Shoppers", "And Fashion Brands"]} accentIndices={[1]} step={120} />
             </h2>
+
           </div>
           <div
             id={tab === "shoppers" ? "shoppers" : "brands"}
@@ -590,8 +599,9 @@ function Storefront() {
           {/* Left: store tiles */}
           <div>
             <h3 className="font-display text-2xl sm:text-3xl leading-tight">
-              Supported Clothing Stores
+              <RevealLines lines={["Supported Clothing Stores"]} step={100} />
             </h3>
+
             <p className="mt-3 text-sm text-muted-foreground max-w-md leading-relaxed">
               Try outfits from the brands you already love — with more added every week.
             </p>
@@ -691,19 +701,20 @@ function FinalCTA() {
             <div>
               <div className="eyebrow">Free to start</div>
               <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-                Ready To See It On You?
+                <RevealLines lines={["Ready To See", "It On You?"]} accentIndices={[1]} step={120} />
               </h2>
-              <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-lg">
+              <Reveal as="p" delay={380} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-lg">
                 Try clothes before buying or create AI visuals for your fashion brand with TryVerse.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3">
+              </Reveal>
+              <Reveal delay={520} className="mt-9 flex flex-wrap gap-3">
                 <a href="#" className="btn-primary !py-3.5 !px-7 !text-sm">
                   Try It Free <ArrowRight size={16} />
                 </a>
                 <a href="#" className="btn-secondary !py-3.5 !px-7 !text-sm">
                   Book Brand Demo
                 </a>
-              </div>
+              </Reveal>
+
               <div className="mt-7 flex items-center gap-6 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <Check size={12} className="text-emerald-400" /> No credit card
@@ -743,17 +754,24 @@ function SectionHead({
   title: React.ReactNode;
   sub?: string;
 }) {
+  const titleNode =
+    typeof title === "string" ? (
+      <RevealLines lines={[title]} step={100} />
+    ) : (
+      <Reveal as="span">{title}</Reveal>
+    );
   return (
     <div className="max-w-3xl">
       <div className="eyebrow">{eyebrow}</div>
       <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-        {title}
+        {titleNode}
       </h2>
       {sub && (
-        <p className="mt-5 text-base text-muted-foreground max-w-2xl leading-relaxed">
+        <Reveal as="p" delay={260} className="mt-5 text-base text-muted-foreground max-w-2xl leading-relaxed">
           {sub}
-        </p>
+        </Reveal>
       )}
     </div>
   );
+
 }

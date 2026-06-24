@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { Sparkles, Upload, Wand2, Check, ImageIcon, Shirt } from "lucide-react";
 import { BeforeAfter } from "./BeforeAfter";
-import beforeImg from "@/assets/g2-before.jpg";
-import afterImg from "@/assets/g2-after.jpg";
-import userImg from "@/assets/user-reference.jpg";
+import beforeImg from "@/assets/blazer-before.jpg";
+import afterImg from "@/assets/blazer-after.jpg";
+import userImg from "@/assets/blazer-before.jpg";
 import garmentImg from "@/assets/garment-flatlay.jpg";
+
 
 const STEPS = [
   "Analyzing garment",
