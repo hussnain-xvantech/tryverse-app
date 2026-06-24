@@ -435,13 +435,13 @@ function ArticlePage() {
         {/* ARTICLE BODY */}
         <section className="px-6 sm:px-10 pb-16">
           <div className="mx-auto max-w-[720px]">
-            {post.sections.map((s, i) => (
+            {post.sections.map((s: Section, i: number) => (
               <Reveal key={s.heading} delay={i * 60}>
                 <div className="mt-10 first:mt-0">
                   <h2 className="font-display text-[26px] sm:text-[30px] leading-[1.15]">
                     {i + 1}. {s.heading}
                   </h2>
-                  {s.body.map((p, j) => (
+                  {s.body.map((p: string, j: number) => (
                     <p
                       key={j}
                       className="mt-4 text-[16px] sm:text-[17px] leading-[1.75] text-white/75"
