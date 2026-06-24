@@ -693,56 +693,47 @@ function Storefront() {
 /* =================== FINAL CTA =================== */
 function FinalCTA() {
   return (
-    <section id="try" className="py-28 sm:py-40">
-      <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
-        <div className="relative rounded-[2.5rem] overflow-hidden p-10 sm:p-16 lg:p-20 bg-gradient-to-b from-[#15131c] to-[#0c0a14] border border-white/10">
-          <div
-            className="absolute -inset-32 -z-0 opacity-70"
-            style={{ background: "var(--gradient-glow)", filter: "blur(24px)" }}
-          />
-          <div className="relative grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
-            <div>
-              <div className="eyebrow">Free to start</div>
-              <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-                <RevealLines lines={["Ready To See", "It On You?"]} accentIndices={[1]} step={120} />
-              </h2>
-              <Reveal as="p" delay={380} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-lg">
-                Try clothes before buying or create AI visuals for your fashion brand with TryVerse.
-              </Reveal>
-              <Reveal delay={520} className="mt-9 flex flex-wrap gap-3">
-                <a href="#" className="btn-primary !py-3.5 !px-7 !text-sm">
-                  Try It Free <ArrowRight size={16} />
-                </a>
-                <a href="#" className="btn-secondary !py-3.5 !px-7 !text-sm">
-                  Book Brand Demo
-                </a>
-              </Reveal>
+    <section id="try" className="relative overflow-hidden py-32 sm:py-44">
+      {/* soft radial glow behind text */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[700px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-60"
+        style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
+      />
 
-              <div className="mt-7 flex items-center gap-6 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1.5">
-                  <Check size={12} className="text-emerald-400" /> No credit card
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Check size={12} className="text-emerald-400" /> Setup in minutes
-                </span>
-              </div>
-            </div>
-            <div className="relative mx-auto w-full max-w-[460px] aspect-[4/5]">
-              <div className="absolute inset-0 rounded-[2rem] overflow-hidden glow bg-[#f3eee8]">
-                <img
-                  src={editorialHero}
-                  alt="Try-on result"
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-          decoding="async"
-                />
-              </div>
-              <div className="absolute -bottom-4 -left-4 glass rounded-xl px-3 py-2 text-xs flex items-center gap-2">
-                <Sparkles size={12} className="text-magenta" /> Generated in 0.8s
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="mx-auto max-w-[720px] px-6 sm:px-10 text-center">
+        <Reveal as="div" className="eyebrow justify-center">
+          Free to start
+        </Reveal>
+
+        <h2 className="font-display mt-6 text-4xl sm:text-5xl lg:text-[64px] leading-[1.05]">
+          <RevealLines
+            lines={["Ready To See", "It On You?"]}
+            accentIndices={[1]}
+            step={130}
+          />
+        </h2>
+
+        <Reveal as="p" delay={340} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          Try clothes before buying or create AI visuals for your fashion brand with TryVerse.
+        </Reveal>
+
+        <Reveal delay={500} className="mt-10 flex flex-wrap justify-center gap-3">
+          <a href="#" className="btn-primary !py-3.5 !px-7 !text-sm">
+            Try It Free <ArrowRight size={16} />
+          </a>
+          <a href="#" className="btn-secondary !py-3.5 !px-7 !text-sm">
+            Book Brand Demo
+          </a>
+        </Reveal>
+
+        <Reveal delay={640} className="mt-7 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1.5">
+            <Check size={12} className="text-emerald-400" /> No credit card
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Check size={12} className="text-emerald-400" /> Setup in minutes
+          </span>
+        </Reveal>
       </div>
     </section>
   );
