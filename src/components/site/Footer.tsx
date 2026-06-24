@@ -141,22 +141,22 @@ export function Footer({ variant = "full" }: { variant?: "full" | "minimal" } = 
           <div className="grid gap-12 lg:gap-16 md:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
             <div className="md:col-span-1">
               <Logo />
-              <p className="mt-5 text-sm text-white/60 max-w-xs leading-relaxed">
+              <p className="mt-5 text-[15px] text-white/65 max-w-xs leading-relaxed">
                 Try it before you buy it.
               </p>
             </div>
 
             {COLUMNS.map((col) => (
               <div key={col.title} className="min-w-0">
-                <h4 className="text-[13px] font-semibold text-white mb-5">
+                <h4 className="text-sm font-semibold text-white mb-5 tracking-wide">
                   {col.title}
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-3.5">
                   {col.links.map((l) => (
                     <li key={l.label}>
                       <Link
                         to={l.to}
-                        className="text-[13.5px] text-white/55 hover:text-violet transition-colors"
+                        className="text-[14.5px] leading-relaxed text-white/65 hover:text-violet transition-colors"
                       >
                         {l.label}
                       </Link>
@@ -168,9 +168,10 @@ export function Footer({ variant = "full" }: { variant?: "full" | "minimal" } = 
           </div>
 
           <div className="mt-14 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-            <p className="text-xs text-white/45">
+            <p className="text-[13px] text-white/55">
               © 2026 TryVerse. All rights reserved.
             </p>
+
             <div className="flex items-center gap-2">
               {[Twitter, Instagram, Linkedin, Youtube].map((Icon, i) => (
                 <a

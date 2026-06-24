@@ -29,13 +29,15 @@ import garmentFlat from "@/assets/garment-flatlay.jpg";
 import clothingBlazer from "@/assets/clothing-blazer.jpg";
 import blazerAfter from "@/assets/blazer-after.jpg";
 import g1a from "@/assets/g1-after.jpg";
-import g2a from "@/assets/g2-after.jpg";
+
 import g3a from "@/assets/g3-after.jpg";
 import g4a from "@/assets/g4-after.jpg";
 import g5a from "@/assets/g5-after.jpg";
 import g6a from "@/assets/g6-after.jpg";
 import g1b from "@/assets/g1-before.jpg";
 import g2b from "@/assets/g2-before.jpg";
+import g2c from "@/assets/g2-catalog.jpg";
+
 
 
 export const Route = createFileRoute("/for-brands")({
@@ -60,10 +62,12 @@ export const Route = createFileRoute("/for-brands")({
 
 function BrandsPage() {
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-white overflow-x-hidden">
       <Header />
-      <main className="pt-24 sm:pt-28">
+      <main className="pt-24 sm:pt-28 overflow-x-hidden">
         <BrandHero />
+
+
         <ProblemSolution />
         <BrandToolsGrid />
         <BrandStudioDemo />
@@ -118,20 +122,23 @@ function BrandHero() {
       </div>
 
       <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <div className="grid items-center gap-14 lg:gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)]">
+        <div className="grid items-center gap-14 lg:gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.2fr)]">
           {/* LEFT */}
           <div className="animate-fade-up">
             <div className="eyebrow flex items-center gap-2">
               <span className="h-1 w-1 rounded-full bg-violet" />
               For Fashion Brands
             </div>
-            <h1 className="font-display mt-6 text-[44px] sm:text-[60px] lg:text-[76px] leading-[1.02]">
+            <h1 className="font-display mt-6 text-[40px] sm:text-[48px] lg:text-[58px] leading-[1.05] text-balance">
               <RevealLines
                 lines={["Create Clothing", "Visuals That Sell"]}
                 accentIndices={[1]}
                 step={130}
               />
             </h1>
+
+
+
             <Reveal
               as="p"
               delay={440}
@@ -431,7 +438,8 @@ function ProblemSolution() {
                 {p.icon}
               </span>
               <h4 className="font-display mt-6 text-xl leading-tight">{p.title}</h4>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.text}</p>
+              <p className="mt-3 text-[14.5px] text-muted-foreground leading-[1.7]">{p.text}</p>
+
             </Reveal>
           ))}
         </div>
@@ -530,7 +538,8 @@ function BrandToolsGrid() {
                 {f.icon}
               </span>
               <h4 className="font-display mt-6 text-[20px] leading-tight">{f.title}</h4>
-              <p className="mt-2 text-[13.5px] text-muted-foreground leading-relaxed">{f.text}</p>
+              <p className="mt-3 text-[14.5px] text-muted-foreground leading-[1.7]">{f.text}</p>
+
             </Reveal>
           ))}
         </div>
@@ -544,7 +553,7 @@ function BrandStudioDemo() {
   const variations = [
     { label: "Studio", img: editorialHero },
     { label: "Editorial", img: g1a },
-    { label: "Catalog", img: g2a },
+    { label: "Catalog", img: g2c },
   ];
   const steps = [
     "Reading garment",
@@ -803,8 +812,9 @@ function OutputTypes() {
               </div>
               <div className="p-5">
                 <h4 className="font-display text-lg leading-tight">{o.title}</h4>
-                <p className="mt-2 text-[13px] text-muted-foreground leading-relaxed">{o.text}</p>
+                <p className="mt-2.5 text-[14px] text-muted-foreground leading-[1.65]">{o.text}</p>
               </div>
+
             </Reveal>
           ))}
         </div>
@@ -927,7 +937,7 @@ function ResultsGallery() {
     { src: clothingBlazer, tag: "Mannequin Product" },
     { src: editorialHero, tag: "AI Model Photoshoot" },
     { src: g6a, tag: "Ghost Mannequin" },
-    { src: g2a, tag: "Catalog Visual" },
+    { src: g2c, tag: "Catalog Visual" },
     { src: g5a, tag: "Campaign Model" },
   ];
   const rowB = [
@@ -938,6 +948,7 @@ function ResultsGallery() {
     { src: g2b, tag: "Catalog Frame" },
     { src: g1b, tag: "Ecommerce Visual" },
   ];
+
   const loopA = [...rowA, ...rowA];
   const loopB = [...rowB, ...rowB];
 
@@ -1002,23 +1013,23 @@ function MarqueeRow({
 /* =================== 8. FINAL CTA =================== */
 function BrandFinalCTA() {
   return (
-    <section id="try" className="relative overflow-hidden py-28 sm:py-40">
+    <section id="try" className="relative overflow-hidden py-32 sm:py-44">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[780px] w-[1100px] -translate-x-1/2 -translate-y-1/2 opacity-70"
-        style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[860px] w-[1200px] -translate-x-1/2 -translate-y-1/2 opacity-80"
+        style={{ background: "var(--gradient-glow)", filter: "blur(70px)" }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.35), transparent 70%)", filter: "blur(20px)" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.45), rgba(217,70,239,0.18) 45%, transparent 72%)", filter: "blur(28px)" }}
       />
 
-      <div className="mx-auto max-w-[760px] px-6 sm:px-10 text-center">
+      <div className="mx-auto max-w-[820px] px-6 sm:px-10 text-center">
         <Reveal as="div" className="eyebrow justify-center">
           For Clothing Brands
         </Reveal>
 
-        <h2 className="font-display mt-7 text-[40px] sm:text-[56px] lg:text-[68px] leading-[1.04]">
+        <h2 className="font-display mt-8 text-[42px] sm:text-[60px] lg:text-[72px] leading-[1.04] text-balance">
           <RevealLines
             lines={["Ready To Create", "Better Product Visuals?"]}
             accentIndices={[1]}
@@ -1026,38 +1037,39 @@ function BrandFinalCTA() {
           />
         </h2>
 
-        <Reveal as="p" delay={340} className="mt-7 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+        <Reveal as="p" delay={340} className="mt-8 text-[17px] sm:text-lg text-muted-foreground max-w-xl mx-auto leading-[1.7]">
           Build AI photoshoots, ghost mannequin images, videos, and virtual try-on experiences for
           your fashion store with TryVerse.
         </Reveal>
 
-        <Reveal delay={500} className="mt-11 flex flex-wrap justify-center gap-3">
+        <Reveal delay={500} className="mt-12 flex flex-wrap justify-center gap-4">
           <Link
             to="/signup"
-            className="btn-primary !py-4 !px-8 !text-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_60px_-18px_rgba(168,85,247,0.75)]"
+            className="btn-primary !py-[18px] !px-10 !text-[15px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_70px_-18px_rgba(168,85,247,0.85)]"
           >
-            Start Creating <ArrowRight size={16} />
+            Start Creating <ArrowRight size={17} />
           </Link>
           <Link
             to="/book-demo"
-            className="btn-secondary !py-4 !px-8 !text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/50"
+            className="btn-secondary !py-[18px] !px-10 !text-[15px] transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/60"
           >
             Book Brand Demo
           </Link>
         </Reveal>
 
-        <Reveal delay={640} className="mt-8 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
+        <Reveal delay={640} className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[13px] text-muted-foreground">
           <span className="flex items-center gap-1.5">
-            <Check size={12} className="text-emerald-400" /> Clothing-only AI
+            <Check size={13} className="text-emerald-400" /> Clothing-only AI
           </span>
           <span className="flex items-center gap-1.5">
-            <Check size={12} className="text-emerald-400" /> Store-ready visuals
+            <Check size={13} className="text-emerald-400" /> Store-ready visuals
           </span>
           <span className="flex items-center gap-1.5">
-            <Check size={12} className="text-emerald-400" /> Fast setup
+            <Check size={13} className="text-emerald-400" /> Fast setup
           </span>
         </Reveal>
       </div>
     </section>
+
   );
 }
