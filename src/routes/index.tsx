@@ -108,12 +108,12 @@ function Hero() {
               videos, poses, and store-ready visuals.
             </Reveal>
             <Reveal delay={560} className="mt-8 flex flex-wrap gap-3">
-              <a href="#try" className="btn-primary !py-3.5 !px-7 !text-sm">
+              <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Try It Free <ArrowRight size={16} />
-              </a>
-              <a href="#brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
+              </Link>
+              <Link to="/for-brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
                 Explore Brand Studio
-              </a>
+              </Link>
             </Reveal>
 
             <div className="mt-8 flex flex-wrap gap-2">
@@ -618,12 +618,12 @@ function Storefront() {
               ))}
             </div>
             <div className="mt-7 flex flex-wrap gap-2.5">
-              <a href="#" className="btn-secondary !py-2.5 !px-5 !text-sm">
+              <Link to="/stores" className="btn-secondary !py-2.5 !px-5 !text-sm">
                 View All Stores
-              </a>
-              <a href="#" className="btn-primary !py-2.5 !px-5 !text-sm">
+              </Link>
+              <Link to="/for-brands" className="btn-primary !py-2.5 !px-5 !text-sm">
                 Add TryVerse To Your Store <ArrowRight size={14} />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -718,12 +718,12 @@ function FinalCTA() {
         </Reveal>
 
         <Reveal delay={500} className="mt-10 flex flex-wrap justify-center gap-3">
-          <a href="#" className="btn-primary !py-3.5 !px-7 !text-sm">
+          <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
             Try It Free <ArrowRight size={16} />
-          </a>
-          <a href="#" className="btn-secondary !py-3.5 !px-7 !text-sm">
+          </Link>
+          <Link to="/book-demo" className="btn-secondary !py-3.5 !px-7 !text-sm">
             Book Brand Demo
-          </a>
+          </Link>
         </Reveal>
 
         <Reveal delay={640} className="mt-7 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
