@@ -754,17 +754,24 @@ function SectionHead({
   title: React.ReactNode;
   sub?: string;
 }) {
+  const titleNode =
+    typeof title === "string" ? (
+      <RevealLines lines={[title]} step={100} />
+    ) : (
+      <Reveal as="span">{title}</Reveal>
+    );
   return (
     <div className="max-w-3xl">
       <div className="eyebrow">{eyebrow}</div>
       <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-        {title}
+        {titleNode}
       </h2>
       {sub && (
-        <p className="mt-5 text-base text-muted-foreground max-w-2xl leading-relaxed">
+        <Reveal as="p" delay={260} className="mt-5 text-base text-muted-foreground max-w-2xl leading-relaxed">
           {sub}
-        </p>
+        </Reveal>
       )}
     </div>
   );
+
 }
