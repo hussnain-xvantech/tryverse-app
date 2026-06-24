@@ -1,6 +1,111 @@
-import { Link } from "@tanstack/react-router";
-import { ReactNode } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { ReactNode, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
+
+const NAV_LINKS = [
+  { to: "/pricing", label: "Pricing" },
+  { to: "/discover", label: "Discover" },
+  { to: "/resources", label: "Resources" },
+] as const;
+
+function AuthNav() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [open, setOpen] = useState(false);
+  const isLogin = pathname === "/login";
+  const isSignup = pathname === "/signup";
+
+  return (
+    <header className="px-6 sm:px-10 py-5 sm:py-6">
+      <div className="mx-auto max-w-[1280px] flex items-center justify-between gap-4">
+        <Link to="/" aria-label="TryVerse home" className="inline-flex shrink-0">
+          <Logo />
+        </Link>
+
+        <nav className="hidden md:flex items-center gap-7 text-[14px]">
+          {NAV_LINKS.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="text-white/70 hover:text-white transition"
+              activeProps={{ className: "text-white" }}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            to="/login"
+            className={`text-[14px] px-3 py-2 rounded-lg transition ${
+              isLogin
+                ? "text-white bg-white/[0.08] ring-1 ring-white/15"
+                : "text-white/75 hover:text-white"
+            }`}
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className={`btn-primary !text-[14px] !py-2 !px-4 ${
+              isSignup ? "ring-2 ring-purple-400/60 shadow-[0_0_24px_rgba(168,85,247,0.45)]" : ""
+            }`}
+          >
+            Try Free
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/10 bg-white/[0.04] text-white"
+          aria-label="Open menu"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X size={18} /> : <Menu size={18} />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="md:hidden mt-4 mx-auto max-w-[1280px] surface-card p-4 rounded-2xl">
+          <div className="flex flex-col gap-1">
+            {NAV_LINKS.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={() => setOpen(false)}
+                className="px-3 py-2 rounded-lg text-[14px] text-white/80 hover:text-white hover:bg-white/[0.05]"
+                activeProps={{ className: "text-white bg-white/[0.06]" }}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <div className="h-px bg-white/10 my-2" />
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className={`px-3 py-2 rounded-lg text-[14px] ${
+                isLogin ? "text-white bg-white/[0.08]" : "text-white/80 hover:text-white"
+              }`}
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              onClick={() => setOpen(false)}
+              className={`btn-primary justify-center !text-[14px] mt-1 ${
+                isSignup ? "ring-2 ring-purple-400/60" : ""
+              }`}
+            >
+              Try Free
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
 
 export function AuthShell({
   eyebrow,
@@ -23,11 +128,7 @@ export function AuthShell({
         className="pointer-events-none absolute inset-0 -z-10 opacity-90"
         style={{ background: "var(--gradient-glow)" }}
       />
-      <header className="px-6 sm:px-10 py-6">
-        <Link to="/" aria-label="TryVerse home" className="inline-flex">
-          <Logo />
-        </Link>
-      </header>
+      <AuthNav />
       <main className="px-6 sm:px-10 pb-16 pt-4 sm:pt-8">
         <div className="mx-auto w-full max-w-[460px] animate-fade-up">
           <div className="surface-card p-8 sm:p-10 rounded-3xl">
