@@ -641,15 +641,16 @@ function BrandStudioDemo() {
 
             {/* CENTER — processing line */}
             <div className="hidden lg:flex flex-col items-center gap-3 px-2">
-              <div className="relative h-[260px] w-[2px] overflow-hidden rounded-full bg-white/[0.06]">
+              <div className="relative h-2 w-[140px] overflow-hidden rounded-full bg-white/[0.06]">
                 <div
-                  className="absolute inset-x-0 h-[40%] animate-scan-y rounded-full"
+                  className="h-full animate-progress rounded-full"
                   style={{ background: "var(--gradient-brand)" }}
                 />
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] text-violet">
-                <Wand2 size={12} /> Generating
+              <div className="flex items-center gap-1.5 text-[11px] text-violet whitespace-nowrap">
+                <Wand2 size={12} /> Generating model shot
               </div>
+              <ArrowRight className="text-violet/70" size={20} />
             </div>
             <div className="lg:hidden flex justify-center">
               <ArrowRight className="text-violet animate-pulse" size={22} />
