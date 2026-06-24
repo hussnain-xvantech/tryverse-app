@@ -701,19 +701,20 @@ function FinalCTA() {
             <div>
               <div className="eyebrow">Free to start</div>
               <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-                Ready To See It On You?
+                <RevealLines lines={["Ready To See", "It On You?"]} accentIndices={[1]} step={120} />
               </h2>
-              <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-lg">
+              <Reveal as="p" delay={380} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-lg">
                 Try clothes before buying or create AI visuals for your fashion brand with TryVerse.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3">
+              </Reveal>
+              <Reveal delay={520} className="mt-9 flex flex-wrap gap-3">
                 <a href="#" className="btn-primary !py-3.5 !px-7 !text-sm">
                   Try It Free <ArrowRight size={16} />
                 </a>
                 <a href="#" className="btn-secondary !py-3.5 !px-7 !text-sm">
                   Book Brand Demo
                 </a>
-              </div>
+              </Reveal>
+
               <div className="mt-7 flex items-center gap-6 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <Check size={12} className="text-emerald-400" /> No credit card
