@@ -118,7 +118,7 @@ function BrandHero() {
       </div>
 
       <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <div className="grid items-center gap-14 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
+        <div className="grid items-center gap-14 lg:gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)]">
           {/* LEFT */}
           <div className="animate-fade-up">
             <div className="eyebrow flex items-center gap-2">
@@ -227,14 +227,14 @@ function BrandStudioMockup() {
   }, [tools.length, variations.length]);
 
   return (
-    <div ref={rootRef} className="relative animate-fade-up [animation-delay:120ms]">
+    <div ref={rootRef} className="relative animate-fade-up [animation-delay:120ms] lg:scale-[1.04] lg:origin-right">
       <div
         aria-hidden
-        className="absolute -inset-10 -z-10 opacity-80"
-        style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
+        className="absolute -inset-12 -z-10 opacity-90"
+        style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
       />
 
-      <div className="relative rounded-[2rem] border border-white/[0.08] bg-gradient-to-b from-[#14111d] to-[#0a0810] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] overflow-hidden">
+      <div className="relative rounded-[2rem] border border-white/[0.1] bg-gradient-to-b from-[#14111d] to-[#0a0810] shadow-[0_50px_140px_-40px_rgba(0,0,0,0.95)] overflow-hidden ring-1 ring-violet/15">
         {/* TOP BAR */}
         <div className="flex items-center justify-between gap-3 px-5 sm:px-6 py-3.5 border-b border-white/[0.06]">
           <div className="flex items-center gap-2.5">
@@ -419,14 +419,15 @@ function ProblemSolution() {
           sub="Every new collection needs clean visuals, model shots, and store-ready product images. TryVerse helps create them faster with AI — and ships them straight to your store."
         />
 
-        <div className="mt-12 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-3">
           {problems.map((p, i) => (
             <Reveal
               key={p.title}
               delay={i * 100}
-              className="group p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-all duration-300"
+              className="group relative rounded-2xl p-7 sm:p-8 bg-gradient-to-b from-white/[0.04] to-white/[0.015] border border-white/[0.09] hover:border-violet/35 transition-all duration-300 hover:-translate-y-0.5"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-violet/40 group-hover:shadow-[0_8px_24px_-10px_rgba(168,85,247,0.5)]">
+              <span className="relative grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-violet/25 to-magenta/15 border border-violet/30 text-white shadow-[0_10px_30px_-10px_rgba(168,85,247,0.55)]">
+                <span aria-hidden className="absolute -inset-2 rounded-2xl bg-violet/25 blur-xl opacity-70 -z-10" />
                 {p.icon}
               </span>
               <h4 className="font-display mt-6 text-xl leading-tight">{p.title}</h4>
@@ -517,18 +518,19 @@ function BrandToolsGrid() {
           sub="Every tool your team needs to plan, produce, and publish clothing visuals — built specifically for apparel."
         />
 
-        <div className="mt-12 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {BRAND_TOOLS.map((f, i) => (
             <Reveal
               key={f.title}
               delay={i * 60}
-              className="group p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-all duration-300"
+              className="group rounded-2xl p-7 sm:p-8 bg-gradient-to-b from-white/[0.035] to-white/[0.01] border border-white/[0.08] hover:border-violet/40 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(168,85,247,0.55)] transition-all duration-300"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-violet/40 group-hover:shadow-[0_8px_24px_-10px_rgba(168,85,247,0.5)]">
+              <span className="relative grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-violet/25 to-magenta/15 border border-violet/30 text-white shadow-[0_8px_24px_-10px_rgba(168,85,247,0.55)]">
+                <span aria-hidden className="absolute -inset-2 rounded-2xl bg-violet/20 blur-lg opacity-60 -z-10" />
                 {f.icon}
               </span>
-              <h4 className="font-display mt-6 text-xl leading-tight">{f.title}</h4>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.text}</p>
+              <h4 className="font-display mt-6 text-[20px] leading-tight">{f.title}</h4>
+              <p className="mt-2 text-[13.5px] text-muted-foreground leading-relaxed">{f.text}</p>
             </Reveal>
           ))}
         </div>
@@ -611,8 +613,8 @@ function BrandStudioDemo() {
           sub="Upload one clothing product photo and generate model-ready ecommerce visuals in seconds."
         />
 
-        <div className="mt-12 relative rounded-[2.25rem] border border-white/[0.08] bg-gradient-to-b from-[#0e0c16] to-[#08070d] p-5 sm:p-7 lg:p-9">
-          <div className="grid gap-6 lg:gap-8 items-center lg:grid-cols-[0.9fr_auto_1.2fr]">
+        <div className="mt-14 relative rounded-[2.25rem] border border-white/[0.1] bg-gradient-to-b from-[#0e0c16] to-[#08070d] p-6 sm:p-9 lg:p-12 shadow-[0_60px_140px_-50px_rgba(168,85,247,0.35)]">
+          <div className="grid gap-8 lg:gap-10 items-center lg:grid-cols-[0.95fr_auto_1.25fr]">
             {/* LEFT — Uploaded product */}
             <div className="animate-fade-up">
               <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-3">
@@ -636,18 +638,26 @@ function BrandStudioDemo() {
               </div>
             </div>
 
-            {/* CENTER — processing line */}
-            <div className="hidden lg:flex flex-col items-center gap-3 px-2">
-              <div className="relative h-2 w-[140px] overflow-hidden rounded-full bg-white/[0.06]">
+            {/* CENTER — animated processing line */}
+            <div className="hidden lg:flex flex-col items-center gap-3 px-2 min-w-[180px]">
+              <div className="relative h-[2px] w-[180px] overflow-hidden rounded-full bg-white/[0.06]">
                 <div
-                  className="h-full animate-progress rounded-full"
-                  style={{ background: "var(--gradient-brand)" }}
+                  aria-hidden
+                  className="absolute inset-y-0 w-1/2 animate-scan rounded-full"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(168,85,247,0.95), rgba(217,70,239,0.9), transparent)", boxShadow: "0 0 18px rgba(168,85,247,0.7)" }}
                 />
               </div>
               <div className="flex items-center gap-1.5 text-[11px] text-violet whitespace-nowrap">
                 <Wand2 size={12} /> Generating model shot
               </div>
-              <ArrowRight className="text-violet/70" size={20} />
+              <ArrowRight className="text-violet/80" size={22} />
+              <div className="relative h-[2px] w-[180px] overflow-hidden rounded-full bg-white/[0.06]">
+                <div
+                  aria-hidden
+                  className="absolute inset-y-0 w-1/2 animate-scan rounded-full"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(217,70,239,0.9), rgba(168,85,247,0.95), transparent)", animationDelay: "0.6s" }}
+                />
+              </div>
             </div>
             <div className="lg:hidden flex justify-center">
               <ArrowRight className="text-violet animate-pulse" size={22} />
@@ -913,20 +923,20 @@ function BrandWidget() {
 /* =================== 7. RESULTS GALLERY =================== */
 function ResultsGallery() {
   const rowA = [
-    { src: garmentFlat, tag: "Flat-lay → Model" },
-    { src: editorialHero, tag: "AI Photoshoot" },
+    { src: garmentFlat, tag: "Flat-Lay Product" },
+    { src: clothingBlazer, tag: "Mannequin Product" },
+    { src: editorialHero, tag: "AI Model Photoshoot" },
     { src: g6a, tag: "Ghost Mannequin" },
-    { src: g1a, tag: "Fabric → Outfit" },
     { src: g2a, tag: "Catalog Visual" },
-    { src: g5a, tag: "Campaign Image" },
+    { src: g5a, tag: "Campaign Model" },
   ];
   const rowB = [
     { src: g3a, tag: "Pose Variation" },
-    { src: g4a, tag: "Campaign Image" },
-    { src: g1b, tag: "Social Ad Visual" },
-    { src: editorialHero, tag: "Try-On Widget" },
+    { src: g1a, tag: "Editorial Shot" },
+    { src: blazerAfter, tag: "Product Page Widget" },
+    { src: g4a, tag: "Campaign Model" },
     { src: g2b, tag: "Catalog Frame" },
-    { src: blazerAfter, tag: "Ecommerce Model" },
+    { src: g1b, tag: "Ecommerce Visual" },
   ];
   const loopA = [...rowA, ...rowA];
   const loopB = [...rowB, ...rowB];
@@ -992,18 +1002,23 @@ function MarqueeRow({
 /* =================== 8. FINAL CTA =================== */
 function BrandFinalCTA() {
   return (
-    <section id="try" className="relative overflow-hidden py-24 sm:py-32">
+    <section id="try" className="relative overflow-hidden py-28 sm:py-40">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 opacity-50"
-        style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[780px] w-[1100px] -translate-x-1/2 -translate-y-1/2 opacity-70"
+        style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.35), transparent 70%)", filter: "blur(20px)" }}
       />
 
-      <div className="mx-auto max-w-[720px] px-6 sm:px-10 text-center">
+      <div className="mx-auto max-w-[760px] px-6 sm:px-10 text-center">
         <Reveal as="div" className="eyebrow justify-center">
           For Clothing Brands
         </Reveal>
 
-        <h2 className="font-display mt-6 text-4xl sm:text-5xl lg:text-[60px] leading-[1.05]">
+        <h2 className="font-display mt-7 text-[40px] sm:text-[56px] lg:text-[68px] leading-[1.04]">
           <RevealLines
             lines={["Ready To Create", "Better Product Visuals?"]}
             accentIndices={[1]}
@@ -1011,21 +1026,27 @@ function BrandFinalCTA() {
           />
         </h2>
 
-        <Reveal as="p" delay={340} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+        <Reveal as="p" delay={340} className="mt-7 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
           Build AI photoshoots, ghost mannequin images, videos, and virtual try-on experiences for
           your fashion store with TryVerse.
         </Reveal>
 
-        <Reveal delay={500} className="mt-10 flex flex-wrap justify-center gap-3">
-          <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+        <Reveal delay={500} className="mt-11 flex flex-wrap justify-center gap-3">
+          <Link
+            to="/signup"
+            className="btn-primary !py-4 !px-8 !text-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_60px_-18px_rgba(168,85,247,0.75)]"
+          >
             Start Creating <ArrowRight size={16} />
           </Link>
-          <Link to="/book-demo" className="btn-secondary !py-3.5 !px-7 !text-sm">
+          <Link
+            to="/book-demo"
+            className="btn-secondary !py-4 !px-8 !text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/50"
+          >
             Book Brand Demo
           </Link>
         </Reveal>
 
-        <Reveal delay={640} className="mt-7 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
+        <Reveal delay={640} className="mt-8 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
           <span className="flex items-center gap-1.5">
             <Check size={12} className="text-emerald-400" /> Clothing-only AI
           </span>
