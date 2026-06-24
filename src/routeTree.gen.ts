@@ -12,11 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StoresRouteImport } from './routes/stores'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForShoppersRouteImport } from './routes/for-shoppers'
 import { Route as ForBrandsRouteImport } from './routes/for-brands'
+import { Route as DiscoverRouteImport } from './routes/discover'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookDemoRouteImport } from './routes/book-demo'
 import { Route as IndexRouteImport } from './routes/index'
@@ -35,6 +37,11 @@ const StoresRoute = StoresRouteImport.update({
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -62,6 +69,11 @@ const ForBrandsRoute = ForBrandsRouteImport.update({
   path: '/for-brands',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DiscoverRoute = DiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -87,11 +99,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
@@ -101,11 +115,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
@@ -116,11 +132,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
   '/signup': typeof SignupRoute
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
@@ -132,11 +150,13 @@ export interface FileRouteTypes {
     | '/'
     | '/book-demo'
     | '/contact'
+    | '/discover'
     | '/for-brands'
     | '/for-shoppers'
     | '/login'
     | '/pricing'
     | '/privacy'
+    | '/resources'
     | '/signup'
     | '/stores'
     | '/terms'
@@ -146,11 +166,13 @@ export interface FileRouteTypes {
     | '/'
     | '/book-demo'
     | '/contact'
+    | '/discover'
     | '/for-brands'
     | '/for-shoppers'
     | '/login'
     | '/pricing'
     | '/privacy'
+    | '/resources'
     | '/signup'
     | '/stores'
     | '/terms'
@@ -160,11 +182,13 @@ export interface FileRouteTypes {
     | '/'
     | '/book-demo'
     | '/contact'
+    | '/discover'
     | '/for-brands'
     | '/for-shoppers'
     | '/login'
     | '/pricing'
     | '/privacy'
+    | '/resources'
     | '/signup'
     | '/stores'
     | '/terms'
@@ -175,11 +199,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookDemoRoute: typeof BookDemoRoute
   ContactRoute: typeof ContactRoute
+  DiscoverRoute: typeof DiscoverRoute
   ForBrandsRoute: typeof ForBrandsRoute
   ForShoppersRoute: typeof ForShoppersRoute
   LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
+  ResourcesRoute: typeof ResourcesRoute
   SignupRoute: typeof SignupRoute
   StoresRoute: typeof StoresRoute
   TermsRoute: typeof TermsRoute
@@ -207,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -244,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForBrandsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/discover': {
+      id: '/discover'
+      path: '/discover'
+      fullPath: '/discover'
+      preLoaderRoute: typeof DiscoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -279,11 +319,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookDemoRoute: BookDemoRoute,
   ContactRoute: ContactRoute,
+  DiscoverRoute: DiscoverRoute,
   ForBrandsRoute: ForBrandsRoute,
   ForShoppersRoute: ForShoppersRoute,
   LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
+  ResourcesRoute: ResourcesRoute,
   SignupRoute: SignupRoute,
   StoresRoute: StoresRoute,
   TermsRoute: TermsRoute,
