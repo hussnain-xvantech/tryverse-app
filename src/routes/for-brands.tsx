@@ -9,15 +9,12 @@ import {
   Move3d,
   Check,
   ShoppingBag,
-  Upload,
-  Store,
   BarChart3,
   Palette,
   Video,
   LayoutGrid,
   Code2,
   Layers,
-  Image as ImageIcon,
   DollarSign,
   Rocket,
   Eye,
@@ -73,9 +70,7 @@ function BrandsPage() {
         <ProblemSolution />
         <BrandToolsGrid />
         <BrandStudioDemo />
-        <HowItWorks />
-        <UseCases />
-        <BusinessBenefits />
+        <OutputTypes />
         <BrandWidget />
         <ResultsGallery />
         <BrandFinalCTA />
@@ -145,9 +140,9 @@ function BrandHero() {
               delay={440}
               className="mt-6 text-base sm:text-[17px] text-muted-foreground max-w-xl leading-relaxed"
             >
-              Turn flat-lay, mannequin, fabric, and product photos into AI model shots, ghost
-              mannequin images, pose variations, videos, and virtual try-on experiences for your
-              online store.
+              Turn flat-lay, mannequin, fabric, and clothing product photos into AI model shots,
+              ghost mannequin images, pose variations, videos, and virtual try-on experiences for
+              your online store.
             </Reveal>
             <Reveal delay={580} className="mt-8 flex flex-wrap gap-3">
               <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
@@ -159,7 +154,7 @@ function BrandHero() {
             </Reveal>
 
             <div className="mt-8 flex flex-wrap gap-2">
-              {["AI Photoshoot", "Ghost Mannequin", "Brand Widget", "Store Analytics"].map(
+              {["AI Photoshoot", "Ghost Mannequin", "Video Studio", "Store Widget"].map(
                 (c, i) => (
                   <span
                     key={c}
@@ -189,8 +184,10 @@ function BrandStudioMockup() {
     { label: "Video Studio", icon: <Video size={11} /> },
     { label: "Widget", icon: <Code2 size={11} /> },
   ];
-  const steps = ["Upload", "Generate", "Review", "Publish"];
+  const variations = ["Studio", "Editorial", "Catalog", "Social"];
+  const steps = ["Upload", "Style", "Generate", "Publish"];
   const [active, setActive] = useState(0);
+  const [variation, setVariation] = useState(0);
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -200,7 +197,10 @@ function BrandStudioMockup() {
     let visible = false;
     const start = () => {
       if (timer) return;
-      timer = setInterval(() => setActive((a) => (a + 1) % tools.length), 1500);
+      timer = setInterval(() => {
+        setActive((a) => (a + 1) % tools.length);
+        setVariation((v) => (v + 1) % variations.length);
+      }, 1600);
     };
     const stop = () => {
       if (timer) {
@@ -227,7 +227,7 @@ function BrandStudioMockup() {
       document.removeEventListener("visibilitychange", onVis);
       stop();
     };
-  }, [tools.length]);
+  }, [tools.length, variations.length]);
 
   return (
     <div ref={rootRef} className="relative animate-fade-up [animation-delay:120ms]">
@@ -246,19 +246,9 @@ function BrandStudioMockup() {
             </span>
             <span className="text-[13px] font-semibold tracking-tight">Brand Studio</span>
           </div>
-          <div className="hidden sm:flex items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.02] p-1">
-            {["Studio", "Catalog", "Widget", "Analytics"].map((t, i) => (
-              <span
-                key={t}
-                className={`px-3 py-1.5 text-[11.5px] rounded-full transition-colors ${
-                  i === 0
-                    ? "bg-gradient-to-br from-violet/30 to-magenta/20 text-white border border-violet/40 shadow-[0_0_0_3px_rgba(168,85,247,0.08)]"
-                    : "text-white/55"
-                }`}
-              >
-                {t}
-              </span>
-            ))}
+          <div className="hidden sm:flex items-center gap-1.5 text-[11px] text-emerald-300/90">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-glow-pulse" />
+            Ready for store
           </div>
           <div className="flex items-center gap-1.5">
             <span className="h-2 w-2 rounded-full bg-white/15" />
@@ -267,33 +257,33 @@ function BrandStudioMockup() {
           </div>
         </div>
 
-        {/* BODY: product / result / tools */}
+        {/* BODY: product / result + variations / tools */}
         <div className="grid grid-cols-12 gap-3 sm:gap-4 p-4 sm:p-5">
           {/* product */}
-          <div className="col-span-4 animate-fade-up">
+          <div className="col-span-3 animate-fade-up">
             <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-2">
-              Product
+              Input
             </div>
             <div className="relative aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-white/[0.06] bg-[#f3eee8]">
               <img
-                src={clothingBlazer}
-                alt="Clothing product"
+                src={garmentFlat}
+                alt="Flat-lay clothing"
                 className="h-full w-full object-cover"
                 loading="eager"
                 decoding="async"
               />
               <span className="absolute top-1.5 left-1.5 chip backdrop-blur bg-black/55 text-white !text-[9.5px]">
-                <Shirt size={10} /> Upload
+                <Shirt size={10} /> Flat-lay
               </span>
             </div>
           </div>
 
-          {/* AI result */}
-          <div className="col-span-4 animate-fade-up [animation-delay:160ms]">
+          {/* AI result + variations */}
+          <div className="col-span-5 animate-fade-up [animation-delay:160ms]">
             <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-2">
-              AI Model
+              AI Photoshoot
             </div>
-            <div className="relative aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-violet/50 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.55)] bg-[#f3eee8]">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden ring-1 ring-violet/50 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.55)] bg-[#f3eee8]">
               <img
                 src={editorialHero}
                 alt="AI model result"
@@ -302,7 +292,7 @@ function BrandStudioMockup() {
                 decoding="async"
               />
               <span className="absolute top-1.5 left-1.5 chip backdrop-blur bg-black/55 text-white !text-[9.5px]">
-                <Sparkles size={10} /> Generated
+                <Sparkles size={10} /> {variations[variation]}
               </span>
               <div
                 aria-hidden
@@ -310,15 +300,29 @@ function BrandStudioMockup() {
                 style={{ top: "50%" }}
               />
             </div>
+            <div className="mt-2 grid grid-cols-4 gap-1.5">
+              {variations.map((v, i) => (
+                <div
+                  key={v}
+                  className={`text-[9.5px] text-center py-1 rounded-md border transition-all ${
+                    i === variation
+                      ? "border-violet/50 bg-gradient-to-br from-violet/25 to-magenta/15 text-white"
+                      : "border-white/[0.06] bg-white/[0.02] text-white/55"
+                  }`}
+                >
+                  {v}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* tools list */}
-          <div className="col-span-4 flex flex-col gap-2 animate-fade-up [animation-delay:300ms]">
+          <div className="col-span-4 flex flex-col gap-1.5 animate-fade-up [animation-delay:300ms]">
             <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-1">Tools</div>
             {tools.map((t, i) => (
               <div
                 key={t.label}
-                className={`flex items-center gap-2 rounded-lg border px-2.5 py-2 text-[11.5px] transition-all duration-300 ${
+                className={`flex items-center gap-2 rounded-lg border px-2.5 py-1.5 text-[11px] transition-all duration-300 ${
                   i === active
                     ? "border-violet/45 bg-gradient-to-br from-violet/15 to-magenta/10 text-white shadow-[0_0_0_3px_rgba(168,85,247,0.08)]"
                     : "border-white/[0.06] bg-white/[0.02] text-white/60"
@@ -342,7 +346,7 @@ function BrandStudioMockup() {
 
         {/* TIMELINE */}
         <div className="px-4 sm:px-5 pb-5">
-          <div className="rounded-xl border border-white/[0.06] bg-black/30 px-4 py-3.5">
+          <div className="rounded-xl border border-white/[0.06] bg-black/30 px-4 py-3">
             <div className="flex items-center justify-between">
               {steps.map((s, i) => (
                 <div key={s} className="flex items-center gap-2 flex-1 last:flex-none">
@@ -368,15 +372,11 @@ function BrandStudioMockup() {
                 </div>
               ))}
             </div>
-            <div className="mt-3 h-1 rounded-full bg-white/5 overflow-hidden">
+            <div className="mt-2.5 h-1 rounded-full bg-white/5 overflow-hidden">
               <div
                 className="h-full animate-progress rounded-full"
                 style={{ background: "var(--gradient-brand)" }}
               />
-            </div>
-            <div className="mt-3 flex items-center gap-1.5 text-[10.5px] text-emerald-300/90">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-glow-pulse" />
-              Ready to publish
             </div>
           </div>
         </div>
@@ -385,13 +385,13 @@ function BrandStudioMockup() {
   );
 }
 
-/* =================== 2. PROBLEM / SOLUTION =================== */
+/* =================== 2. PROBLEM / SOLUTION (+ merged benefits) =================== */
 function ProblemSolution() {
   const problems = [
     {
       icon: <DollarSign size={18} />,
       title: "Photoshoots cost too much",
-      text: "Studio, models, photographers, styling, and editing make every launch expensive.",
+      text: "Studio, models, photographers, and editing make every launch expensive.",
     },
     {
       icon: <Rocket size={18} />,
@@ -401,21 +401,28 @@ function ProblemSolution() {
     {
       icon: <Eye size={18} />,
       title: "Shoppers want more confidence",
-      text: "Customers want to see how clothes look before they buy.",
+      text: "Customers want to see how clothes look on themselves before they buy.",
     },
   ];
 
+  const benefits = [
+    "Reduce photoshoot cost",
+    "Launch products faster",
+    "Better product presentation",
+    "Higher shopper confidence",
+  ];
+
   return (
-    <section className="py-28 sm:py-36">
+    <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="The challenge"
           lines={["Traditional Product Shoots", "Slow Fashion Brands Down"]}
           accentIndices={[1]}
-          sub="Every new collection needs clean visuals, model shots, campaign content, and store-ready product images. TryVerse helps create them faster with AI."
+          sub="Every new collection needs clean visuals, model shots, and store-ready product images. TryVerse helps create them faster with AI — and ships them straight to your store."
         />
 
-        <div className="mt-14 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-3">
+        <div className="mt-12 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-3">
           {problems.map((p, i) => (
             <Reveal
               key={p.title}
@@ -433,7 +440,7 @@ function ProblemSolution() {
 
         <Reveal
           delay={300}
-          className="mt-12 mx-auto max-w-3xl text-center soft-card p-7 sm:p-9 relative overflow-hidden"
+          className="mt-10 mx-auto max-w-3xl text-center soft-card p-7 sm:p-9 relative overflow-hidden"
         >
           <div
             aria-hidden
@@ -445,6 +452,13 @@ function ProblemSolution() {
             TryVerse gives fashion brands an AI studio for clothing visuals, virtual try-on, and
             store-ready content.
           </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2">
+            {benefits.map((b) => (
+              <span key={b} className="inline-flex items-center gap-1.5 text-[12.5px] text-white/80">
+                <Check size={13} className="text-emerald-400" /> {b}
+              </span>
+            ))}
+          </div>
         </Reveal>
       </div>
     </section>
@@ -456,7 +470,7 @@ const BRAND_TOOLS = [
   {
     icon: <Camera size={18} />,
     title: "AI Photoshoot",
-    text: "Create realistic model photos from clothing product images with different angles, lighting, and backgrounds.",
+    text: "Realistic model photos from clothing product images, with different angles and lighting.",
   },
   {
     icon: <Ghost size={18} />,
@@ -476,12 +490,12 @@ const BRAND_TOOLS = [
   {
     icon: <Video size={18} />,
     title: "Video Studio",
-    text: "Turn clothing visuals into short showcase videos for Reels, TikTok, ads, and product pages.",
+    text: "Turn clothing visuals into short showcase videos for Reels, TikTok, ads, and PDPs.",
   },
   {
     icon: <Code2 size={18} />,
     title: "Brand Widget",
-    text: "Add virtual try-on to your ecommerce store so shoppers can see clothes on themselves.",
+    text: "Add virtual try-on to your store so shoppers can see clothes on themselves.",
   },
   {
     icon: <LayoutGrid size={18} />,
@@ -491,13 +505,13 @@ const BRAND_TOOLS = [
   {
     icon: <BarChart3 size={18} />,
     title: "Analytics",
-    text: "Track engagement, try-on usage, product interest, conversions, and shopper behavior.",
+    text: "Track engagement, try-on usage, product interest, and conversions.",
   },
 ];
 
 function BrandToolsGrid() {
   return (
-    <section className="py-28 sm:py-36">
+    <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="The toolkit"
@@ -506,7 +520,7 @@ function BrandToolsGrid() {
           sub="Every tool your team needs to plan, produce, and publish clothing visuals — built specifically for apparel."
         />
 
-        <div className="mt-14 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
           {BRAND_TOOLS.map((f, i) => (
             <Reveal
               key={f.title}
@@ -532,7 +546,7 @@ function BrandStudioDemo() {
   const [styleIdx, setStyleIdx] = useState(0);
   const steps = [
     "Reading garment",
-    "Building model pose",
+    "Creating model pose",
     "Preserving fabric details",
     "Final image ready",
   ];
@@ -579,7 +593,7 @@ function BrandStudioDemo() {
   }, [steps.length, styles.length]);
 
   return (
-    <section id="demo" className="relative py-28 sm:py-36">
+    <section id="demo" className="relative py-20 sm:py-24">
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute right-[-200px] top-1/3 h-[600px] w-[600px] rounded-full opacity-50"
@@ -588,16 +602,16 @@ function BrandStudioDemo() {
       </div>
 
       <div ref={rootRef} className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-12 sm:mb-16">
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-10 sm:mb-12">
           <div className="max-w-2xl">
             <div className="eyebrow">Live demo</div>
             <h2 className="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-              <RevealLines lines={["See Brand Studio", "In Action"]} accentIndices={[1]} step={120} />
+              <RevealLines lines={["Flat-Lay To AI", "Photoshoot Result"]} accentIndices={[1]} step={120} />
             </h2>
           </div>
           <p className="text-muted-foreground max-w-md text-base leading-relaxed">
-            Upload a clothing product photo and generate brand-ready content in seconds — fabric,
-            color, and fit preserved.
+            Upload a clothing product photo and generate a store-ready model shot in seconds —
+            fabric, color, and fit preserved.
           </p>
         </div>
 
@@ -608,7 +622,7 @@ function BrandStudioDemo() {
               <BeforeAfter
                 before={blazerBefore}
                 after={blazerAfter}
-                beforeLabel="Before"
+                beforeLabel="Before Product Photo"
                 afterLabel="AI Photoshoot Result"
                 className="aspect-[4/5]"
               />
@@ -723,108 +737,68 @@ function BrandStudioDemo() {
   );
 }
 
-/* =================== 5. HOW IT WORKS =================== */
-function HowItWorks() {
-  const steps = [
+/* =================== 5. OUTPUT TYPES =================== */
+function OutputTypes() {
+  const outputs = [
     {
-      icon: <Upload size={16} />,
-      title: "Upload",
-      text: "Add a flat-lay, mannequin, fabric, or product photo.",
+      icon: <Camera size={16} />,
+      title: "AI Model Photos",
+      text: "Turn product photos into realistic model shots for ecommerce and campaigns.",
+      img: editorialHero,
     },
     {
-      icon: <Sliders size={16} />,
-      title: "Choose",
-      text: "Pick a tool: Photoshoot, Ghost Mannequin, Pose Studio, Video, or Widget.",
+      icon: <Ghost size={16} />,
+      title: "Ghost Mannequin",
+      text: "Create clean apparel visuals without models or studio setup.",
+      img: g6a,
     },
     {
-      icon: <Wand2 size={16} />,
-      title: "Generate",
-      text: "TryVerse creates polished clothing visuals while preserving product details.",
+      icon: <Video size={16} />,
+      title: "Pose & Video Variations",
+      text: "Generate multiple poses and short videos for ads, Reels, and TikTok.",
+      img: g3a,
     },
     {
-      icon: <Rocket size={16} />,
-      title: "Publish",
-      text: "Use visuals on your store, ads, catalogs, social, or product pages.",
+      icon: <Code2 size={16} />,
+      title: "Store Try-On Widget",
+      text: "Let shoppers try clothing directly on your product pages.",
+      img: blazerAfter,
     },
   ];
+
   return (
-    <section className="py-28 sm:py-36">
+    <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
-          eyebrow="Workflow"
-          lines={["From Product Photo", "To Published Visual"]}
+          eyebrow="Outputs"
+          lines={["Choose The Output", "Your Brand Needs"]}
           accentIndices={[1]}
         />
 
-        <div className="mt-14 relative">
-          {/* desktop timeline line */}
-          <div
-            aria-hidden
-            className="hidden md:block absolute left-0 right-0 top-[34px] h-px"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, rgba(168,85,247,0.6) 15%, rgba(217,70,239,0.6) 85%, transparent)",
-            }}
-          />
-          <div className="grid gap-6 md:grid-cols-4">
-            {steps.map((s, i) => (
-              <Reveal
-                key={s.title}
-                delay={i * 110}
-                className="relative soft-card p-6 sm:p-7"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="relative grid h-[68px] w-[68px] place-items-center rounded-full bg-[#0a0810] border border-violet/40 text-white shadow-[0_10px_30px_-12px_rgba(168,85,247,0.6)]">
-                    <span className="absolute -inset-1 rounded-full border border-violet/20" />
-                    {s.icon}
-                    <span className="absolute -top-1 -right-1 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gradient-to-br from-violet to-magenta">
-                      {i + 1}
-                    </span>
-                  </span>
-                </div>
-                <h4 className="font-display mt-5 text-xl leading-tight">{s.title}</h4>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.text}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* =================== 6. USE CASES =================== */
-function UseCases() {
-  const cases = [
-    { icon: <ShoppingBag size={16} />, label: "Ecommerce product pages" },
-    { icon: <ImageIcon size={16} />, label: "Catalog photoshoots" },
-    { icon: <Sparkles size={16} />, label: "Social media campaigns" },
-    { icon: <Rocket size={16} />, label: "New collection launches" },
-    { icon: <Store size={16} />, label: "Boutique product listings" },
-    { icon: <LayoutGrid size={16} />, label: "Marketplace sellers" },
-    { icon: <Video size={16} />, label: "Brand ads" },
-    { icon: <Shirt size={16} />, label: "Virtual try-on experiences" },
-  ];
-  return (
-    <section className="py-28 sm:py-36">
-      <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
-        <SectionHead
-          eyebrow="Use cases"
-          lines={["Built For Every", "Clothing Workflow"]}
-          accentIndices={[1]}
-        />
-
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {cases.map((c, i) => (
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {outputs.map((o, i) => (
             <Reveal
-              key={c.label}
-              delay={i * 60}
-              className="soft-card p-5 flex items-center gap-3 hover:border-violet/30 transition-colors"
+              key={o.title}
+              delay={i * 90}
+              className="group relative soft-card overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:border-violet/40 hover:shadow-[0_24px_60px_-30px_rgba(168,85,247,0.6)]"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white">
-                {c.icon}
-              </span>
-              <span className="text-[14px] font-medium text-white/85">{c.label}</span>
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#f3eee8]">
+                <img
+                  src={o.img}
+                  alt={o.title}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <span className="absolute top-3 left-3 chip backdrop-blur bg-black/55 text-white !text-[10px]">
+                  {o.icon} {o.title}
+                </span>
+              </div>
+              <div className="p-5">
+                <h4 className="font-display text-lg leading-tight">{o.title}</h4>
+                <p className="mt-2 text-[13px] text-muted-foreground leading-relaxed">{o.text}</p>
+              </div>
             </Reveal>
           ))}
         </div>
@@ -833,63 +807,10 @@ function UseCases() {
   );
 }
 
-/* =================== 7. BUSINESS BENEFITS =================== */
-function BusinessBenefits() {
-  const items = [
-    {
-      icon: <DollarSign size={18} />,
-      title: "Reduce photoshoot cost",
-      text: "Create visuals without booking a full studio team.",
-    },
-    {
-      icon: <Rocket size={18} />,
-      title: "Launch products faster",
-      text: "Generate content for new clothing drops in minutes.",
-    },
-    {
-      icon: <Palette size={18} />,
-      title: "Improve product presentation",
-      text: "Show apparel in model, mannequin, catalog, and campaign formats.",
-    },
-    {
-      icon: <Eye size={18} />,
-      title: "Increase shopper confidence",
-      text: "Let customers see clothing on themselves before buying.",
-    },
-  ];
-  return (
-    <section className="py-28 sm:py-36">
-      <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
-        <SectionHead
-          eyebrow="Why brands choose TryVerse"
-          lines={["Launch Faster. Spend Less.", "Sell With Better Visuals."]}
-          accentIndices={[1]}
-        />
-
-        <div className="mt-14 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((it, i) => (
-            <Reveal
-              key={it.title}
-              delay={i * 80}
-              className="group p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-all duration-300"
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-violet/25 to-magenta/15 border border-violet/30 text-white shadow-[0_8px_24px_-10px_rgba(168,85,247,0.5)]">
-                {it.icon}
-              </span>
-              <h4 className="font-display mt-6 text-xl leading-tight">{it.title}</h4>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.text}</p>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* =================== 8. BRAND WIDGET =================== */
+/* =================== 6. BRAND WIDGET =================== */
 function BrandWidget() {
   return (
-    <section className="py-28 sm:py-36">
+    <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <div className="grid gap-12 lg:gap-16 items-center lg:grid-cols-[1.1fr_1fr]">
           {/* LEFT — mockup */}
@@ -993,7 +914,7 @@ function BrandWidget() {
   );
 }
 
-/* =================== 9. RESULTS GALLERY =================== */
+/* =================== 7. RESULTS GALLERY =================== */
 function ResultsGallery() {
   const rowA = [
     { src: garmentFlat, tag: "Flat-lay → Model" },
@@ -1015,16 +936,16 @@ function ResultsGallery() {
   const loopB = [...rowB, ...rowB];
 
   return (
-    <section className="py-28 sm:py-36">
+    <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
           eyebrow="Gallery"
           lines={["Brand-Ready", "Clothing Visuals"]}
           accentIndices={[1]}
-          sub="A glimpse of what brands ship with TryVerse — flat-lays turned into model photos, mannequins into ghost mannequin shots, and product images into campaign visuals."
+          sub="Flat-lays turned into model photos, mannequins into ghost mannequin shots, and product images into campaign visuals."
         />
       </div>
-      <div className="mt-14 space-y-5">
+      <div className="mt-12 space-y-5">
         <MarqueeRow items={loopA} />
         <MarqueeRow items={loopB} reverse />
       </div>
@@ -1072,12 +993,12 @@ function MarqueeRow({
   );
 }
 
-/* =================== 10. FINAL CTA =================== */
+/* =================== 8. FINAL CTA =================== */
 function BrandFinalCTA() {
   return (
-    <section id="try" className="relative overflow-hidden py-32 sm:py-44">
+    <section id="try" className="relative overflow-hidden py-24 sm:py-32">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[700px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-60"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 opacity-50"
         style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
       />
 
