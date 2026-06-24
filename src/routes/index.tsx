@@ -353,8 +353,9 @@ function Workflow() {
           <div className="max-w-2xl">
             <div className="eyebrow">The product</div>
             <h2 className="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-              See TryVerse In Action
+              <RevealLines lines={["See TryVerse", "In Action"]} accentIndices={[0]} step={120} />
             </h2>
+
           </div>
           <p className="text-muted-foreground max-w-md text-base leading-relaxed">
             One photo. One garment. A photorealistic try-on in under a second — fabric,
