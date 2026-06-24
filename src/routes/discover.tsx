@@ -153,12 +153,12 @@ function Hero() {
           <Reveal>
             <div className="eyebrow">Discover</div>
           </Reveal>
-          <RevealLines
-            as="h1"
-            className="mt-4 font-display text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.02]"
-            lines={["Explore What", "TryVerse Can Create"]}
-            accentIndices={[1]}
-          />
+          <h1 className="mt-4 font-display text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.02]">
+            <RevealLines
+              lines={["Explore What", "TryVerse Can Create"]}
+              accentIndices={[1]}
+            />
+          </h1>
           <Reveal delay={220}>
             <p className="mt-6 text-[17px] leading-relaxed text-white/70 max-w-xl">
               Browse AI try-on results, clothing photoshoots, ghost mannequin
