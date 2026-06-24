@@ -403,49 +403,34 @@ const SHOPPER_FEATURES = [
 
 const BRAND_FEATURES = [
   {
-    icon: <Camera size={18} />,
-    title: "Photoshoot",
-    text: "Create AI product photography with multiple angles, styles, and lighting.",
+    icon: <Camera size={20} />,
+    title: "AI Photoshoot",
+    text: "Turn flat-lay and product photos into model-ready clothing visuals.",
   },
   {
-    icon: <Palette size={18} />,
-    title: "AI Studio",
-    text: "Edit clothing visuals, apply styles, and create product-ready images.",
-  },
-  {
-    icon: <Ghost size={18} />,
+    icon: <Ghost size={20} />,
     title: "Ghost Mannequin",
-    text: "Transform flat-lay and mannequin photos into clean apparel visuals.",
+    text: "Create clean ghost mannequin images for product pages.",
   },
   {
-    icon: <Layers size={18} />,
-    title: "Fabric Studio",
-    text: "Upload fabric swatches and generate realistic outfit images.",
-  },
-  {
-    icon: <Move3d size={18} />,
+    icon: <Move3d size={20} />,
     title: "Pose Studio",
-    text: "Generate premium poses across catalog, editorial, and campaign looks.",
+    text: "Generate pose variations for campaigns, catalogs, and ecommerce.",
   },
   {
-    icon: <Video size={18} />,
+    icon: <Video size={20} />,
     title: "Video Studio",
-    text: "Generate cinematic clothing showcase videos.",
+    text: "Create short fashion videos from clothing visuals.",
   },
   {
-    icon: <Code2 size={18} />,
-    title: "Widget",
-    text: "Add virtual try-on to an online clothing store.",
+    icon: <Code2 size={20} />,
+    title: "Store Widget",
+    text: "Let shoppers try clothing before buying directly from a brand store.",
   },
   {
-    icon: <LayoutGrid size={18} />,
-    title: "Stores",
-    text: "Manage product catalogs, collaborators, and store settings.",
-  },
-  {
-    icon: <BarChart3 size={18} />,
+    icon: <BarChart3 size={20} />,
     title: "Analytics",
-    text: "Track traffic, conversions, engagement, and store performance.",
+    text: "Track engagement, try-ons, and product performance.",
   },
 ];
 
@@ -485,15 +470,22 @@ function Features() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((f) => (
+        <div className="mt-12 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((f, i) => (
             <div
               key={f.title}
-              className="group p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-all duration-300"
+              className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-sm p-7 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-violet/40 hover:bg-white/[0.035] hover:shadow-[0_30px_80px_-30px_rgba(168,85,247,0.45)] animate-fade-up"
+              style={{ animationDelay: `${i * 70}ms` }}
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-violet/40 group-hover:shadow-[0_8px_24px_-10px_rgba(168,85,247,0.5)]">
-                {f.icon}
-              </span>
+              <div className="relative inline-flex">
+                <span
+                  aria-hidden
+                  className="absolute inset-0 rounded-2xl blur-xl bg-gradient-to-br from-violet/50 to-magenta/40 opacity-50 group-hover:opacity-90 transition-opacity duration-300"
+                />
+                <span className="relative grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-violet/25 to-magenta/15 border border-violet/40 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                  {f.icon}
+                </span>
+              </div>
               <h4 className="font-display mt-6 text-xl leading-tight transition-colors group-hover:text-white">{f.title}</h4>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                 {f.text}
@@ -501,6 +493,7 @@ function Features() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
