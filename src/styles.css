@@ -262,6 +262,12 @@
 @utility animate-scan { animation: scan-down 3.2s ease-in-out infinite; }
 @utility animate-progress { animation: progress-fill 3.2s ease-in-out infinite; }
 
+@keyframes corner-sweep {
+  0%, 100% { opacity: 0.55; filter: blur(28px); }
+  50% { opacity: 1; filter: blur(34px); }
+}
+@utility animate-corner-sweep { animation: corner-sweep 4.5s ease-in-out infinite; }
+
 @utility soft-card {
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   border: 1px solid rgba(255,255,255,0.07);
