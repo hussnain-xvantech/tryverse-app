@@ -419,14 +419,15 @@ function ProblemSolution() {
           sub="Every new collection needs clean visuals, model shots, and store-ready product images. TryVerse helps create them faster with AI — and ships them straight to your store."
         />
 
-        <div className="mt-12 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-3">
           {problems.map((p, i) => (
             <Reveal
               key={p.title}
               delay={i * 100}
-              className="group p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-all duration-300"
+              className="group relative rounded-2xl p-7 sm:p-8 bg-gradient-to-b from-white/[0.04] to-white/[0.015] border border-white/[0.09] hover:border-violet/35 transition-all duration-300 hover:-translate-y-0.5"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-violet/40 group-hover:shadow-[0_8px_24px_-10px_rgba(168,85,247,0.5)]">
+              <span className="relative grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-violet/25 to-magenta/15 border border-violet/30 text-white shadow-[0_10px_30px_-10px_rgba(168,85,247,0.55)]">
+                <span aria-hidden className="absolute -inset-2 rounded-2xl bg-violet/25 blur-xl opacity-70 -z-10" />
                 {p.icon}
               </span>
               <h4 className="font-display mt-6 text-xl leading-tight">{p.title}</h4>
