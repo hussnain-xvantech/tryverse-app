@@ -132,6 +132,7 @@ export function Footer({ variant = "full" }: { variant?: "full" | "minimal" } = 
           </div>
         </div>
       </div>
+      )}
 
 
       {/* Link columns — no gap, merges with glowing interface */}
