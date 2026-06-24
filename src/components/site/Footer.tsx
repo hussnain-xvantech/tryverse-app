@@ -48,10 +48,10 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
   },
 ];
 
-export function Footer() {
+export function Footer({ variant = "full" }: { variant?: "full" | "minimal" } = {}) {
   return (
     <footer className="relative mt-24">
-      {/* Glowing TryVerse Studio interface — blended into page background */}
+      {variant === "full" && (
       <div className="relative">
         <div className="mx-auto max-w-[1280px] px-6 sm:px-10 pt-16 sm:pt-24">
           <div className="relative">
@@ -132,6 +132,7 @@ export function Footer() {
           </div>
         </div>
       </div>
+      )}
 
 
       {/* Link columns — no gap, merges with glowing interface */}
