@@ -9,8 +9,9 @@ const NAV: NavItem[] = [
   { label: "Home", to: "/" },
   { label: "For Shoppers", to: "/for-shoppers" },
   { label: "For Brands", to: "/for-brands" },
-  { label: "Stores", to: "/stores" },
   { label: "Pricing", to: "/pricing" },
+  { label: "Discover", to: "/discover" },
+  { label: "Resources", to: "/resources" },
 ];
 
 export function Header() {
