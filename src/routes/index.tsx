@@ -129,31 +129,40 @@ function Hero() {
 }
 
 function HeroStudio() {
+  const tabs = ["Try-On", "Stylo", "Pose", "Photoshoot"];
+  const steps = ["Upload", "Match", "Generate", "Ready"];
   return (
     <div className="relative animate-fade-up [animation-delay:120ms]">
-      {/* glow */}
+      {/* ambient glow — behind window only */}
       <div
         aria-hidden
         className="absolute -inset-10 -z-10 opacity-80"
-        style={{ background: "var(--gradient-glow)", filter: "blur(50px)" }}
+        style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
       />
 
-      {/* app window */}
-      <div className="relative rounded-[1.8rem] border border-white/[0.08] bg-gradient-to-b from-[#14111d] to-[#0a0810] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] overflow-hidden">
-        {/* top bar */}
-        <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.06]">
+      {/* APP WINDOW — everything stays inside */}
+      <div className="relative rounded-[2rem] border border-white/[0.08] bg-gradient-to-b from-[#14111d] to-[#0a0810] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] overflow-hidden">
+        {/* TOP BAR */}
+        <div className="flex items-center justify-between gap-3 px-5 sm:px-6 py-3.5 border-b border-white/[0.06]">
           <div className="flex items-center gap-2.5">
-            <span className="grid h-6 w-6 place-items-center rounded-md bg-gradient-to-br from-violet to-magenta">
-              <Sparkles size={12} />
+            <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-violet to-magenta shadow-[0_6px_20px_-6px_rgba(168,85,247,0.7)]">
+              <Sparkles size={13} />
             </span>
-            <span className="text-[12.5px] font-semibold tracking-tight">
-              TryVerse Studio
-            </span>
+            <span className="text-[13px] font-semibold tracking-tight">TryVerse Studio</span>
           </div>
-          <div className="hidden sm:flex items-center gap-1 text-[11px] text-white/55">
-            <span className="px-2.5 py-1 rounded-md bg-white/[0.05] text-white">Try-On</span>
-            <span className="px-2.5 py-1 rounded-md">Studio</span>
-            <span className="px-2.5 py-1 rounded-md">Stores</span>
+          <div className="hidden sm:flex items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.02] p-1">
+            {tabs.map((t, i) => (
+              <span
+                key={t}
+                className={`px-3 py-1.5 text-[11.5px] rounded-full transition-colors ${
+                  i === 0
+                    ? "bg-gradient-to-br from-violet/30 to-magenta/20 text-white border border-violet/40 shadow-[0_0_0_3px_rgba(168,85,247,0.08)]"
+                    : "text-white/55 hover:text-white/80"
+                }`}
+              >
+                {t}
+              </span>
+            ))}
           </div>
           <div className="flex items-center gap-1.5">
             <span className="h-2 w-2 rounded-full bg-white/15" />
@@ -162,158 +171,157 @@ function HeroStudio() {
           </div>
         </div>
 
-        {/* URL input */}
-        <div className="px-5 pt-4">
-          <div className="relative flex items-center gap-2.5 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2.5">
+        {/* URL bar */}
+        <div className="px-5 sm:px-6 pt-5">
+          <div className="relative flex items-center gap-2.5 rounded-xl border border-violet/25 bg-white/[0.03] px-3.5 py-2.5 shadow-[0_0_0_4px_rgba(168,85,247,0.06)]">
             <Link2 size={14} className="text-violet shrink-0" />
-            <span className="text-[12.5px] text-white/75 truncate">
-              maisonstudio.com/lavender-oversized-blazer
+            <span className="text-[12.5px] text-white/70 truncate">
+              Paste clothing product link
             </span>
             <span className="ml-auto inline-flex items-center gap-1 text-[10.5px] text-emerald-300/90">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-glow-pulse" />
               detected
             </span>
-            <div
-              aria-hidden
-              className="absolute inset-y-0 left-0 rounded-xl pointer-events-none animate-progress"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgba(168,85,247,0.18), rgba(217,70,239,0.18))",
-              }}
-            />
-          </div>
-
-          {/* tool pills */}
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {[
-              { l: "Try-On", a: true },
-              { l: "AI Stylist" },
-              { l: "Pose Studio" },
-              { l: "Photoshoot" },
-              { l: "Ghost Mannequin" },
-            ].map((p) => (
-              <span
-                key={p.l}
-                className={`text-[10.5px] px-2.5 py-1.5 rounded-full ${
-                  p.a
-                    ? "chip-active text-white"
-                    : "bg-white/[0.04] border border-white/[0.08] text-white/65"
-                }`}
-              >
-                {p.l}
-              </span>
-            ))}
           </div>
         </div>
 
-        {/* canvas */}
-        <div className="p-5 pt-4 grid grid-cols-[1fr_auto_1fr_auto_1.2fr] gap-3 items-stretch">
-          <StudioCard label="Your photo" img={userRef} icon={<Upload size={11} />} />
-          <Connector />
-          <StudioCard label="Clothing" img={garmentFlat} icon={<Shirt size={11} />} />
-          <Connector active />
-          <StudioCard
+        {/* 3-COLUMN WORKFLOW */}
+        <div className="px-5 sm:px-6 py-5 grid grid-cols-[1fr_28px_1fr_28px_1fr] items-center gap-2 sm:gap-3">
+          <FlowCard
+            label="Your photo"
+            img={userRef}
+            icon={<Upload size={11} />}
+            delay="0ms"
+          />
+          <FlowArrow delay="220ms" />
+          <FlowCard
+            label="Clothing"
+            img={garmentFlat}
+            icon={<Shirt size={11} />}
+            delay="160ms"
+          />
+          <FlowArrow delay="420ms" />
+          <FlowCard
             label="Try-on result"
             img={editorialHero}
             icon={<Sparkles size={11} />}
+            delay="340ms"
             result
           />
         </div>
 
-        {/* generation bar */}
-        <div className="mx-5 mb-4 rounded-xl border border-white/[0.06] bg-black/30 px-4 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-[11.5px] text-white/70">
-              <span className="h-1.5 w-1.5 rounded-full bg-violet animate-glow-pulse" />
-              Generating · photoreal fabric & fit
+        {/* PROGRESS TIMELINE */}
+        <div className="px-5 sm:px-6 pb-5">
+          <div className="rounded-xl border border-white/[0.06] bg-black/30 px-4 py-3.5">
+            <div className="flex items-center justify-between">
+              {steps.map((s, i) => (
+                <div key={s} className="flex items-center gap-2 flex-1 last:flex-none">
+                  <span
+                    className={`grid h-5 w-5 place-items-center rounded-full text-[10px] font-semibold ${
+                      i < 3
+                        ? "bg-gradient-to-br from-violet to-magenta text-white shadow-[0_0_0_3px_rgba(168,85,247,0.15)]"
+                        : "bg-white/[0.06] text-white/45 border border-white/10"
+                    }`}
+                  >
+                    {i < 3 ? <Check size={10} /> : i + 1}
+                  </span>
+                  <span
+                    className={`text-[11px] ${
+                      i < 3 ? "text-white/85" : "text-white/45"
+                    }`}
+                  >
+                    {s}
+                  </span>
+                  {i < steps.length - 1 && (
+                    <span
+                      className={`mx-2 hidden sm:block h-px flex-1 ${
+                        i < 2
+                          ? "bg-gradient-to-r from-violet to-magenta"
+                          : "bg-white/10"
+                      }`}
+                    />
+                  )}
+                </div>
+              ))}
             </div>
-            <span className="text-[10.5px] text-white/45">0.8s avg</span>
-          </div>
-          <div className="mt-2.5 h-1 rounded-full bg-white/5 overflow-hidden">
-            <div
-              className="h-full animate-progress rounded-full"
-              style={{ background: "var(--gradient-brand)" }}
-            />
+            <div className="mt-3 h-1 rounded-full bg-white/5 overflow-hidden">
+              <div
+                className="h-full animate-progress rounded-full"
+                style={{ background: "var(--gradient-brand)" }}
+              />
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Floating mobile preview */}
-      <div className="hidden md:block absolute -right-6 -bottom-10 w-[170px] rotate-[6deg]">
-        <div className="rounded-[1.5rem] border border-white/15 bg-[#08070d] p-1.5 shadow-[0_20px_60px_-20px_rgba(168,85,247,0.4)]">
-          <div className="rounded-[1.2rem] overflow-hidden aspect-[9/16] bg-[#f3eee8] relative">
-            <img
-              src={editorialHero}
-              alt="Mobile preview"
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-x-2 bottom-2 glass rounded-lg px-2 py-1.5 flex items-center justify-between">
-              <span className="text-[9px] text-white/85">Try-on ready</span>
-              <Sparkles size={9} className="text-magenta" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Floating chip */}
-      <div className="hidden md:flex absolute -left-5 top-10 glass rounded-full px-3 py-1.5 items-center gap-1.5 text-[11px]">
-        <Sparkles size={11} className="text-magenta" /> Powered by TryVerse AI
       </div>
     </div>
   );
 }
 
-function StudioCard({
+function FlowCard({
   label,
   img,
   icon,
   result,
+  delay = "0ms",
 }: {
   label: string;
   img: string;
   icon: React.ReactNode;
   result?: boolean;
+  delay?: string;
 }) {
   return (
     <div
-      className={`relative rounded-xl overflow-hidden aspect-[3/4] bg-[#f3eee8] ${
-        result ? "ring-1 ring-violet/40 shadow-[0_10px_30px_-10px_rgba(168,85,247,0.5)]" : ""
-      }`}
+      className="animate-fade-up"
+      style={{ animationDelay: delay }}
     >
-      <img
-        src={img}
-        alt={label}
-        className="h-full w-full object-cover"
-        loading="lazy"
-      />
-      <div className="absolute top-1.5 left-1.5">
-        <span className="inline-flex items-center gap-1 rounded-md bg-black/55 backdrop-blur px-1.5 py-0.5 text-[9.5px] text-white">
-          {icon}
-          {label}
-        </span>
-      </div>
-      {result && (
-        <div
-          aria-hidden
-          className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-violet to-transparent animate-scan"
-          style={{ top: "50%" }}
+      <div
+        className={`relative rounded-xl overflow-hidden aspect-[3/4] bg-[#f3eee8] transition-transform duration-500 hover:-translate-y-0.5 ${
+          result
+            ? "ring-1 ring-violet/50 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.55)]"
+            : "ring-1 ring-white/[0.06]"
+        }`}
+      >
+        <img
+          src={img}
+          alt={label}
+          className="h-full w-full object-cover"
+          loading="lazy"
         />
-      )}
+        <div className="absolute top-1.5 left-1.5">
+          <span className="inline-flex items-center gap-1 rounded-md bg-black/55 backdrop-blur px-1.5 py-0.5 text-[9.5px] text-white">
+            {icon}
+            {label}
+          </span>
+        </div>
+        {result && (
+          <div
+            aria-hidden
+            className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-violet to-transparent animate-scan"
+            style={{ top: "50%" }}
+          />
+        )}
+      </div>
     </div>
   );
 }
 
-function Connector({ active }: { active?: boolean }) {
+function FlowArrow({ delay = "0ms" }: { delay?: string }) {
   return (
-    <div className="hidden md:flex flex-col items-center justify-center w-5">
+    <div
+      className="relative flex items-center justify-center animate-fade-up"
+      style={{ animationDelay: delay }}
+    >
       <div
-        className={`h-px w-full ${
-          active
-            ? "bg-gradient-to-r from-violet to-magenta"
-            : "bg-white/15"
-        }`}
+        className="h-px w-full"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(168,85,247,0.7), transparent)",
+        }}
       />
+      <span className="absolute grid h-5 w-5 place-items-center rounded-full bg-[#0a0810] border border-violet/40 text-violet">
+        <ArrowRight size={10} />
+      </span>
     </div>
   );
 }
@@ -467,12 +475,12 @@ function Features() {
           {items.map((f) => (
             <div
               key={f.title}
-              className="p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-colors"
+              className="group p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-all duration-300"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-violet/40 group-hover:shadow-[0_8px_24px_-10px_rgba(168,85,247,0.5)]">
                 {f.icon}
               </span>
-              <h4 className="font-display mt-6 text-xl leading-tight">{f.title}</h4>
+              <h4 className="font-display mt-6 text-xl leading-tight transition-colors group-hover:text-white">{f.title}</h4>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                 {f.text}
               </p>
@@ -531,10 +539,13 @@ function MarqueeRow({
   reverse?: boolean;
 }) {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
       <div
         className="flex gap-4 w-max animate-marquee hover:[animation-play-state:paused] px-6"
-        style={reverse ? { animationDirection: "reverse" } : undefined}
+        style={{
+          animationDuration: "70s",
+          ...(reverse ? { animationDirection: "reverse" } : {}),
+        }}
       >
         {items.map((it, i) => (
           <figure
