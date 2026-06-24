@@ -518,18 +518,19 @@ function BrandToolsGrid() {
           sub="Every tool your team needs to plan, produce, and publish clothing visuals — built specifically for apparel."
         />
 
-        <div className="mt-12 grid gap-px bg-white/[0.06] rounded-[2rem] overflow-hidden sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {BRAND_TOOLS.map((f, i) => (
             <Reveal
               key={f.title}
               delay={i * 60}
-              className="group p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-all duration-300"
+              className="group rounded-2xl p-7 sm:p-8 bg-gradient-to-b from-white/[0.035] to-white/[0.01] border border-white/[0.08] hover:border-violet/40 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(168,85,247,0.55)] transition-all duration-300"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-violet/40 group-hover:shadow-[0_8px_24px_-10px_rgba(168,85,247,0.5)]">
+              <span className="relative grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-violet/25 to-magenta/15 border border-violet/30 text-white shadow-[0_8px_24px_-10px_rgba(168,85,247,0.55)]">
+                <span aria-hidden className="absolute -inset-2 rounded-2xl bg-violet/20 blur-lg opacity-60 -z-10" />
                 {f.icon}
               </span>
-              <h4 className="font-display mt-6 text-xl leading-tight">{f.title}</h4>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.text}</p>
+              <h4 className="font-display mt-6 text-[20px] leading-tight">{f.title}</h4>
+              <p className="mt-2 text-[13.5px] text-muted-foreground leading-relaxed">{f.text}</p>
             </Reveal>
           ))}
         </div>
