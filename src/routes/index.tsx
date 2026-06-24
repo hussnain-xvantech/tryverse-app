@@ -475,12 +475,12 @@ function Features() {
           {items.map((f) => (
             <div
               key={f.title}
-              className="p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-colors"
+              className="group p-7 sm:p-8 bg-background/95 hover:bg-white/[0.03] transition-all duration-300"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.04] border border-white/10 text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-violet/40 group-hover:shadow-[0_8px_24px_-10px_rgba(168,85,247,0.5)]">
                 {f.icon}
               </span>
-              <h4 className="font-display mt-6 text-xl leading-tight">{f.title}</h4>
+              <h4 className="font-display mt-6 text-xl leading-tight transition-colors group-hover:text-white">{f.title}</h4>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                 {f.text}
               </p>
