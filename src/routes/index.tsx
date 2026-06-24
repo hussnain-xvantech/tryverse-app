@@ -459,8 +459,9 @@ function Features() {
           <div className="max-w-2xl">
             <div className="eyebrow">The toolkit</div>
             <h2 className="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-              Built For Shoppers<br />And Fashion Brands
+              <RevealLines lines={["Built For Shoppers", "And Fashion Brands"]} accentIndices={[1]} step={120} />
             </h2>
+
           </div>
           <div
             id={tab === "shoppers" ? "shoppers" : "brands"}
