@@ -2,7 +2,10 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { ReactNode, useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Logo } from "./Logo";
-import authVisual from "@/assets/auth-visual.jpg";
+import authVisualAsset from "@/assets/auth-visual.jpg.asset.json";
+
+const authVisual = authVisualAsset.url;
+
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
