@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Sparkles, Upload, Wand2, Check, ImageIcon, Shirt } from "lucide-react";
 import { BeforeAfter } from "./BeforeAfter";
 import beforeImg from "@/assets/blazer-before.jpg";
