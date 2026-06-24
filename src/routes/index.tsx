@@ -132,7 +132,7 @@ function Hero() {
           </div>
 
           {/* RIGHT — studio mockup */}
-          <HeroStudio />
+          <HeroCarousel />
         </div>
       </div>
     </section>
