@@ -116,7 +116,7 @@ function Hero() {
         </div>
 
         {/* Centered carousel below the copy */}
-        <div className="mt-14 sm:mt-16">
+        <div className="mt-8 sm:mt-10">
           <HeroCarousel />
         </div>
       </div>
@@ -146,62 +146,55 @@ function HeroCarousel() {
       {/* ambient purple glow */}
       <div
         aria-hidden
-        className="absolute -inset-12 -z-10 opacity-80"
+        className="absolute -inset-12 -z-10 opacity-60"
         style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
       />
 
-      {/* DESKTOP / TABLET — curved arc */}
+      {/* DESKTOP / TABLET — curved arc. Outer clips horizontal overflow only; inner allows vertical/rotational overflow */}
       <div
-        className="group relative hidden sm:block h-[400px] lg:h-[440px] overflow-hidden"
+        className="relative hidden sm:block overflow-x-clip"
         style={{
           maskImage:
-            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
           WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
-          perspective: "1400px",
+            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
         }}
       >
-        {/* subtle arc baseline */}
         <div
-          aria-hidden
-          className="pointer-events-none absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[420px]"
-          style={{
-            background:
-              "radial-gradient(60% 80% at 50% 50%, rgba(168,85,247,0.18), transparent 70%)",
-          }}
-        />
-
-        <div
-          className="absolute top-1/2 left-0 flex items-center gap-6 lg:gap-7 will-change-transform animate-marquee group-hover:[animation-play-state:paused]"
-          style={{
-            animationDirection: "reverse",
-            animationDuration: "55s",
-            transform: "translateY(-50%)",
-            width: "max-content",
-          }}
+          className="group relative h-[320px] lg:h-[360px]"
+          style={{ perspective: "1400px", overflow: "visible" }}
         >
-          {loop.map((card, i) => {
-            // Curve: position on arc using sine wave; cards near sine peaks appear "up"
-            const phase = (i % HERO_CARDS.length) / HERO_CARDS.length;
-            const angle = phase * Math.PI * 2;
-            const y = Math.sin(angle) * 42; // vertical arc offset
-            const tilt = Math.cos(angle) * 6; // tilt with arc
-            const depth = (Math.sin(angle) + 1) / 2; // 0..1
-            const scale = 0.88 + depth * 0.18;
-            const opacity = 0.55 + depth * 0.45;
+          <div
+            className="absolute top-1/2 left-0 flex items-center gap-7 lg:gap-8 will-change-transform animate-marquee group-hover:[animation-play-state:paused]"
+            style={{
+              animationDirection: "reverse",
+              animationDuration: "55s",
+              transform: "translateY(-50%)",
+              width: "max-content",
+            }}
+          >
+            {loop.map((card, i) => {
+              const phase = (i % HERO_CARDS.length) / HERO_CARDS.length;
+              const angle = phase * Math.PI * 2;
+              const y = Math.sin(angle) * 28;
+              const tilt = Math.cos(angle) * 4;
+              const depth = (Math.sin(angle) + 1) / 2; // 0..1
+              const scale = 0.94 + depth * 0.10;
+              const opacity = 0.78 + depth * 0.22;
 
-            return (
-              <HeroCard
-                key={`${card.label}-${i}`}
-                card={card}
-                style={{
-                  transform: `translateY(${y}px) rotateZ(${tilt}deg) scale(${scale})`,
-                  opacity,
-                  zIndex: Math.round(depth * 10),
-                }}
-              />
-            );
-          })}
+              return (
+                <HeroCard
+                  key={`${card.label}-${i}`}
+                  card={card}
+                  style={{
+                    transform: `translateY(${y}px) rotateZ(${tilt}deg) scale(${scale})`,
+                    opacity,
+                    zIndex: Math.round(depth * 10),
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -228,7 +221,7 @@ function HeroCarousel() {
               <HeroCard
                 key={`m-${card.label}-${i}`}
                 card={card}
-                style={{ transform: "scale(0.9)" }}
+                style={{ transform: "scale(0.95)" }}
               />
             ))}
           </div>
@@ -251,23 +244,27 @@ function HeroCard({
       style={style}
     >
       <div
-        className={`relative w-[170px] sm:w-[185px] lg:w-[205px] aspect-[3/4] rounded-2xl overflow-hidden border bg-[#14111d] backdrop-blur-sm ${
+        className={`relative w-[160px] sm:w-[170px] lg:w-[180px] aspect-[3/4] rounded-2xl overflow-hidden border backdrop-blur-sm ${
           card.accent
-            ? "border-violet/50 shadow-[0_30px_60px_-20px_rgba(168,85,247,0.65)]"
-            : "border-white/[0.08] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)]"
+            ? "border-violet/50 shadow-[0_30px_60px_-20px_rgba(168,85,247,0.55)]"
+            : "border-white/[0.08] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)]"
         }`}
+        style={{
+          background:
+            "linear-gradient(160deg, #1e1830 0%, #15101f 60%, #0e0a18 100%)",
+        }}
       >
         <img
           src={card.img}
           alt={card.label}
-          className="h-full w-full object-cover"
+          className="absolute inset-0 m-auto h-full w-full object-contain p-2"
           loading="lazy"
           decoding="async"
         />
-        {/* gradient overlay for legibility */}
+        {/* very subtle top/bottom legibility gradient (no heavy dark overlay) */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/15"
+          className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"
         />
         {/* label */}
         <div className="absolute top-2 left-2">
@@ -287,6 +284,9 @@ function HeroCard({
     </div>
   );
 }
+
+
+
 
 
 /* =================== WORKFLOW DEMO =================== */
