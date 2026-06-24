@@ -111,8 +111,12 @@ function Hero() {
             </div>
             <div className="mt-8 flex flex-wrap gap-2">
               {["Virtual Try-On", "AI Stylist", "Photoshoot", "Brand Widget"].map(
-                (c) => (
-                  <span key={c} className="chip">
+                (c, i) => (
+                  <span
+                    key={c}
+                    className="chip animate-fade-up"
+                    style={{ animationDelay: `${300 + i * 90}ms` }}
+                  >
                     {c}
                   </span>
                 ),
@@ -550,12 +554,12 @@ function MarqueeRow({
         {items.map((it, i) => (
           <figure
             key={i}
-            className="relative shrink-0 w-[240px] sm:w-[300px] aspect-[3/4] rounded-2xl overflow-hidden bg-[#f3eee8]"
+            className="group relative shrink-0 w-[240px] sm:w-[300px] aspect-[3/4] rounded-2xl overflow-hidden bg-[#f3eee8]"
           >
             <img
               src={it.src}
               alt=""
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
               loading="lazy"
             />
             <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/70 via-black/15 to-transparent">

@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { Sparkles, Upload, Wand2, Check, ImageIcon, Shirt } from "lucide-react";
-import resultImg from "@/assets/editorial-hero.jpg";
+import { BeforeAfter } from "./BeforeAfter";
+import beforeImg from "@/assets/g2-before.jpg";
+import afterImg from "@/assets/g2-after.jpg";
 import userImg from "@/assets/user-reference.jpg";
 import garmentImg from "@/assets/garment-flatlay.jpg";
 
@@ -38,57 +40,23 @@ export function TryOnDemo() {
 
   return (
     <div className="grid gap-6 lg:gap-8 lg:grid-cols-[1.15fr_1fr] items-stretch">
-      {/* LEFT — bright result */}
-      <div className="relative rounded-[2rem] overflow-hidden bg-[#f3eee8] min-h-[520px] lg:min-h-[720px]">
-        <img
-          src={resultImg}
-          alt="AI try-on result on model wearing lavender blazer"
-          className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
-            revealed ? "scale-100 opacity-100" : "scale-[1.02] opacity-95"
-          }`}
-          width={1152}
-          height={1440}
-          loading="lazy"
+      {/* LEFT — before/after slider */}
+      <div className="relative">
+        <BeforeAfter
+          before={beforeImg}
+          after={afterImg}
+          className="min-h-[520px] lg:min-h-[720px] h-full"
         />
-
-        {/* subtle vignette */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.35))" }} />
-
-        {/* scanline while generating */}
-        {running && (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div
-              className="absolute left-0 right-0 h-40 animate-scan"
-              style={{
-                background:
-                  "linear-gradient(180deg, transparent, rgba(168,85,247,0.45), transparent)",
-                filter: "blur(10px)",
-              }}
-            />
-          </div>
-        )}
-
-        {/* top chips */}
-        <div className="absolute top-5 left-5 flex items-center gap-2">
-          <span className="chip backdrop-blur bg-black/40 text-white">
-            <span className="h-1.5 w-1.5 rounded-full bg-violet animate-glow-pulse" />
-            Live demo
-          </span>
-          <span className="chip chip-active backdrop-blur">Virtual Try-On</span>
-        </div>
-
-        {/* bottom caption */}
-        <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
-          <div className="text-white">
-            <div className="eyebrow !text-white/70">Result</div>
+        <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
+          <div className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+            <div className="eyebrow !text-white/75">Result</div>
             <div className="font-display text-xl sm:text-2xl leading-tight mt-1">
               Lavender Oversized Blazer
             </div>
-            <div className="text-xs text-white/70 mt-1">Maison Studio · on you</div>
+            <div className="text-xs text-white/75 mt-1">Maison Studio · on you</div>
           </div>
           <span className="glass rounded-full px-3 py-1.5 text-[11px] text-white/90 whitespace-nowrap">
-            {revealed ? "Generated in 0.8s" : running ? "Generating…" : "Ready"}
+            {revealed ? "Generated in 0.8s" : running ? "Generating…" : "Drag to compare"}
           </span>
         </div>
       </div>
