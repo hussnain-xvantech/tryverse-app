@@ -39,8 +39,7 @@ function ForgotPasswordPage() {
 
   return (
     <AuthShell
-      eyebrow="Account Recovery"
-      title="Reset your password"
+      title="Reset password"
       subtitle="Enter your email and we'll send you a reset link."
       footer={
         <Link to="/login" className="inline-flex items-center gap-2 text-white/75 hover:text-white">
@@ -48,6 +47,7 @@ function ForgotPasswordPage() {
         </Link>
       }
     >
+
       {sent ? (
         <div className="text-center">
           <div className="mx-auto h-12 w-12 rounded-full bg-white/[0.06] border border-white/10 grid place-items-center">
