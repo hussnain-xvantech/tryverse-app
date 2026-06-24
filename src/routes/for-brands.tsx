@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
@@ -44,7 +44,7 @@ import g6a from "@/assets/g6-after.jpg";
 import g1b from "@/assets/g1-before.jpg";
 import g2b from "@/assets/g2-before.jpg";
 
-export const Route = createFileRoute("/brands")({
+export const Route = createFileRoute("/for-brands")({
   head: () => ({
     meta: [
       { title: "For Brands — TryVerse AI Clothing Studio" },
@@ -150,12 +150,12 @@ function BrandHero() {
               online store.
             </Reveal>
             <Reveal delay={580} className="mt-8 flex flex-wrap gap-3">
-              <a href="#try" className="btn-primary !py-3.5 !px-7 !text-sm">
+              <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Start Creating <ArrowRight size={16} />
-              </a>
-              <a href="#demo" className="btn-secondary !py-3.5 !px-7 !text-sm">
+              </Link>
+              <Link to="/book-demo" className="btn-secondary !py-3.5 !px-7 !text-sm">
                 Book Brand Demo
-              </a>
+              </Link>
             </Reveal>
 
             <div className="mt-8 flex flex-wrap gap-2">
@@ -982,9 +982,9 @@ function BrandWidget() {
               ))}
             </ul>
             <Reveal delay={760} className="mt-8 flex flex-wrap gap-3">
-              <a href="#try" className="btn-primary !py-3 !px-6 !text-sm">
+              <Link to="/book-demo" className="btn-primary !py-3 !px-6 !text-sm">
                 Add TryVerse To Your Store <ArrowRight size={14} />
-              </a>
+              </Link>
             </Reveal>
           </div>
         </div>
@@ -1100,12 +1100,12 @@ function BrandFinalCTA() {
         </Reveal>
 
         <Reveal delay={500} className="mt-10 flex flex-wrap justify-center gap-3">
-          <a href="#" className="btn-primary !py-3.5 !px-7 !text-sm">
+          <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
             Start Creating <ArrowRight size={16} />
-          </a>
-          <a href="#" className="btn-secondary !py-3.5 !px-7 !text-sm">
+          </Link>
+          <Link to="/book-demo" className="btn-secondary !py-3.5 !px-7 !text-sm">
             Book Brand Demo
-          </a>
+          </Link>
         </Reveal>
 
         <Reveal delay={640} className="mt-7 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">

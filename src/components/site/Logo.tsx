@@ -1,6 +1,8 @@
+import { Link } from "@tanstack/react-router";
+
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="/" className={`flex items-center gap-2.5 ${className}`} aria-label="TryVerse home">
+    <Link to="/" className={`flex items-center gap-2.5 ${className}`} aria-label="TryVerse home">
       <span className="relative grid h-8 w-8 place-items-center rounded-xl shrink-0"
         style={{
           background: "linear-gradient(135deg, #6D28FF, #D946EF)",
@@ -18,6 +20,6 @@ export function Logo({ className = "" }: { className?: string }) {
           Try<span className="text-gradient">Verse</span>
         </span>
       </span>
-    </a>
+    </Link>
   );
 }

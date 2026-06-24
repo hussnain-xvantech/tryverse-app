@@ -9,12 +9,67 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as BrandsRouteImport } from './routes/brands'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as StoresRouteImport } from './routes/stores'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForShoppersRouteImport } from './routes/for-shoppers'
+import { Route as ForBrandsRouteImport } from './routes/for-brands'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BookDemoRouteImport } from './routes/book-demo'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FeaturesSlugRouteImport } from './routes/features.$slug'
 
-const BrandsRoute = BrandsRouteImport.update({
-  id: '/brands',
-  path: '/brands',
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoresRoute = StoresRouteImport.update({
+  id: '/stores',
+  path: '/stores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForShoppersRoute = ForShoppersRouteImport.update({
+  id: '/for-shoppers',
+  path: '/for-shoppers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForBrandsRoute = ForBrandsRouteImport.update({
+  id: '/for-brands',
+  path: '/for-brands',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookDemoRoute = BookDemoRouteImport.update({
+  id: '/book-demo',
+  path: '/book-demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,40 +77,185 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
+  id: '/features/$slug',
+  path: '/features/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/brands': typeof BrandsRoute
+  '/book-demo': typeof BookDemoRoute
+  '/contact': typeof ContactRoute
+  '/for-brands': typeof ForBrandsRoute
+  '/for-shoppers': typeof ForShoppersRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/signup': typeof SignupRoute
+  '/stores': typeof StoresRoute
+  '/terms': typeof TermsRoute
+  '/features/$slug': typeof FeaturesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/brands': typeof BrandsRoute
+  '/book-demo': typeof BookDemoRoute
+  '/contact': typeof ContactRoute
+  '/for-brands': typeof ForBrandsRoute
+  '/for-shoppers': typeof ForShoppersRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/signup': typeof SignupRoute
+  '/stores': typeof StoresRoute
+  '/terms': typeof TermsRoute
+  '/features/$slug': typeof FeaturesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/brands': typeof BrandsRoute
+  '/book-demo': typeof BookDemoRoute
+  '/contact': typeof ContactRoute
+  '/for-brands': typeof ForBrandsRoute
+  '/for-shoppers': typeof ForShoppersRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/signup': typeof SignupRoute
+  '/stores': typeof StoresRoute
+  '/terms': typeof TermsRoute
+  '/features/$slug': typeof FeaturesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/brands'
+  fullPaths:
+    | '/'
+    | '/book-demo'
+    | '/contact'
+    | '/for-brands'
+    | '/for-shoppers'
+    | '/login'
+    | '/pricing'
+    | '/privacy'
+    | '/signup'
+    | '/stores'
+    | '/terms'
+    | '/features/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/brands'
-  id: '__root__' | '/' | '/brands'
+  to:
+    | '/'
+    | '/book-demo'
+    | '/contact'
+    | '/for-brands'
+    | '/for-shoppers'
+    | '/login'
+    | '/pricing'
+    | '/privacy'
+    | '/signup'
+    | '/stores'
+    | '/terms'
+    | '/features/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/book-demo'
+    | '/contact'
+    | '/for-brands'
+    | '/for-shoppers'
+    | '/login'
+    | '/pricing'
+    | '/privacy'
+    | '/signup'
+    | '/stores'
+    | '/terms'
+    | '/features/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BrandsRoute: typeof BrandsRoute
+  BookDemoRoute: typeof BookDemoRoute
+  ContactRoute: typeof ContactRoute
+  ForBrandsRoute: typeof ForBrandsRoute
+  ForShoppersRoute: typeof ForShoppersRoute
+  LoginRoute: typeof LoginRoute
+  PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  SignupRoute: typeof SignupRoute
+  StoresRoute: typeof StoresRoute
+  TermsRoute: typeof TermsRoute
+  FeaturesSlugRoute: typeof FeaturesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/brands': {
-      id: '/brands'
-      path: '/brands'
-      fullPath: '/brands'
-      preLoaderRoute: typeof BrandsRouteImport
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stores': {
+      id: '/stores'
+      path: '/stores'
+      fullPath: '/stores'
+      preLoaderRoute: typeof StoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/for-shoppers': {
+      id: '/for-shoppers'
+      path: '/for-shoppers'
+      fullPath: '/for-shoppers'
+      preLoaderRoute: typeof ForShoppersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/for-brands': {
+      id: '/for-brands'
+      path: '/for-brands'
+      fullPath: '/for-brands'
+      preLoaderRoute: typeof ForBrandsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-demo': {
+      id: '/book-demo'
+      path: '/book-demo'
+      fullPath: '/book-demo'
+      preLoaderRoute: typeof BookDemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -65,12 +265,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/features/$slug': {
+      id: '/features/$slug'
+      path: '/features/$slug'
+      fullPath: '/features/$slug'
+      preLoaderRoute: typeof FeaturesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BrandsRoute: BrandsRoute,
+  BookDemoRoute: BookDemoRoute,
+  ContactRoute: ContactRoute,
+  ForBrandsRoute: ForBrandsRoute,
+  ForShoppersRoute: ForShoppersRoute,
+  LoginRoute: LoginRoute,
+  PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  SignupRoute: SignupRoute,
+  StoresRoute: StoresRoute,
+  TermsRoute: TermsRoute,
+  FeaturesSlugRoute: FeaturesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
