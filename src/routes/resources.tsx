@@ -290,8 +290,9 @@ function CategoriesAndArticles() {
 
 function ArticleCard({ article }: { article: Article }) {
   return (
-    <a
-      href="#"
+    <Link
+      to="/resources/$slug"
+      params={{ slug: article.slug }}
       className="group block surface-card overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(168,85,247,0.45)]"
     >
       <div className="relative aspect-[5/3] overflow-hidden">
@@ -322,7 +323,7 @@ function ArticleCard({ article }: { article: Article }) {
           </span>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
