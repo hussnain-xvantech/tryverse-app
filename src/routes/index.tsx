@@ -115,8 +115,8 @@ function Hero() {
           </Reveal>
         </div>
 
-        {/* Centered carousel below the copy */}
-        <div className="mt-8 sm:mt-10">
+        {/* Straight horizontal slider below the copy */}
+        <div className="mt-6 sm:mt-8 lg:mt-12">
           <HeroCarousel />
         </div>
       </div>
@@ -125,7 +125,7 @@ function Hero() {
   );
 }
 
-/* =================== HERO CAROUSEL (curved floating arc) =================== */
+/* =================== HERO CAROUSEL (straight marquee) =================== */
 const HERO_CARDS = [
   { label: "Your Photo", img: userRef, icon: <Upload size={11} /> },
   { label: "Garment", img: garmentFlat, icon: <Shirt size={11} /> },
@@ -138,7 +138,6 @@ const HERO_CARDS = [
 ];
 
 function HeroCarousel() {
-  // Duplicate for a seamless marquee loop
   const loop = [...HERO_CARDS, ...HERO_CARDS];
 
   return (
@@ -146,83 +145,30 @@ function HeroCarousel() {
       {/* ambient purple glow */}
       <div
         aria-hidden
-        className="absolute -inset-12 -z-10 opacity-60"
+        className="absolute -inset-8 -z-10 opacity-60"
         style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
       />
 
-      {/* DESKTOP / TABLET — curved arc. Outer clips horizontal overflow only; inner allows vertical/rotational overflow */}
       <div
-        className="relative hidden sm:block overflow-x-clip"
+        className="relative -mx-6 sm:mx-0 overflow-hidden"
         style={{
           maskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
           WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
         }}
       >
-        <div
-          className="group relative h-[320px] lg:h-[360px]"
-          style={{ perspective: "1400px", overflow: "visible" }}
-        >
+        <div className="group py-4">
           <div
-            className="absolute top-1/2 left-0 flex items-center gap-7 lg:gap-8 will-change-transform animate-marquee group-hover:[animation-play-state:paused]"
+            className="flex items-center gap-4 sm:gap-5 lg:gap-6 will-change-transform animate-marquee group-hover:[animation-play-state:paused]"
             style={{
               animationDirection: "reverse",
               animationDuration: "55s",
-              transform: "translateY(-50%)",
-              width: "max-content",
-            }}
-          >
-            {loop.map((card, i) => {
-              const phase = (i % HERO_CARDS.length) / HERO_CARDS.length;
-              const angle = phase * Math.PI * 2;
-              const y = Math.sin(angle) * 28;
-              const tilt = Math.cos(angle) * 4;
-              const depth = (Math.sin(angle) + 1) / 2; // 0..1
-              const scale = 0.94 + depth * 0.10;
-              const opacity = 0.78 + depth * 0.22;
-
-              return (
-                <HeroCard
-                  key={`${card.label}-${i}`}
-                  card={card}
-                  style={{
-                    transform: `translateY(${y}px) rotateZ(${tilt}deg) scale(${scale})`,
-                    opacity,
-                    zIndex: Math.round(depth * 10),
-                  }}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* MOBILE — compact horizontal scroll */}
-      <div className="sm:hidden relative -mx-6">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 z-10"
-          style={{
-            background:
-              "linear-gradient(to right, #0a0810 0%, transparent 8%, transparent 92%, #0a0810 100%)",
-          }}
-        />
-        <div className="overflow-hidden">
-          <div
-            className="flex items-center gap-4 px-6 py-6 will-change-transform animate-marquee"
-            style={{
-              animationDirection: "reverse",
-              animationDuration: "40s",
               width: "max-content",
             }}
           >
             {loop.map((card, i) => (
-              <HeroCard
-                key={`m-${card.label}-${i}`}
-                card={card}
-                style={{ transform: "scale(0.95)" }}
-              />
+              <HeroCard key={`${card.label}-${i}`} card={card} />
             ))}
           </div>
         </div>
@@ -233,21 +179,16 @@ function HeroCarousel() {
 
 function HeroCard({
   card,
-  style,
 }: {
   card: { label: string; img: string; icon: React.ReactNode; accent?: boolean };
-  style?: React.CSSProperties;
 }) {
   return (
-    <div
-      className="shrink-0 transition-transform duration-700 ease-out"
-      style={style}
-    >
+    <div className="shrink-0">
       <div
-        className={`relative w-[160px] sm:w-[170px] lg:w-[180px] aspect-[3/4] rounded-2xl overflow-hidden border backdrop-blur-sm ${
+        className={`relative w-[150px] sm:w-[180px] lg:w-[200px] aspect-[3/4] rounded-2xl overflow-hidden border ${
           card.accent
             ? "border-violet/50 shadow-[0_30px_60px_-20px_rgba(168,85,247,0.55)]"
-            : "border-white/[0.08] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)]"
+            : "border-violet/20 shadow-[0_20px_50px_-20px_rgba(168,85,247,0.25)]"
         }`}
         style={{
           background:
@@ -257,18 +198,16 @@ function HeroCard({
         <img
           src={card.img}
           alt={card.label}
-          className="absolute inset-0 m-auto h-full w-full object-contain p-2"
+          className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
           decoding="async"
         />
-        {/* very subtle top/bottom legibility gradient (no heavy dark overlay) */}
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"
+          className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-black/50 to-transparent pointer-events-none"
         />
-        {/* label */}
         <div className="absolute top-2 left-2">
-          <span className="inline-flex items-center gap-1 rounded-md bg-black/55 backdrop-blur px-1.5 py-0.5 text-[10px] text-white border border-white/10">
+          <span className="inline-flex items-center gap-1 rounded-md bg-black/60 backdrop-blur px-1.5 py-0.5 text-[10px] text-white border border-white/10">
             {card.icon}
             {card.label}
           </span>
@@ -284,6 +223,7 @@ function HeroCard({
     </div>
   );
 }
+
 
 
 
