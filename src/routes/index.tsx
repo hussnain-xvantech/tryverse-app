@@ -286,55 +286,7 @@ function HeroCard({
 }
 
 
-function HeroCard({
-  card,
-  style,
-}: {
-  card: { label: string; img: string; icon: React.ReactNode; accent?: boolean };
-  style?: React.CSSProperties;
-}) {
-  return (
-    <div
-      className="shrink-0 transition-transform duration-700 ease-out"
-      style={style}
-    >
-      <div
-        className={`relative w-[170px] sm:w-[185px] lg:w-[205px] aspect-[3/4] rounded-2xl overflow-hidden border bg-[#14111d] backdrop-blur-sm ${
-          card.accent
-            ? "border-violet/50 shadow-[0_30px_60px_-20px_rgba(168,85,247,0.65)]"
-            : "border-white/[0.08] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)]"
-        }`}
-      >
-        <img
-          src={card.img}
-          alt={card.label}
-          className="h-full w-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-        {/* gradient overlay for legibility */}
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/15"
-        />
-        {/* label */}
-        <div className="absolute top-2 left-2">
-          <span className="inline-flex items-center gap-1 rounded-md bg-black/55 backdrop-blur px-1.5 py-0.5 text-[10px] text-white border border-white/10">
-            {card.icon}
-            {card.label}
-          </span>
-        </div>
-        {card.accent && (
-          <div
-            aria-hidden
-            className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-violet to-transparent animate-scan"
-            style={{ top: "50%" }}
-          />
-        )}
-      </div>
-    </div>
-  );
-}
+
 
 
 /* =================== WORKFLOW DEMO =================== */
