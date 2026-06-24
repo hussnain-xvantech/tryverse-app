@@ -111,7 +111,7 @@ function SectionHead({
 /* =================== 1. HERO =================== */
 function ShopperHero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden pb-16 sm:pb-20 lg:pb-24">
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute left-1/2 top-[-260px] h-[900px] w-[1200px] -translate-x-1/2 rounded-full opacity-70"
@@ -119,8 +119,8 @@ function ShopperHero() {
         />
       </div>
 
-      <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <div className="grid items-center gap-14 lg:gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.2fr)]">
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
+        <div className="grid items-center gap-12 lg:gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
           <div className="animate-fade-up">
             <div className="eyebrow flex items-center gap-2">
               <span className="h-1 w-1 rounded-full bg-violet" />
@@ -167,7 +167,9 @@ function ShopperHero() {
             </div>
           </div>
 
-          <ShopperAppMockup />
+          <div className="lg:pl-4 w-full max-w-[440px] mx-auto lg:max-w-[460px] lg:ml-auto lg:mr-0">
+            <ShopperAppMockup />
+          </div>
         </div>
       </div>
     </section>
