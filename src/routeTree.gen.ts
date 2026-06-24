@@ -17,6 +17,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForShoppersRouteImport } from './routes/for-shoppers'
 import { Route as ForBrandsRouteImport } from './routes/for-brands'
+import { Route as DiscoverRouteImport } from './routes/discover'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookDemoRouteImport } from './routes/book-demo'
 import { Route as IndexRouteImport } from './routes/index'
@@ -62,6 +63,11 @@ const ForBrandsRoute = ForBrandsRouteImport.update({
   path: '/for-brands',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DiscoverRoute = DiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/login': typeof LoginRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/login': typeof LoginRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/login': typeof LoginRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/book-demo'
     | '/contact'
+    | '/discover'
     | '/for-brands'
     | '/for-shoppers'
     | '/login'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/book-demo'
     | '/contact'
+    | '/discover'
     | '/for-brands'
     | '/for-shoppers'
     | '/login'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/book-demo'
     | '/contact'
+    | '/discover'
     | '/for-brands'
     | '/for-shoppers'
     | '/login'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookDemoRoute: typeof BookDemoRoute
   ContactRoute: typeof ContactRoute
+  DiscoverRoute: typeof DiscoverRoute
   ForBrandsRoute: typeof ForBrandsRoute
   ForShoppersRoute: typeof ForShoppersRoute
   LoginRoute: typeof LoginRoute
@@ -244,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForBrandsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/discover': {
+      id: '/discover'
+      path: '/discover'
+      fullPath: '/discover'
+      preLoaderRoute: typeof DiscoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookDemoRoute: BookDemoRoute,
   ContactRoute: ContactRoute,
+  DiscoverRoute: DiscoverRoute,
   ForBrandsRoute: ForBrandsRoute,
   ForShoppersRoute: ForShoppersRoute,
   LoginRoute: LoginRoute,
