@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
-const NAV = [
-  { label: "For Shoppers", href: "#shoppers" },
-  { label: "For Brands", href: "#brands" },
-  { label: "Features", href: "#features" },
-  { label: "Stores", href: "#stores" },
-  { label: "Pricing", href: "#pricing" },
+type NavItem = { label: string; to?: string; href?: string };
+
+const NAV: NavItem[] = [
+  { label: "For Shoppers", to: "/" },
+  { label: "For Brands", to: "/brands" },
+  { label: "Stores", href: "/#stores" },
+  { label: "Pricing", href: "/#pricing" },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -20,6 +23,19 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isActive = (item: NavItem) => {
+    if (!item.to) return false;
+    if (item.to === "/") return pathname === "/";
+    return pathname === item.to || pathname.startsWith(item.to + "/");
+  };
+
+  const linkClass = (active: boolean) =>
+    `rounded-full px-4 py-2 text-[14px] font-medium transition-colors ${
+      active
+        ? "text-white bg-white/[0.06] border border-white/10"
+        : "text-white/70 hover:text-white hover:bg-white/[0.04]"
+    }`;
 
   return (
     <header
@@ -31,25 +47,24 @@ export function Header() {
     >
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <div className="grid grid-cols-[auto_1fr_auto] items-center h-[72px] gap-6">
-          {/* Left: Logo */}
           <div className="flex items-center">
             <Logo />
           </div>
 
-          {/* Center: Nav */}
           <nav className="hidden lg:flex items-center justify-center gap-1">
-            {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="rounded-full px-4 py-2 text-[14px] font-medium text-white/70 transition-colors hover:text-white hover:bg-white/[0.04]"
-              >
-                {item.label}
-              </a>
-            ))}
+            {NAV.map((item) =>
+              item.to ? (
+                <Link key={item.label} to={item.to} className={linkClass(isActive(item))}>
+                  {item.label}
+                </Link>
+              ) : (
+                <a key={item.label} href={item.href} className={linkClass(false)}>
+                  {item.label}
+                </a>
+              ),
+            )}
           </nav>
 
-          {/* Right: Auth + CTA */}
           <div className="flex items-center gap-2 justify-end">
             <a
               href="#login"
@@ -71,20 +86,34 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {open && (
           <div className="lg:hidden mb-3 glass rounded-2xl p-3 animate-fade-up">
             <nav className="flex flex-col">
-              {NAV.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {NAV.map((item) =>
+                item.to ? (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={() => setOpen(false)}
+                    className={`rounded-xl px-3 py-3 text-sm font-medium ${
+                      isActive(item)
+                        ? "text-white bg-white/5"
+                        : "text-white/80 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="rounded-xl px-3 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
+                  >
+                    {item.label}
+                  </a>
+                ),
+              )}
               <a
                 href="#login"
                 onClick={() => setOpen(false)}
