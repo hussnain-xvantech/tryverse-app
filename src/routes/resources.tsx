@@ -217,9 +217,13 @@ function Featured() {
                 </span>
               </div>
               <div className="mt-7">
-                <a href="#latest" className="btn-primary">
+                <Link
+                  to="/resources/$slug"
+                  params={{ slug: "what-is-ai-virtual-try-on-for-clothing" }}
+                  className="btn-primary"
+                >
                   Read Article <ArrowRight size={16} />
-                </a>
+                </Link>
               </div>
             </div>
           </article>
