@@ -219,7 +219,7 @@ function Featured() {
               <div className="mt-7">
                 <Link
                   to="/resources/$slug"
-                  params={{ slug: "what-is-ai-virtual-try-on-for-clothing" }}
+                  params={{ slug: "how-virtual-try-on-helps-shoppers-buy-with-more-confidence" }}
                   className="btn-primary"
                 >
                   Read Article <ArrowRight size={16} />
