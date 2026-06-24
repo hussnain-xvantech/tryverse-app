@@ -419,7 +419,7 @@ function ShopperFeatures() {
       icon: <MessageCircle size={18} />,
       title: "Stylo AI Stylist",
       text: "Get outfit advice, color ideas, and styling suggestions.",
-      image: g2c,
+      image: g1a,
     },
     {
       icon: <Camera size={18} />,
@@ -523,7 +523,7 @@ function LiveTryOnDemo() {
           sub="TryVerse shows how clothing looks on you before you add it to cart."
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_1fr] items-stretch">
+        <div className="mt-14 grid gap-8 lg:gap-12 lg:grid-cols-[1.15fr_1fr] items-stretch">
           {/* Before/After */}
           <Reveal className="relative">
             <div
@@ -847,8 +847,8 @@ function ShopperGallery() {
     { image: g5a, tag: "Casual Outfit Try-On" },
   ];
   const row2 = [
-    { image: g2c, tag: "Stylo Outfit Suggestion" },
-    { image: g6a, tag: "Pose Studio Result" },
+    { image: g6a, tag: "Stylo Outfit Suggestion" },
+    { image: g4a, tag: "Pose Studio Result" },
     { image: editorialHero, tag: "Showcase Video Frame" },
     { image: heroResult, tag: "Link → Try-On" },
     { image: g2a, tag: "Store Outfit Preview" },
