@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Eye, EyeOff, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import { Eye, EyeOff, ArrowRight } from "lucide-react";
 
 import {
   AuthShell,
@@ -27,7 +27,6 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
-  const [remember, setRemember] = useState(true);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [loading, setLoading] = useState(false);
 
@@ -45,32 +44,31 @@ function LoginPage() {
 
   return (
     <AuthShell
-      eyebrow="Welcome Back"
-      title="Welcome back"
-      subtitle="Log in to continue creating with TryVerse."
+      title="Log in"
+      subtitle="Welcome back. Continue creating with TryVerse."
       footer={
-        <>
-          Don't have an account?{" "}
-          <Link to="/signup" className="text-white font-medium hover:underline">
-            Sign up
-          </Link>
-        </>
-      }
-      trust={
-        <>
-          <span className="inline-flex items-center gap-1.5">
-            <ShieldCheck size={12} /> Secure login
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Sparkles size={12} /> Clothing-only AI
-          </span>
-        </>
+        <div className="space-y-2">
+          <p>
+            No account?{" "}
+            <Link to="/signup" className="text-white font-medium hover:underline">
+              Create one.
+            </Link>
+          </p>
+          <p>
+            Forgot your password?{" "}
+            <Link to="/forgot-password" className="text-white font-medium hover:underline">
+              Reset it.
+            </Link>
+          </p>
+        </div>
       }
     >
+      <SocialButtons />
+      <Divider />
       <form onSubmit={submit} className="space-y-4" noValidate>
         <AuthInput
           id="email"
-          label="Email address"
+          label="Email"
           type="email"
           autoComplete="email"
           placeholder="you@example.com"
@@ -98,22 +96,6 @@ function LoginPage() {
             </button>
           }
         />
-
-        <div className="flex items-center justify-between text-[13px]">
-          <label className="inline-flex items-center gap-2 text-white/70 cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={remember}
-              onChange={(e) => setRemember(e.target.checked)}
-              className="h-4 w-4 rounded border-white/20 bg-white/[0.05] accent-purple-500"
-            />
-            Remember me
-          </label>
-          <Link to="/forgot-password" className="text-white/70 hover:text-white">
-            Forgot password?
-          </Link>
-        </div>
-
         <button
           type="submit"
           disabled={loading}
@@ -121,14 +103,22 @@ function LoginPage() {
         >
           {loading ? "Signing in…" : (
             <>
-              Log In <ArrowRight size={16} />
+              Continue with email <ArrowRight size={16} />
             </>
           )}
         </button>
+        <p className="text-[12px] text-white/50 text-center leading-relaxed">
+          By continuing you agree to our{" "}
+          <Link to="/privacy" className="text-white/70 hover:text-white underline underline-offset-2">
+            Privacy Policy
+          </Link>{" "}
+          and{" "}
+          <Link to="/terms" className="text-white/70 hover:text-white underline underline-offset-2">
+            Terms of Service
+          </Link>
+          .
+        </p>
       </form>
-
-      <Divider />
-      <SocialButtons />
     </AuthShell>
   );
 }
