@@ -80,10 +80,11 @@ function ForgotPasswordPage() {
           >
             {loading ? "Sending…" : (
               <>
-                Send Reset Link <ArrowRight size={16} />
+                Send reset link <ArrowRight size={16} />
               </>
             )}
           </button>
+
         </form>
       )}
     </AuthShell>
