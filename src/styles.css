@@ -307,7 +307,9 @@
 .reveal-lines[data-visible="true"] .reveal-line-inner {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
+
 .reveal-accent .reveal-line-inner {
   background: linear-gradient(
     90deg,
