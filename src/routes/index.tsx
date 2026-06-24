@@ -132,135 +132,119 @@ function Hero() {
           </div>
 
           {/* RIGHT — studio mockup */}
-          <HeroStudio />
+          <HeroCarousel />
         </div>
       </div>
     </section>
   );
 }
 
-function HeroStudio() {
-  const tabs = ["Try-On", "Stylo", "Pose", "Photoshoot"];
-  const steps = ["Upload", "Match", "Generate", "Ready"];
+/* =================== HERO CAROUSEL (curved floating arc) =================== */
+const HERO_CARDS = [
+  { label: "Your Photo", img: userRef, icon: <Upload size={11} /> },
+  { label: "Garment", img: garmentFlat, icon: <Shirt size={11} /> },
+  { label: "Try-On Result", img: editorialHero, icon: <Sparkles size={11} />, accent: true },
+  { label: "AI Photoshoot", img: g1a, icon: <Camera size={11} /> },
+  { label: "Ghost Mannequin", img: g2a, icon: <Ghost size={11} /> },
+  { label: "Pose Studio", img: g3a, icon: <Move3d size={11} /> },
+  { label: "Fashion Video", img: g4a, icon: <Video size={11} /> },
+  { label: "Stylo AI Stylist", img: g5a, icon: <Wand2 size={11} /> },
+];
+
+function HeroCarousel() {
+  // Duplicate for a seamless marquee loop
+  const loop = [...HERO_CARDS, ...HERO_CARDS];
+
   return (
     <div className="relative animate-fade-up [animation-delay:120ms]">
-      {/* ambient glow — behind window only */}
+      {/* ambient purple glow */}
       <div
         aria-hidden
-        className="absolute -inset-10 -z-10 opacity-80"
-        style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
+        className="absolute -inset-12 -z-10 opacity-80"
+        style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
       />
 
-      {/* APP WINDOW — everything stays inside */}
-      <div className="relative rounded-[2rem] border border-white/[0.08] bg-gradient-to-b from-[#14111d] to-[#0a0810] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] overflow-hidden">
-        {/* TOP BAR */}
-        <div className="flex items-center justify-between gap-3 px-5 sm:px-6 py-3.5 border-b border-white/[0.06]">
-          <div className="flex items-center gap-2.5">
-            <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-violet to-magenta shadow-[0_6px_20px_-6px_rgba(168,85,247,0.7)]">
-              <Sparkles size={13} />
-            </span>
-            <span className="text-[13px] font-semibold tracking-tight">TryVerse Studio</span>
-          </div>
-          <div className="hidden sm:flex items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.02] p-1">
-            {tabs.map((t, i) => (
-              <span
-                key={t}
-                className={`px-3 py-1.5 text-[11.5px] rounded-full transition-colors ${
-                  i === 0
-                    ? "bg-gradient-to-br from-violet/30 to-magenta/20 text-white border border-violet/40 shadow-[0_0_0_3px_rgba(168,85,247,0.08)]"
-                    : "text-white/55 hover:text-white/80"
-                }`}
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-white/15" />
-            <span className="h-2 w-2 rounded-full bg-white/15" />
-            <span className="h-2 w-2 rounded-full bg-white/15" />
-          </div>
-        </div>
+      {/* DESKTOP / TABLET — curved arc */}
+      <div
+        className="group relative hidden sm:block h-[520px] lg:h-[560px] overflow-hidden"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+          perspective: "1400px",
+        }}
+      >
+        {/* subtle arc baseline */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[420px]"
+          style={{
+            background:
+              "radial-gradient(60% 80% at 50% 50%, rgba(168,85,247,0.18), transparent 70%)",
+          }}
+        />
 
-        {/* URL bar */}
-        <div className="px-5 sm:px-6 pt-5">
-          <div className="relative flex items-center gap-2.5 rounded-xl border border-violet/25 bg-white/[0.03] px-3.5 py-2.5 shadow-[0_0_0_4px_rgba(168,85,247,0.06)]">
-            <Link2 size={14} className="text-violet shrink-0" />
-            <span className="text-[12.5px] text-white/70 truncate">
-              Paste clothing product link
-            </span>
-            <span className="ml-auto inline-flex items-center gap-1 text-[10.5px] text-emerald-300/90">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-glow-pulse" />
-              detected
-            </span>
-          </div>
-        </div>
+        <div
+          className="absolute top-1/2 left-0 flex items-center gap-6 lg:gap-7 will-change-transform animate-marquee group-hover:[animation-play-state:paused]"
+          style={{
+            animationDirection: "reverse",
+            animationDuration: "55s",
+            transform: "translateY(-50%)",
+            width: "max-content",
+          }}
+        >
+          {loop.map((card, i) => {
+            // Curve: position on arc using sine wave; cards near sine peaks appear "up"
+            const phase = (i % HERO_CARDS.length) / HERO_CARDS.length;
+            const angle = phase * Math.PI * 2;
+            const y = Math.sin(angle) * 42; // vertical arc offset
+            const tilt = Math.cos(angle) * 6; // tilt with arc
+            const depth = (Math.sin(angle) + 1) / 2; // 0..1
+            const scale = 0.88 + depth * 0.18;
+            const opacity = 0.55 + depth * 0.45;
 
-        {/* 3-COLUMN WORKFLOW */}
-        <div className="px-5 sm:px-6 py-5 grid grid-cols-[1fr_28px_1fr_28px_1fr] items-center gap-2 sm:gap-3">
-          <FlowCard
-            label="Your photo"
-            img={userRef}
-            icon={<Upload size={11} />}
-            delay="0ms"
-          />
-          <FlowArrow delay="220ms" />
-          <FlowCard
-            label="Clothing"
-            img={garmentFlat}
-            icon={<Shirt size={11} />}
-            delay="160ms"
-          />
-          <FlowArrow delay="420ms" />
-          <FlowCard
-            label="Try-on result"
-            img={editorialHero}
-            icon={<Sparkles size={11} />}
-            delay="340ms"
-            result
-          />
-        </div>
-
-        {/* PROGRESS TIMELINE */}
-        <div className="px-5 sm:px-6 pb-5">
-          <div className="rounded-xl border border-white/[0.06] bg-black/30 px-4 py-3.5">
-            <div className="flex items-center justify-between">
-              {steps.map((s, i) => (
-                <div key={s} className="flex items-center gap-2 flex-1 last:flex-none">
-                  <span
-                    className={`grid h-5 w-5 place-items-center rounded-full text-[10px] font-semibold ${
-                      i < 3
-                        ? "bg-gradient-to-br from-violet to-magenta text-white shadow-[0_0_0_3px_rgba(168,85,247,0.15)]"
-                        : "bg-white/[0.06] text-white/45 border border-white/10"
-                    }`}
-                  >
-                    {i < 3 ? <Check size={10} /> : i + 1}
-                  </span>
-                  <span
-                    className={`text-[11px] ${
-                      i < 3 ? "text-white/85" : "text-white/45"
-                    }`}
-                  >
-                    {s}
-                  </span>
-                  {i < steps.length - 1 && (
-                    <span
-                      className={`mx-2 hidden sm:block h-px flex-1 ${
-                        i < 2
-                          ? "bg-gradient-to-r from-violet to-magenta"
-                          : "bg-white/10"
-                      }`}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="mt-3 h-1 rounded-full bg-white/5 overflow-hidden">
-              <div
-                className="h-full animate-progress rounded-full"
-                style={{ background: "var(--gradient-brand)" }}
+            return (
+              <HeroCard
+                key={`${card.label}-${i}`}
+                card={card}
+                style={{
+                  transform: `translateY(${y}px) rotateZ(${tilt}deg) scale(${scale})`,
+                  opacity,
+                  zIndex: Math.round(depth * 10),
+                }}
               />
-            </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* MOBILE — compact horizontal scroll */}
+      <div className="sm:hidden relative -mx-6">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-10"
+          style={{
+            background:
+              "linear-gradient(to right, #0a0810 0%, transparent 8%, transparent 92%, #0a0810 100%)",
+          }}
+        />
+        <div className="overflow-hidden">
+          <div
+            className="flex items-center gap-4 px-6 py-6 will-change-transform animate-marquee"
+            style={{
+              animationDirection: "reverse",
+              animationDuration: "40s",
+              width: "max-content",
+            }}
+          >
+            {loop.map((card, i) => (
+              <HeroCard
+                key={`m-${card.label}-${i}`}
+                card={card}
+                style={{ transform: "scale(0.9)" }}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -268,45 +252,45 @@ function HeroStudio() {
   );
 }
 
-function FlowCard({
-  label,
-  img,
-  icon,
-  result,
-  delay = "0ms",
+function HeroCard({
+  card,
+  style,
 }: {
-  label: string;
-  img: string;
-  icon: React.ReactNode;
-  result?: boolean;
-  delay?: string;
+  card: { label: string; img: string; icon: React.ReactNode; accent?: boolean };
+  style?: React.CSSProperties;
 }) {
   return (
     <div
-      className="animate-fade-up"
-      style={{ animationDelay: delay }}
+      className="shrink-0 transition-transform duration-700 ease-out"
+      style={style}
     >
       <div
-        className={`relative rounded-xl overflow-hidden aspect-[3/4] bg-[#f3eee8] transition-transform duration-500 hover:-translate-y-0.5 ${
-          result
-            ? "ring-1 ring-violet/50 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.55)]"
-            : "ring-1 ring-white/[0.06]"
+        className={`relative w-[170px] sm:w-[185px] lg:w-[205px] aspect-[3/4] rounded-2xl overflow-hidden border bg-[#14111d] backdrop-blur-sm ${
+          card.accent
+            ? "border-violet/50 shadow-[0_30px_60px_-20px_rgba(168,85,247,0.65)]"
+            : "border-white/[0.08] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)]"
         }`}
       >
         <img
-          src={img}
-          alt={label}
+          src={card.img}
+          alt={card.label}
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"
         />
-        <div className="absolute top-1.5 left-1.5">
-          <span className="inline-flex items-center gap-1 rounded-md bg-black/55 backdrop-blur px-1.5 py-0.5 text-[9.5px] text-white">
-            {icon}
-            {label}
+        {/* gradient overlay for legibility */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/15"
+        />
+        {/* label */}
+        <div className="absolute top-2 left-2">
+          <span className="inline-flex items-center gap-1 rounded-md bg-black/55 backdrop-blur px-1.5 py-0.5 text-[10px] text-white border border-white/10">
+            {card.icon}
+            {card.label}
           </span>
         </div>
-        {result && (
+        {card.accent && (
           <div
             aria-hidden
             className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-violet to-transparent animate-scan"
@@ -318,25 +302,6 @@ function FlowCard({
   );
 }
 
-function FlowArrow({ delay = "0ms" }: { delay?: string }) {
-  return (
-    <div
-      className="relative flex items-center justify-center animate-fade-up"
-      style={{ animationDelay: delay }}
-    >
-      <div
-        className="h-px w-full"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(168,85,247,0.7), transparent)",
-        }}
-      />
-      <span className="absolute grid h-5 w-5 place-items-center rounded-full bg-[#0a0810] border border-violet/40 text-violet">
-        <ArrowRight size={10} />
-      </span>
-    </div>
-  );
-}
 
 /* =================== WORKFLOW DEMO =================== */
 function Workflow() {
