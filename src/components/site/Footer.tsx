@@ -1,37 +1,50 @@
 import { Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import footerVisual from "@/assets/footer-visual.jpg";
 
-const COLUMNS: { title: string; links: string[] }[] = [
+type FooterLink = { label: string; to: string };
+
+const COLUMNS: { title: string; links: FooterLink[] }[] = [
   {
     title: "Product",
     links: [
-      "Virtual Try-On",
-      "AI Photoshoot",
-      "Ghost Mannequin",
-      "Pose Studio",
-      "Video Studio",
-      "Stylo AI Stylist",
+      { label: "Virtual Try-On", to: "/features/virtual-try-on" },
+      { label: "AI Photoshoot", to: "/features/ai-photoshoot" },
+      { label: "Ghost Mannequin", to: "/features/ghost-mannequin" },
+      { label: "Pose Studio", to: "/features/pose-studio" },
+      { label: "Video Studio", to: "/features/video-studio" },
+      { label: "Stylo AI Stylist", to: "/features/stylo-ai-stylist" },
     ],
   },
   {
     title: "For Shoppers",
-    links: ["AI Fashion Store", "Try Outfits", "AI Stylist", "Showcase Video"],
+    links: [
+      { label: "AI Fashion Store", to: "/for-shoppers" },
+      { label: "Try Outfits", to: "/for-shoppers" },
+      { label: "AI Stylist", to: "/features/stylo-ai-stylist" },
+      { label: "Showcase Video", to: "/features/video-studio" },
+    ],
   },
   {
     title: "For Brands",
     links: [
-      "Brand Studio",
-      "Fabric Studio",
-      "Widget",
-      "Stores",
-      "Analytics",
-      "Book Demo",
+      { label: "Brand Studio", to: "/for-brands" },
+      { label: "Fabric Studio", to: "/features/fabric-studio" },
+      { label: "Widget", to: "/features/brand-widget" },
+      { label: "Stores", to: "/stores" },
+      { label: "Analytics", to: "/features/analytics" },
+      { label: "Book Demo", to: "/book-demo" },
     ],
   },
   {
     title: "Company",
-    links: ["Pricing", "Contact", "Privacy Policy", "Terms"],
+    links: [
+      { label: "Pricing", to: "/pricing" },
+      { label: "Contact", to: "/contact" },
+      { label: "Privacy Policy", to: "/privacy" },
+      { label: "Terms", to: "/terms" },
+    ],
   },
 ];
 
