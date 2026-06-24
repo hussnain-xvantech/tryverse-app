@@ -315,7 +315,7 @@ function CuratedRow({
   title: string;
   sub: string;
   images: string[];
-  label: Category;
+  label: string;
   videoIndices?: number[];
 }) {
   return (
