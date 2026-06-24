@@ -111,7 +111,7 @@ function SectionHead({
 /* =================== 1. HERO =================== */
 function ShopperHero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden pb-16 sm:pb-20 lg:pb-24">
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute left-1/2 top-[-260px] h-[900px] w-[1200px] -translate-x-1/2 rounded-full opacity-70"
@@ -119,8 +119,8 @@ function ShopperHero() {
         />
       </div>
 
-      <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <div className="grid items-center gap-14 lg:gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.2fr)]">
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
+        <div className="grid items-center gap-12 lg:gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
           <div className="animate-fade-up">
             <div className="eyebrow flex items-center gap-2">
               <span className="h-1 w-1 rounded-full bg-violet" />
@@ -167,7 +167,9 @@ function ShopperHero() {
             </div>
           </div>
 
-          <ShopperAppMockup />
+          <div className="lg:pl-4 w-full max-w-[440px] mx-auto lg:max-w-[460px] lg:ml-auto lg:mr-0">
+            <ShopperAppMockup />
+          </div>
         </div>
       </div>
     </section>
@@ -184,7 +186,7 @@ function ShopperAppMockup() {
   ];
 
   return (
-    <div className="relative animate-fade-up [animation-delay:120ms] lg:scale-[1.04] lg:origin-right">
+    <div className="relative animate-fade-up [animation-delay:120ms]">
       <div
         aria-hidden
         className="absolute -inset-12 -z-10 opacity-90"
@@ -341,60 +343,194 @@ function ShopperAppMockup() {
   );
 }
 
-/* =================== 2. HOW IT WORKS =================== */
+/* =================== 2. FROM LINK TO LOOK =================== */
 function HowItWorks() {
+  const [active, setActive] = useState(0);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    let interval: ReturnType<typeof setInterval> | null = null;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !interval) {
+            interval = setInterval(() => {
+              setActive((a) => (a + 1) % 5);
+            }, 1400);
+          }
+        });
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(ref.current);
+    return () => {
+      io.disconnect();
+      if (interval) clearInterval(interval);
+    };
+  }, []);
+
   const steps = [
     {
-      icon: <LinkIcon size={18} />,
-      title: "Paste a product link",
-      text: "Choose clothing from any supported fashion store.",
+      title: "Paste Product Link",
+      caption: "Any supported store",
+      thumb: (
+        <div className="flex items-center gap-1.5 rounded-lg border border-violet/40 bg-white/[0.04] px-2 py-1.5 w-full">
+          <LinkIcon size={10} className="text-violet shrink-0" />
+          <span className="text-[9.5px] text-white/75 truncate">store.com/blazer</span>
+        </div>
+      ),
     },
     {
-      icon: <Upload size={18} />,
-      title: "Upload your photo",
-      text: "Use a clear photo so TryVerse can create your try-on result.",
+      title: "Upload Your Photo",
+      caption: "A clear full-body shot",
+      thumb: (
+        <div className="h-full w-full rounded-lg overflow-hidden ring-1 ring-white/10">
+          <img src={userPhoto} alt="" className="h-full w-full object-cover" />
+        </div>
+      ),
     },
     {
-      icon: <Sparkles size={18} />,
-      title: "See the look",
-      text: "View the outfit on you before buying.",
+      title: "Generate Try-On",
+      caption: "AI matches pose & fit",
+      thumb: (
+        <div className="relative h-full w-full rounded-lg overflow-hidden ring-1 ring-violet/40 bg-[#1a1424]">
+          <img src={blazerBefore} alt="" className="h-full w-full object-cover opacity-70" />
+          <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-violet to-transparent animate-scan" />
+          <span className="absolute bottom-1 left-1 text-[8.5px] text-violet inline-flex items-center gap-0.5">
+            <Wand2 size={8} /> Processing
+          </span>
+        </div>
+      ),
+    },
+    {
+      title: "Decide With Confidence",
+      caption: "See it on you, then buy",
+      thumb: (
+        <div className="relative h-full w-full rounded-lg overflow-hidden ring-1 ring-violet/60 shadow-[0_10px_30px_-10px_rgba(168,85,247,0.6)]">
+          <img src={blazerAfter} alt="" className="h-full w-full object-cover" />
+          <span className="absolute top-1 left-1 inline-flex items-center gap-0.5 rounded-full bg-black/55 backdrop-blur px-1.5 py-0.5 text-[8.5px] text-white">
+            <Check size={8} className="text-emerald-300" /> Ready
+          </span>
+        </div>
+      ),
     },
   ];
+
+  const progress = Math.min(1, active / (steps.length - 1));
 
   return (
     <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <SectionHead
-          eyebrow="How it works"
-          lines={["Try Any Outfit", "In Seconds"]}
+          eyebrow="The shopping flow"
+          lines={["From Link", "To Look"]}
           accentIndices={[1]}
-          sub="Three simple steps — no styling skills, no studio, no waiting."
+          sub="A simple shopping flow that shows the outfit on you before checkout."
           align="center"
         />
 
-        <div className="relative mt-14 grid gap-5 sm:grid-cols-3">
+        <Reveal delay={200} className="mt-14">
           <div
-            aria-hidden
-            className="hidden sm:block absolute top-[42px] left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-violet/50 to-transparent"
-          />
-          {steps.map((s, i) => (
-            <Reveal
-              key={s.title}
-              delay={i * 120}
-              className="relative rounded-2xl p-7 sm:p-8 bg-gradient-to-b from-white/[0.04] to-white/[0.015] border border-white/[0.09] hover:border-violet/35 transition-all duration-300 hover:-translate-y-0.5 text-center"
-            >
-              <span className="relative mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-violet/25 to-magenta/15 border border-violet/30 text-white shadow-[0_10px_30px_-10px_rgba(168,85,247,0.55)]">
-                <span aria-hidden className="absolute -inset-2 rounded-2xl bg-violet/25 blur-xl opacity-70 -z-10" />
-                {s.icon}
-              </span>
-              <div className="mt-4 text-[11px] uppercase tracking-[0.18em] text-violet/80">
-                Step {i + 1}
+            ref={ref}
+            className="relative rounded-[2rem] border border-white/[0.08] bg-gradient-to-b from-[#14111d] to-[#0a0810] p-6 sm:p-8 lg:p-10 shadow-[0_40px_120px_-50px_rgba(168,85,247,0.4)] overflow-hidden"
+          >
+            <div
+              aria-hidden
+              className="absolute -inset-x-20 -top-32 h-72 opacity-50 pointer-events-none"
+              style={{ background: "var(--gradient-glow)", filter: "blur(50px)" }}
+            />
+
+            {/* Desktop: horizontal */}
+            <div className="hidden lg:block relative">
+              {/* Connecting line */}
+              <div className="absolute left-[8%] right-[8%] top-[78px] h-px bg-white/[0.08]" />
+              <div
+                className="absolute left-[8%] top-[78px] h-px bg-gradient-to-r from-violet to-magenta transition-all duration-700 ease-out shadow-[0_0_12px_rgba(168,85,247,0.7)]"
+                style={{ width: `calc(${progress} * 84%)` }}
+              />
+
+              <div className="relative grid grid-cols-4 gap-6">
+                {steps.map((s, i) => {
+                  const isActive = i <= active;
+                  return (
+                    <div
+                      key={s.title}
+                      className={`flex flex-col items-center text-center transition-all duration-500 ${
+                        isActive ? "opacity-100 translate-y-0" : "opacity-50 translate-y-1"
+                      }`}
+                    >
+                      <div
+                        className={`relative h-[140px] w-[140px] rounded-2xl p-2 transition-all duration-500 ${
+                          isActive
+                            ? "bg-gradient-to-b from-violet/15 to-magenta/5 ring-1 ring-violet/40 shadow-[0_18px_45px_-20px_rgba(168,85,247,0.7)]"
+                            : "bg-white/[0.03] ring-1 ring-white/[0.06]"
+                        }`}
+                      >
+                        <div className="h-full w-full grid place-items-center">{s.thumb}</div>
+                      </div>
+                      <div className="mt-6 relative">
+                        <span
+                          className={`grid h-7 w-7 mx-auto place-items-center rounded-full text-[11px] font-semibold transition-all duration-500 ${
+                            isActive
+                              ? "bg-gradient-to-br from-violet to-magenta text-white shadow-[0_0_0_4px_rgba(168,85,247,0.18)]"
+                              : "bg-white/[0.05] text-white/45 border border-white/10"
+                          }`}
+                        >
+                          {isActive ? <Check size={12} /> : i + 1}
+                        </span>
+                      </div>
+                      <div className="mt-3 text-[13.5px] font-semibold text-white">{s.title}</div>
+                      <div className="mt-1 text-[12px] text-white/55">{s.caption}</div>
+                    </div>
+                  );
+                })}
               </div>
-              <h4 className="font-display mt-2 text-xl leading-tight">{s.title}</h4>
-              <p className="mt-3 text-[14.5px] text-muted-foreground leading-[1.7]">{s.text}</p>
-            </Reveal>
-          ))}
-        </div>
+            </div>
+
+            {/* Mobile: vertical */}
+            <div className="lg:hidden relative">
+              <div className="absolute left-[27px] top-4 bottom-4 w-px bg-white/[0.08]" />
+              <div
+                className="absolute left-[27px] top-4 w-px bg-gradient-to-b from-violet to-magenta transition-all duration-700 shadow-[0_0_10px_rgba(168,85,247,0.6)]"
+                style={{ height: `calc(${progress} * (100% - 2rem))` }}
+              />
+              <div className="space-y-5">
+                {steps.map((s, i) => {
+                  const isActive = i <= active;
+                  return (
+                    <div
+                      key={s.title}
+                      className={`relative flex items-center gap-4 transition-all duration-500 ${
+                        isActive ? "opacity-100" : "opacity-55"
+                      }`}
+                    >
+                      <span
+                        className={`relative z-10 grid h-[54px] w-[54px] shrink-0 place-items-center rounded-xl ${
+                          isActive
+                            ? "bg-gradient-to-br from-violet/25 to-magenta/10 ring-1 ring-violet/45 shadow-[0_10px_30px_-10px_rgba(168,85,247,0.7)]"
+                            : "bg-white/[0.03] ring-1 ring-white/[0.06]"
+                        }`}
+                      >
+                        <div className="h-[42px] w-[42px] grid place-items-center">{s.thumb}</div>
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-violet/80">
+                          Step {i + 1}
+                        </div>
+                        <div className="mt-0.5 text-[14px] font-semibold text-white">{s.title}</div>
+                        <div className="text-[12.5px] text-white/55">{s.caption}</div>
+                      </div>
+                      {isActive && (
+                        <Check size={14} className="text-emerald-300 shrink-0" />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
