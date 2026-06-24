@@ -1,0 +1,168 @@
+import { Link } from "@tanstack/react-router";
+import { ReactNode } from "react";
+import { Logo } from "./Logo";
+
+export function AuthShell({
+  eyebrow,
+  title,
+  subtitle,
+  children,
+  footer,
+  trust,
+}: {
+  eyebrow?: string;
+  title: string;
+  subtitle: string;
+  children: ReactNode;
+  footer: ReactNode;
+  trust?: ReactNode;
+}) {
+  return (
+    <div className="min-h-screen relative text-white overflow-x-hidden">
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 opacity-90"
+        style={{ background: "var(--gradient-glow)" }}
+      />
+      <header className="px-6 sm:px-10 py-6">
+        <Link to="/" aria-label="TryVerse home" className="inline-flex">
+          <Logo />
+        </Link>
+      </header>
+      <main className="px-6 sm:px-10 pb-16 pt-4 sm:pt-8">
+        <div className="mx-auto w-full max-w-[460px] animate-fade-up">
+          <div className="surface-card p-8 sm:p-10 rounded-3xl">
+            {eyebrow && (
+              <div className="eyebrow inline-flex">{eyebrow}</div>
+            )}
+            <h1 className="mt-3 font-display text-[32px] sm:text-[38px] leading-[1.1]">
+              {title}
+            </h1>
+            <p className="mt-3 text-[14px] sm:text-[15px] text-white/65 leading-relaxed">
+              {subtitle}
+            </p>
+            <div className="mt-7">{children}</div>
+          </div>
+          <div className="mt-6 text-center text-[14px] text-white/65">
+            {footer}
+          </div>
+          {trust && (
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-[12px] text-white/55">
+              {trust}
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export function AuthInput({
+  id,
+  label,
+  type = "text",
+  value,
+  onChange,
+  error,
+  rightSlot,
+  autoComplete,
+  placeholder,
+}: {
+  id: string;
+  label: string;
+  type?: string;
+  value: string;
+  onChange: (v: string) => void;
+  error?: string;
+  rightSlot?: ReactNode;
+  autoComplete?: string;
+  placeholder?: string;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="block text-[13px] font-medium text-white/80 mb-2">
+        {label}
+      </label>
+      <div className="relative">
+        <input
+          id={id}
+          type={type}
+          value={value}
+          autoComplete={autoComplete}
+          placeholder={placeholder}
+          onChange={(e) => onChange(e.target.value)}
+          className={`w-full rounded-xl bg-white/[0.04] border px-4 py-3 text-[14px] text-white placeholder-white/35 transition focus:outline-none focus:bg-white/[0.06] ${
+            error
+              ? "border-red-400/60 focus:border-red-400 focus:shadow-[0_0_0_4px_rgba(248,113,113,0.15)]"
+              : "border-white/10 focus:border-[color:var(--color-accent,#a855f7)] focus:shadow-[0_0_0_4px_rgba(168,85,247,0.18)]"
+          } ${rightSlot ? "pr-12" : ""}`}
+        />
+        {rightSlot && (
+          <div className="absolute inset-y-0 right-3 flex items-center">{rightSlot}</div>
+        )}
+      </div>
+      {error && <p className="mt-2 text-[12px] text-red-300">{error}</p>}
+    </div>
+  );
+}
+
+export function SocialButtons() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <button
+        type="button"
+        className="rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition px-4 py-3 text-[14px] font-medium inline-flex items-center justify-center gap-2"
+      >
+        <GoogleIcon /> Continue with Google
+      </button>
+      <button
+        type="button"
+        className="rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition px-4 py-3 text-[14px] font-medium inline-flex items-center justify-center gap-2"
+      >
+        <AppleIcon /> Continue with Apple
+      </button>
+    </div>
+  );
+}
+
+export function Divider({ label = "or" }: { label?: string }) {
+  return (
+    <div className="my-6 flex items-center gap-4">
+      <div className="h-px flex-1 bg-white/10" />
+      <span className="text-[12px] uppercase tracking-[0.18em] text-white/45">
+        {label}
+      </span>
+      <div className="h-px flex-1 bg-white/10" />
+    </div>
+  );
+}
+
+function GoogleIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true">
+      <path
+        fill="#FFC107"
+        d="M43.6 20.5H42V20H24v8h11.3C33.7 32.6 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.3 6.1 29.4 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 19.7-8 19.7-20 0-1.3-.1-2.4-.1-3.5z"
+      />
+      <path
+        fill="#FF3D00"
+        d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3 0 5.8 1.1 7.9 3l5.7-5.7C34.3 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"
+      />
+      <path
+        fill="#4CAF50"
+        d="M24 44c5.3 0 10.1-2 13.7-5.3l-6.3-5.2C29.3 35 26.8 36 24 36c-5.3 0-9.7-3.4-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"
+      />
+      <path
+        fill="#1976D2"
+        d="M43.6 20.5H42V20H24v8h11.3c-.8 2.4-2.3 4.4-4.2 5.8l6.3 5.2C41.9 36 44 30.5 44 24c0-1.3-.1-2.4-.4-3.5z"
+      />
+    </svg>
+  );
+}
+
+function AppleIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M16.365 1.43c0 1.14-.49 2.27-1.27 3.06-.83.86-2.19 1.52-3.32 1.43-.14-1.12.46-2.3 1.21-3.06.85-.86 2.27-1.49 3.38-1.43zM20.5 17.5c-.55 1.27-.82 1.83-1.53 2.95-1 1.55-2.41 3.48-4.16 3.49-1.55.02-1.95-.99-4.05-.97-2.1.01-2.54 1-4.09.98-1.75-.01-3.08-1.78-4.08-3.33C-.06 17.36-.34 12.74 1.4 10.16c1.23-1.81 3.17-2.86 4.99-2.86 1.85 0 3.01 1 4.55 1 1.49 0 2.4-1 4.54-1 1.61 0 3.31.87 4.52 2.38-3.97 2.17-3.32 7.84.5 7.82z" />
+    </svg>
+  );
+}

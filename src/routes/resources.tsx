@@ -60,6 +60,7 @@ const CATEGORIES: Category[] = [
 
 type Article = {
   title: string;
+  slug: string;
   category: Exclude<Category, "All">;
   description: string;
   readTime: string;
@@ -69,6 +70,7 @@ type Article = {
 const ARTICLES: Article[] = [
   {
     title: "What Is AI Virtual Try-On For Clothing?",
+    slug: "what-is-ai-virtual-try-on-for-clothing",
     category: "Virtual Try-On",
     description:
       "A simple guide to how shoppers can try outfits online before buying.",
@@ -77,6 +79,7 @@ const ARTICLES: Article[] = [
   },
   {
     title: "How AI Photoshoots Help Clothing Brands Save Time",
+    slug: "how-ai-photoshoots-help-clothing-brands-save-time",
     category: "AI Photoshoot",
     description:
       "Turn product photos into model visuals without a traditional studio shoot.",
@@ -85,6 +88,7 @@ const ARTICLES: Article[] = [
   },
   {
     title: "Ghost Mannequin vs Model Photos: When To Use Each",
+    slug: "ghost-mannequin-vs-model-photos",
     category: "Ghost Mannequin",
     description:
       "Learn which visual style works best for ecommerce product pages.",
@@ -93,6 +97,7 @@ const ARTICLES: Article[] = [
   },
   {
     title: "How To Create Better Product Images For Fashion Stores",
+    slug: "better-product-images-for-fashion-stores",
     category: "Ecommerce",
     description:
       "Practical tips for clothing visuals that improve buyer confidence.",
@@ -101,6 +106,7 @@ const ARTICLES: Article[] = [
   },
   {
     title: "Meet Stylo: Your AI Fashion Stylist",
+    slug: "meet-stylo-ai-fashion-stylist",
     category: "AI Stylist",
     description:
       "See how AI styling can help shoppers discover outfit ideas faster.",
@@ -109,6 +115,7 @@ const ARTICLES: Article[] = [
   },
   {
     title: "TryVerse Product Updates",
+    slug: "tryverse-product-updates",
     category: "Product Updates",
     description:
       "New features, supported stores, and platform improvements.",
@@ -210,9 +217,13 @@ function Featured() {
                 </span>
               </div>
               <div className="mt-7">
-                <a href="#latest" className="btn-primary">
+                <Link
+                  to="/resources/$slug"
+                  params={{ slug: "what-is-ai-virtual-try-on-for-clothing" }}
+                  className="btn-primary"
+                >
                   Read Article <ArrowRight size={16} />
-                </a>
+                </Link>
               </div>
             </div>
           </article>
@@ -279,8 +290,9 @@ function CategoriesAndArticles() {
 
 function ArticleCard({ article }: { article: Article }) {
   return (
-    <a
-      href="#"
+    <Link
+      to="/resources/$slug"
+      params={{ slug: article.slug }}
       className="group block surface-card overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(168,85,247,0.45)]"
     >
       <div className="relative aspect-[5/3] overflow-hidden">
@@ -311,7 +323,7 @@ function ArticleCard({ article }: { article: Article }) {
           </span>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
