@@ -75,7 +75,7 @@ function BrandsPage() {
         <ResultsGallery />
         <BrandFinalCTA />
       </main>
-      <Footer />
+      <Footer variant="minimal" />
     </div>
   );
 }
@@ -540,17 +540,21 @@ function BrandToolsGrid() {
   );
 }
 
-/* =================== 4. BRAND STUDIO DEMO =================== */
+/* =================== 4. AI PHOTOSHOOT DEMO =================== */
 function BrandStudioDemo() {
-  const styles = ["Studio", "Editorial", "Catalog", "Social"];
-  const [styleIdx, setStyleIdx] = useState(0);
+  const variations = [
+    { label: "Studio", img: editorialHero },
+    { label: "Editorial", img: g1a },
+    { label: "Catalog", img: g2a },
+  ];
   const steps = [
     "Reading garment",
-    "Creating model pose",
     "Preserving fabric details",
+    "Creating model pose",
     "Final image ready",
   ];
   const [stepIdx, setStepIdx] = useState(0);
+  const [variantIdx, setVariantIdx] = useState(0);
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -562,7 +566,7 @@ function BrandStudioDemo() {
       if (t) return;
       t = setInterval(() => {
         setStepIdx((s) => (s + 1) % steps.length);
-        setStyleIdx((s) => (s + 1) % styles.length);
+        setVariantIdx((v) => (v + 1) % variations.length);
       }, 1800);
     };
     const stop = () => {
@@ -590,7 +594,7 @@ function BrandStudioDemo() {
       document.removeEventListener("visibilitychange", onVis);
       stop();
     };
-  }, [steps.length, styles.length]);
+  }, [steps.length, variations.length]);
 
   return (
     <section id="demo" className="relative py-20 sm:py-24">
@@ -602,99 +606,97 @@ function BrandStudioDemo() {
       </div>
 
       <div ref={rootRef} className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-10 sm:mb-12">
-          <div className="max-w-2xl">
-            <div className="eyebrow">Live demo</div>
-            <h2 className="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-              <RevealLines lines={["Flat-Lay To AI", "Photoshoot Result"]} accentIndices={[1]} step={120} />
-            </h2>
-          </div>
-          <p className="text-muted-foreground max-w-md text-base leading-relaxed">
-            Upload a clothing product photo and generate a store-ready model shot in seconds —
-            fabric, color, and fit preserved.
-          </p>
-        </div>
+        <SectionHead
+          eyebrow="Live demo"
+          lines={["AI Photoshoot", "In Action"]}
+          accentIndices={[1]}
+          align="center"
+          sub="Upload one clothing product photo and generate model-ready ecommerce visuals in seconds."
+        />
 
-        <div className="relative rounded-[2.25rem] border border-white/[0.08] bg-gradient-to-b from-[#0e0c16] to-[#08070d] p-4 sm:p-6 lg:p-8">
-          <div className="grid gap-5 lg:gap-6 lg:grid-cols-[1.15fr_1fr]">
-            {/* LEFT — before/after */}
-            <div>
-              <BeforeAfter
-                before={blazerBefore}
-                after={blazerAfter}
-                beforeLabel="Before Product Photo"
-                afterLabel="AI Photoshoot Result"
-                className="aspect-[4/5]"
-              />
+        <div className="mt-12 relative rounded-[2.25rem] border border-white/[0.08] bg-gradient-to-b from-[#0e0c16] to-[#08070d] p-5 sm:p-7 lg:p-9">
+          <div className="grid gap-6 lg:gap-8 items-center lg:grid-cols-[0.9fr_auto_1.2fr]">
+            {/* LEFT — Uploaded product */}
+            <div className="animate-fade-up">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-3">
+                Uploaded Product
+              </div>
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden ring-1 ring-white/[0.06] bg-[#f3eee8]">
+                <img
+                  src={clothingBlazer}
+                  alt="Flat-lay lavender blazer"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="absolute top-2 left-2 chip backdrop-blur bg-black/55 text-white !text-[10px]">
+                  <Shirt size={10} /> Flat-lay
+                </span>
+              </div>
+              <div className="mt-4 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+                <div className="text-[13px] font-medium">Lavender Blazer</div>
+                <div className="text-[11px] text-white/55 mt-0.5">Apparel · Outerwear</div>
+              </div>
             </div>
 
-            {/* RIGHT — workflow panel */}
-            <div className="rounded-[2rem] border border-white/[0.08] bg-[#0c0a14] p-5 sm:p-6 flex flex-col gap-5">
+            {/* CENTER — processing line */}
+            <div className="hidden lg:flex flex-col items-center gap-3 px-2">
+              <div className="relative h-[260px] w-[2px] overflow-hidden rounded-full bg-white/[0.06]">
+                <div
+                  className="absolute inset-x-0 h-[40%] animate-scan-y rounded-full"
+                  style={{ background: "var(--gradient-brand)" }}
+                />
+              </div>
+              <div className="flex items-center gap-1.5 text-[11px] text-violet">
+                <Wand2 size={12} /> Generating
+              </div>
+            </div>
+            <div className="lg:hidden flex justify-center">
+              <ArrowRight className="text-violet animate-pulse" size={22} />
+            </div>
+
+            {/* RIGHT — AI result + variations + workflow */}
+            <div className="animate-fade-up [animation-delay:160ms] space-y-4">
               <div>
-                <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-2">
-                  Uploaded product
+                <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-3">
+                  AI Photoshoot Result
                 </div>
-                <div className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-2.5">
-                  <div className="h-12 w-12 rounded-lg overflow-hidden bg-[#f3eee8] shrink-0">
-                    <img
-                      src={clothingBlazer}
-                      alt=""
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-[13px] font-medium truncate">Lavender Oversized Blazer</div>
-                    <div className="text-[11px] text-white/50">Apparel · Outerwear · 1 image</div>
-                  </div>
+                <div className="relative aspect-[4/5] sm:aspect-[5/4] rounded-2xl overflow-hidden ring-1 ring-violet/50 shadow-[0_30px_70px_-25px_rgba(168,85,247,0.55)] bg-[#f3eee8]">
+                  <img
+                    src={variations[variantIdx].img}
+                    alt="AI model photoshoot result"
+                    className="h-full w-full object-cover transition-opacity duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    key={variantIdx}
+                  />
+                  <span className="absolute top-2.5 left-2.5 chip backdrop-blur bg-black/55 text-white !text-[10px]">
+                    <Sparkles size={10} /> {variations[variantIdx].label}
+                  </span>
                 </div>
               </div>
 
-              <div>
-                <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-2">
-                  Output
-                </div>
-                <div className="flex items-center gap-2 rounded-lg border border-violet/40 bg-gradient-to-br from-violet/15 to-magenta/10 px-3 py-2 text-[12.5px]">
-                  <Camera size={13} /> AI Photoshoot
-                </div>
-              </div>
-
-              <div>
-                <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-2 flex items-center gap-1.5">
-                  <Sliders size={11} /> Style
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {styles.map((s, i) => (
-                    <span
-                      key={s}
-                      className={`px-3 py-1.5 rounded-full text-[11.5px] border transition-all ${
-                        i === styleIdx
-                          ? "border-violet/50 bg-gradient-to-br from-violet/25 to-magenta/15 text-white shadow-[0_0_0_3px_rgba(168,85,247,0.08)]"
-                          : "border-white/10 bg-white/[0.02] text-white/60"
-                      }`}
-                    >
-                      {s}
+              <div className="grid grid-cols-3 gap-2">
+                {variations.map((v, i) => (
+                  <button
+                    key={v.label}
+                    type="button"
+                    onClick={() => setVariantIdx(i)}
+                    className={`relative aspect-[4/5] rounded-lg overflow-hidden ring-1 transition-all ${
+                      i === variantIdx
+                        ? "ring-violet/60 shadow-[0_0_0_3px_rgba(168,85,247,0.15)]"
+                        : "ring-white/[0.06] opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    <img src={v.img} alt={v.label} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+                    <span className="absolute bottom-1 left-1 chip backdrop-blur bg-black/55 text-white !text-[9px] !px-1.5 !py-0.5">
+                      {v.label}
                     </span>
-                  ))}
-                </div>
+                  </button>
+                ))}
               </div>
 
-              <div>
-                <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-2">
-                  Prompt
-                </div>
-                <div className="rounded-xl border border-white/[0.06] bg-black/30 p-3 text-[12.5px] text-white/75 leading-relaxed">
-                  “Create a clean ecommerce model photo while preserving fabric color, texture,
-                  fit, and garment details.”
-                </div>
-              </div>
-
-              <button className="btn-primary !py-3 !text-sm animate-glow-pulse">
-                <Wand2 size={14} /> Generate
-              </button>
-
-              <div className="space-y-2 pt-1">
+              <div className="rounded-xl border border-white/[0.06] bg-black/30 p-4 space-y-2">
                 {steps.map((s, i) => {
                   const done = i < stepIdx;
                   const active = i === stepIdx;
@@ -713,11 +715,7 @@ function BrandStudioDemo() {
                       </span>
                       <span
                         className={
-                          done
-                            ? "text-white/80"
-                            : active
-                              ? "text-white"
-                              : "text-white/45"
+                          done ? "text-white/80" : active ? "text-white" : "text-white/45"
                         }
                       >
                         {s}
