@@ -539,10 +539,13 @@ function MarqueeRow({
   reverse?: boolean;
 }) {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
       <div
         className="flex gap-4 w-max animate-marquee hover:[animation-play-state:paused] px-6"
-        style={reverse ? { animationDirection: "reverse" } : undefined}
+        style={{
+          animationDuration: "70s",
+          ...(reverse ? { animationDirection: "reverse" } : {}),
+        }}
       >
         {items.map((it, i) => (
           <figure
