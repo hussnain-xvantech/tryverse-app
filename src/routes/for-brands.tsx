@@ -37,19 +37,6 @@ import g6a from "@/assets/g6-after.jpg";
 import g1b from "@/assets/g1-before.jpg";
 import g2b from "@/assets/g2-before.jpg";
 
-import editorialHero from "@/assets/editorial-hero.jpg";
-import garmentFlat from "@/assets/garment-flatlay.jpg";
-import clothingBlazer from "@/assets/clothing-blazer.jpg";
-import blazerBefore from "@/assets/blazer-before.jpg";
-import blazerAfter from "@/assets/blazer-after.jpg";
-import g1a from "@/assets/g1-after.jpg";
-import g2a from "@/assets/g2-after.jpg";
-import g3a from "@/assets/g3-after.jpg";
-import g4a from "@/assets/g4-after.jpg";
-import g5a from "@/assets/g5-after.jpg";
-import g6a from "@/assets/g6-after.jpg";
-import g1b from "@/assets/g1-before.jpg";
-import g2b from "@/assets/g2-before.jpg";
 
 export const Route = createFileRoute("/for-brands")({
   head: () => ({
