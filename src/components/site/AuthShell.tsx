@@ -1,9 +1,16 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ReactNode, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { Logo } from "./Logo";
+import authVisualAsset from "@/assets/auth-visual.jpg.asset.json";
+
+const authVisual = authVisualAsset.url;
+
 
 const NAV_LINKS = [
+  { to: "/", label: "Home" },
+  { to: "/for-shoppers", label: "For Shoppers" },
+  { to: "/for-brands", label: "For Brands" },
   { to: "/pricing", label: "Pricing" },
   { to: "/discover", label: "Discover" },
   { to: "/resources", label: "Resources" },
@@ -17,25 +24,26 @@ function AuthNav() {
 
   return (
     <header className="px-6 sm:px-10 py-5 sm:py-6">
-      <div className="mx-auto max-w-[1280px] flex items-center justify-between gap-4">
+      <div className="mx-auto max-w-[1320px] flex items-center justify-between gap-4">
         <Link to="/" aria-label="TryVerse home" className="inline-flex shrink-0">
           <Logo />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7 text-[14px]">
+        <nav className="hidden lg:flex items-center gap-7 text-[14px]">
           {NAV_LINKS.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               className="text-white/70 hover:text-white transition"
               activeProps={{ className: "text-white" }}
+              activeOptions={{ exact: l.to === "/" }}
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <Link
             to="/login"
             className={`text-[14px] px-3 py-2 rounded-lg transition ${
@@ -58,7 +66,7 @@ function AuthNav() {
 
         <button
           type="button"
-          className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/10 bg-white/[0.04] text-white"
+          className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/10 bg-white/[0.04] text-white"
           aria-label="Open menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -68,7 +76,7 @@ function AuthNav() {
       </div>
 
       {open && (
-        <div className="md:hidden mt-4 mx-auto max-w-[1280px] surface-card p-4 rounded-2xl">
+        <div className="lg:hidden mt-4 mx-auto max-w-[1320px] surface-card p-4 rounded-2xl">
           <div className="flex flex-col gap-1">
             {NAV_LINKS.map((l) => (
               <Link
@@ -77,6 +85,7 @@ function AuthNav() {
                 onClick={() => setOpen(false)}
                 className="px-3 py-2 rounded-lg text-[14px] text-white/80 hover:text-white hover:bg-white/[0.05]"
                 activeProps={{ className: "text-white bg-white/[0.06]" }}
+                activeOptions={{ exact: l.to === "/" }}
               >
                 {l.label}
               </Link>
@@ -108,12 +117,10 @@ function AuthNav() {
 }
 
 export function AuthShell({
-  eyebrow,
   title,
   subtitle,
   children,
   footer,
-  trust,
 }: {
   eyebrow?: string;
   title: string;
@@ -123,39 +130,76 @@ export function AuthShell({
   trust?: ReactNode;
 }) {
   return (
-    <div className="min-h-screen relative text-white overflow-x-hidden">
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-90"
-        style={{ background: "var(--gradient-glow)" }}
-      />
+    <div className="min-h-screen relative text-white overflow-x-hidden flex flex-col">
       <AuthNav />
-      <main className="px-6 sm:px-10 pb-16 pt-4 sm:pt-8">
-        <div className="mx-auto w-full max-w-[460px] animate-fade-up">
-          <div className="surface-card p-8 sm:p-10 rounded-3xl">
-            {eyebrow && (
-              <div className="eyebrow inline-flex">{eyebrow}</div>
-            )}
-            <h1 className="mt-3 font-display text-[32px] sm:text-[38px] leading-[1.1]">
-              {title}
-            </h1>
-            <p className="mt-3 text-[14px] sm:text-[15px] text-white/65 leading-relaxed">
-              {subtitle}
-            </p>
-            <div className="mt-7">{children}</div>
-          </div>
-          <div className="mt-6 text-center text-[14px] text-white/65">
-            {footer}
-          </div>
-          {trust && (
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-[12px] text-white/55">
-              {trust}
+      <main className="flex-1 px-6 sm:px-10 pb-10">
+        <div className="mx-auto w-full max-w-[1320px] grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] items-center">
+          {/* LEFT — form */}
+          <div className="relative">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-10 -z-10 opacity-80"
+              style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
+            />
+            <div className="mx-auto w-full max-w-[460px] animate-fade-up">
+              <h1 className="font-display text-[34px] sm:text-[42px] leading-[1.05]">
+                {title}
+              </h1>
+              <p className="mt-3 text-[14px] sm:text-[15px] text-white/65 leading-relaxed">
+                {subtitle}
+              </p>
+              <div className="mt-7">{children}</div>
+              <div className="mt-6 text-[13.5px] text-white/65">{footer}</div>
             </div>
-          )}
+          </div>
+
+          {/* RIGHT — visual */}
+          <div className="hidden lg:block relative animate-fade-up [animation-delay:120ms]">
+            <div
+              aria-hidden
+              className="absolute -inset-6 -z-10 rounded-[2.5rem] opacity-70"
+              style={{ background: "var(--gradient-glow)", filter: "blur(50px)" }}
+            />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#0c0a14] shadow-[0_40px_120px_-40px_rgba(168,85,247,0.55)]">
+              <img
+                src={authVisual}
+                alt="TryVerse virtual try-on result — lavender blazer outfit"
+                width={896}
+                height={1216}
+                loading="lazy"
+                decoding="async"
+                className="block w-full h-auto max-h-[78vh] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-black/50 backdrop-blur px-3 py-1.5 text-[11.5px] text-white/90 border border-white/10">
+                <Sparkles size={12} className="text-violet" /> Generated with TryVerse
+              </div>
+            </div>
+          </div>
+
+          {/* MOBILE compact visual below form */}
+          <div className="lg:hidden order-last">
+            <div className="relative overflow-hidden rounded-2xl border border-white/[0.08]">
+              <img
+                src={authVisual}
+                alt="TryVerse virtual try-on result"
+                width={896}
+                height={1216}
+                loading="lazy"
+                decoding="async"
+                className="block w-full h-48 object-cover"
+              />
+              <div className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[11px] text-white/90 border border-white/10">
+                <Sparkles size={11} className="text-violet" /> Generated with TryVerse
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
   );
 }
+
 
 export function AuthInput({
   id,

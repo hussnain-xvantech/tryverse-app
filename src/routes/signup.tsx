@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Eye, EyeOff, ArrowRight, Check } from "lucide-react";
+import { Eye, EyeOff, ArrowRight } from "lucide-react";
 
 import {
   AuthShell,
@@ -50,31 +50,19 @@ function SignupPage() {
 
   return (
     <AuthShell
-      eyebrow="Get Started"
-      title="Start creating with TryVerse"
-      subtitle="Try clothes before buying or create AI fashion visuals for your brand."
+      title="Create your account"
+      subtitle="Start trying clothes on and creating AI fashion visuals with TryVerse."
       footer={
-        <>
+        <p>
           Already have an account?{" "}
           <Link to="/login" className="text-white font-medium hover:underline">
-            Log in
+            Log in.
           </Link>
-        </>
-      }
-      trust={
-        <>
-          <span className="inline-flex items-center gap-1.5">
-            <Check size={12} /> Free to start
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Check size={12} /> No credit card
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Check size={12} /> Clothing-only AI
-          </span>
-        </>
+        </p>
       }
     >
+      <SocialButtons />
+      <Divider />
       <form onSubmit={submit} className="space-y-4" noValidate>
         <AuthInput
           id="name"
@@ -87,7 +75,7 @@ function SignupPage() {
         />
         <AuthInput
           id="email"
-          label="Email address"
+          label="Email"
           type="email"
           autoComplete="email"
           placeholder="you@example.com"
@@ -118,7 +106,7 @@ function SignupPage() {
 
         <div>
           <div className="block text-[13px] font-medium text-white/80 mb-2">
-            I'm using TryVerse as
+            Account type
           </div>
           <div className="grid grid-cols-2 gap-2">
             {(["Shopper", "Brand"] as Role[]).map((r) => {
@@ -148,26 +136,23 @@ function SignupPage() {
         >
           {loading ? "Creating account…" : (
             <>
-              Create Account <ArrowRight size={16} />
+              Create account <ArrowRight size={16} />
             </>
           )}
         </button>
 
-        <p className="text-[12px] text-white/55 text-center leading-relaxed">
-          By creating an account, you agree to TryVerse{" "}
-          <Link to="/terms" className="text-white/75 hover:text-white underline underline-offset-2">
-            Terms
+        <p className="text-[12px] text-white/50 text-center leading-relaxed">
+          By continuing you agree to our{" "}
+          <Link to="/privacy" className="text-white/70 hover:text-white underline underline-offset-2">
+            Privacy Policy
           </Link>{" "}
           and{" "}
-          <Link to="/privacy" className="text-white/75 hover:text-white underline underline-offset-2">
-            Privacy Policy
+          <Link to="/terms" className="text-white/70 hover:text-white underline underline-offset-2">
+            Terms of Service
           </Link>
           .
         </p>
       </form>
-
-      <Divider />
-      <SocialButtons />
     </AuthShell>
   );
 }
