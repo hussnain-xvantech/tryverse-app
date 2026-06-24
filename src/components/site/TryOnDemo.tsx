@@ -66,7 +66,7 @@ export function TryOnDemo() {
   const progressPct = revealed ? 100 : running ? ((step + 1) / 4) * 100 : 0;
 
   return (
-    <div className="grid gap-6 lg:gap-8 lg:grid-cols-[1.15fr_1fr] items-stretch">
+    <div ref={rootRef} className="grid gap-6 lg:gap-8 lg:grid-cols-[1.15fr_1fr] items-stretch">
       {/* LEFT — before/after slider */}
       <div className="relative">
         <BeforeAfter
