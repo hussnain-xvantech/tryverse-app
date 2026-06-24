@@ -122,7 +122,7 @@ export function Footer() {
 
 
       {/* Link columns — no gap, merges with glowing interface */}
-      <div className="bg-background/80 border-t border-white/[0.06] -mt-px">
+      <div className="-mt-px">
         <div className="mx-auto max-w-[1280px] px-6 sm:px-10 pt-10 sm:pt-12 pb-14 sm:pb-16">
           <div className="grid gap-12 lg:gap-16 md:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
             <div className="md:col-span-1">
