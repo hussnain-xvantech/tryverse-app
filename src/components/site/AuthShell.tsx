@@ -182,15 +182,18 @@ export function AuthShell({
 
           {/* MOBILE compact visual below form */}
           <div className="lg:hidden order-last">
-            <div className="relative overflow-hidden rounded-2xl border border-white/[0.08]">
+            <div
+              className="relative overflow-hidden rounded-2xl border border-white/[0.08] h-56"
+              style={{ background: "linear-gradient(160deg, #1a1530 0%, #120e22 60%, #0c0a14 100%)" }}
+            >
               <img
                 src={authVisual}
-                alt="TryVerse virtual try-on result"
+                alt="TryVerse fashion try-on result"
                 width={896}
                 height={1216}
                 loading="lazy"
                 decoding="async"
-                className="block w-full h-48 object-cover"
+                className="absolute inset-0 m-auto max-h-full max-w-full w-auto h-auto object-contain"
               />
               <div className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[11px] text-white/90 border border-white/10">
                 <Sparkles size={11} className="text-violet" /> Generated with TryVerse
