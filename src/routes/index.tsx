@@ -83,7 +83,7 @@ function Hero() {
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute left-1/2 top-[-260px] h-[900px] w-[1200px] -translate-x-1/2 rounded-full opacity-70"
-          style={{ background: "var(--gradient-glow)", filter: "blur(50px)" }}
+          style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
         />
       </div>
 
@@ -148,7 +148,7 @@ function HeroStudio() {
       <div
         aria-hidden
         className="absolute -inset-10 -z-10 opacity-80"
-        style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
+        style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
       />
 
       {/* APP WINDOW — everything stays inside */}
@@ -344,7 +344,7 @@ function Workflow() {
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute right-[-200px] top-1/3 h-[600px] w-[600px] rounded-full opacity-50"
-          style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
+          style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
         />
       </div>
 
@@ -695,7 +695,7 @@ function FinalCTA() {
         <div className="relative rounded-[2.5rem] overflow-hidden p-10 sm:p-16 lg:p-20 bg-gradient-to-b from-[#15131c] to-[#0c0a14] border border-white/10">
           <div
             className="absolute -inset-32 -z-0 opacity-70"
-            style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
+            style={{ background: "var(--gradient-glow)", filter: "blur(24px)" }}
           />
           <div className="relative grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
             <div>
