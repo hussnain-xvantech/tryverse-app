@@ -6,6 +6,7 @@ import { Logo } from "./Logo";
 type NavItem = { label: string; to: string };
 
 const NAV: NavItem[] = [
+  { label: "Home", to: "/" },
   { label: "For Shoppers", to: "/for-shoppers" },
   { label: "For Brands", to: "/for-brands" },
   { label: "Stores", to: "/stores" },
@@ -25,8 +26,7 @@ export function Header() {
   }, []);
 
   const isActive = (item: NavItem) => {
-    // Treat the homepage as the "For Shoppers" page
-    if (item.to === "/for-shoppers") return pathname === "/" || pathname.startsWith("/for-shoppers");
+    if (item.to === "/") return pathname === "/";
     return pathname === item.to || pathname.startsWith(item.to + "/");
   };
 
