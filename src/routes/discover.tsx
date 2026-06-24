@@ -137,81 +137,44 @@ function DiscoverPage() {
 
 /* ---------------- HERO ---------------- */
 function Hero() {
-  const mosaic = [
-    g1a, editorialHero, blazerAfter, g4a,
-    g3a, g2c, g5a, garmentFlat,
-    g6a, heroResult, clothingBlazer, g2a,
-  ];
   return (
-    <section className="relative px-6 sm:px-10 pt-6 pb-16 sm:pb-20">
+    <section className="relative px-6 sm:px-10 pt-12 sm:pt-20 pb-16 sm:pb-24">
       <div
         className="pointer-events-none absolute inset-0 -z-10"
         style={{ background: "var(--gradient-glow)" }}
       />
-      <div className="mx-auto max-w-[1280px] grid lg:grid-cols-[1.05fr_1fr] items-center gap-12 lg:gap-16">
-        <div>
-          <Reveal>
-            <div className="eyebrow">Discover</div>
-          </Reveal>
-          <h1 className="mt-4 font-display text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.02]">
-            <RevealLines
-              lines={["Explore What", "TryVerse Can Create"]}
-              accentIndices={[1]}
-            />
-          </h1>
-          <Reveal delay={220}>
-            <p className="mt-6 text-[17px] leading-relaxed text-white/70 max-w-xl">
-              Browse AI try-on results, clothing photoshoots, ghost mannequin
-              visuals, pose variations, and short fashion videos created for
-              shoppers and clothing brands.
-            </p>
-          </Reveal>
-          <Reveal delay={320}>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link to="/signup" className="btn-primary">
-                Try It Free <ArrowRight size={16} />
-              </Link>
-              <Link to="/for-brands" className="btn-secondary">
-                For Brands
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* Mosaic */}
-        <Reveal delay={150}>
-          <div className="relative">
-            <div
-              className="absolute -inset-6 rounded-[2rem] -z-10 opacity-70"
-              style={{ background: "var(--gradient-glow)" }}
-            />
-            <div className="grid grid-cols-3 gap-3">
-              {mosaic.map((src, i) => (
-                <div
-                  key={i}
-                  className={`relative overflow-hidden rounded-2xl border border-white/10 ${
-                    i % 5 === 0 ? "row-span-2 aspect-[3/4]" : "aspect-[4/5]"
-                  }`}
-                  style={{
-                    animation: `float-y ${6 + (i % 4)}s ease-in-out ${i * 0.2}s infinite`,
-                  }}
-                >
-                  <img
-                    src={src}
-                    alt=""
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </div>
-              ))}
-            </div>
+      <div className="mx-auto max-w-[920px] text-center">
+        <Reveal>
+          <div className="eyebrow justify-center inline-flex">Discover</div>
+        </Reveal>
+        <h1 className="mt-5 font-display text-[44px] sm:text-[60px] lg:text-[72px] leading-[1.04]">
+          <RevealLines
+            lines={["Explore What TryVerse", "Can Create"]}
+            accentIndices={[1]}
+          />
+        </h1>
+        <Reveal delay={220}>
+          <p className="mt-6 text-[17px] leading-relaxed text-white/70 max-w-2xl mx-auto">
+            Browse AI try-on results, clothing photoshoots, ghost mannequin
+            visuals, pose variations, and short fashion videos created for
+            shoppers and clothing brands.
+          </p>
+        </Reveal>
+        <Reveal delay={320}>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <Link to="/signup" className="btn-primary">
+              Try It Free <ArrowRight size={16} />
+            </Link>
+            <Link to="/for-brands" className="btn-secondary">
+              For Brands
+            </Link>
           </div>
         </Reveal>
       </div>
     </section>
   );
 }
+
 
 /* ---------------- FEATURED GRID + FILTERS ---------------- */
 function GalleryWithFilters() {
