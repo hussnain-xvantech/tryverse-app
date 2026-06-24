@@ -32,7 +32,6 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
       { label: "Brand Studio", to: "/for-brands" },
       { label: "Fabric Studio", to: "/features/fabric-studio" },
       { label: "Widget", to: "/features/brand-widget" },
-      { label: "Stores", to: "/stores" },
       { label: "Analytics", to: "/features/analytics" },
       { label: "Book Demo", to: "/book-demo" },
     ],
@@ -41,6 +40,8 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
     title: "Company",
     links: [
       { label: "Pricing", to: "/pricing" },
+      { label: "Discover", to: "/discover" },
+      { label: "Resources", to: "/resources" },
       { label: "Contact", to: "/contact" },
       { label: "Privacy Policy", to: "/privacy" },
       { label: "Terms", to: "/terms" },
