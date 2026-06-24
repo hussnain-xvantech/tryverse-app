@@ -613,8 +613,8 @@ function BrandStudioDemo() {
           sub="Upload one clothing product photo and generate model-ready ecommerce visuals in seconds."
         />
 
-        <div className="mt-12 relative rounded-[2.25rem] border border-white/[0.08] bg-gradient-to-b from-[#0e0c16] to-[#08070d] p-5 sm:p-7 lg:p-9">
-          <div className="grid gap-6 lg:gap-8 items-center lg:grid-cols-[0.9fr_auto_1.2fr]">
+        <div className="mt-14 relative rounded-[2.25rem] border border-white/[0.1] bg-gradient-to-b from-[#0e0c16] to-[#08070d] p-6 sm:p-9 lg:p-12 shadow-[0_60px_140px_-50px_rgba(168,85,247,0.35)]">
+          <div className="grid gap-8 lg:gap-10 items-center lg:grid-cols-[0.95fr_auto_1.25fr]">
             {/* LEFT — Uploaded product */}
             <div className="animate-fade-up">
               <div className="text-[10px] uppercase tracking-[0.18em] text-white/45 mb-3">
@@ -638,18 +638,26 @@ function BrandStudioDemo() {
               </div>
             </div>
 
-            {/* CENTER — processing line */}
-            <div className="hidden lg:flex flex-col items-center gap-3 px-2">
-              <div className="relative h-2 w-[140px] overflow-hidden rounded-full bg-white/[0.06]">
+            {/* CENTER — animated processing line */}
+            <div className="hidden lg:flex flex-col items-center gap-3 px-2 min-w-[180px]">
+              <div className="relative h-[2px] w-[180px] overflow-hidden rounded-full bg-white/[0.06]">
                 <div
-                  className="h-full animate-progress rounded-full"
-                  style={{ background: "var(--gradient-brand)" }}
+                  aria-hidden
+                  className="absolute inset-y-0 w-1/2 animate-scan rounded-full"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(168,85,247,0.95), rgba(217,70,239,0.9), transparent)", boxShadow: "0 0 18px rgba(168,85,247,0.7)" }}
                 />
               </div>
               <div className="flex items-center gap-1.5 text-[11px] text-violet whitespace-nowrap">
                 <Wand2 size={12} /> Generating model shot
               </div>
-              <ArrowRight className="text-violet/70" size={20} />
+              <ArrowRight className="text-violet/80" size={22} />
+              <div className="relative h-[2px] w-[180px] overflow-hidden rounded-full bg-white/[0.06]">
+                <div
+                  aria-hidden
+                  className="absolute inset-y-0 w-1/2 animate-scan rounded-full"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(217,70,239,0.9), rgba(168,85,247,0.95), transparent)", animationDelay: "0.6s" }}
+                />
+              </div>
             </div>
             <div className="lg:hidden flex justify-center">
               <ArrowRight className="text-violet animate-pulse" size={22} />
