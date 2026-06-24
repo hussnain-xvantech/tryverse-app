@@ -152,7 +152,7 @@ function HeroCarousel() {
 
       {/* DESKTOP / TABLET — curved arc */}
       <div
-        className="group relative hidden sm:block h-[520px] lg:h-[560px] overflow-hidden"
+        className="group relative hidden sm:block h-[400px] lg:h-[440px] overflow-hidden"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
