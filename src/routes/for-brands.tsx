@@ -923,20 +923,20 @@ function BrandWidget() {
 /* =================== 7. RESULTS GALLERY =================== */
 function ResultsGallery() {
   const rowA = [
-    { src: garmentFlat, tag: "Flat-lay → Model" },
-    { src: editorialHero, tag: "AI Photoshoot" },
+    { src: garmentFlat, tag: "Flat-Lay Product" },
+    { src: clothingBlazer, tag: "Mannequin Product" },
+    { src: editorialHero, tag: "AI Model Photoshoot" },
     { src: g6a, tag: "Ghost Mannequin" },
-    { src: g1a, tag: "Fabric → Outfit" },
     { src: g2a, tag: "Catalog Visual" },
-    { src: g5a, tag: "Campaign Image" },
+    { src: g5a, tag: "Campaign Model" },
   ];
   const rowB = [
     { src: g3a, tag: "Pose Variation" },
-    { src: g4a, tag: "Campaign Image" },
-    { src: g1b, tag: "Social Ad Visual" },
-    { src: editorialHero, tag: "Try-On Widget" },
+    { src: g1a, tag: "Editorial Shot" },
+    { src: blazerAfter, tag: "Product Page Widget" },
+    { src: g4a, tag: "Campaign Model" },
     { src: g2b, tag: "Catalog Frame" },
-    { src: blazerAfter, tag: "Ecommerce Model" },
+    { src: g1b, tag: "Ecommerce Visual" },
   ];
   const loopA = [...rowA, ...rowA];
   const loopB = [...rowB, ...rowB];
