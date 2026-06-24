@@ -175,7 +175,7 @@ function ShopperHero() {
 }
 
 function ShopperAppMockup() {
-  const steps = ["Upload", "Match", "Generate", "Ready"];
+  const steps = ["Link detected", "Photo uploaded", "Outfit matched", "Try-on ready"];
   const tabs = [
     { label: "Virtual Try-On", icon: <Shirt size={11} /> },
     { label: "Stylo Stylist", icon: <MessageCircle size={11} /> },
@@ -419,7 +419,7 @@ function ShopperFeatures() {
       icon: <MessageCircle size={18} />,
       title: "Stylo AI Stylist",
       text: "Get outfit advice, color ideas, and styling suggestions.",
-      image: g2c,
+      image: g1a,
     },
     {
       icon: <Camera size={18} />,
@@ -523,7 +523,7 @@ function LiveTryOnDemo() {
           sub="TryVerse shows how clothing looks on you before you add it to cart."
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_1fr] items-stretch">
+        <div className="mt-14 grid gap-8 lg:gap-12 lg:grid-cols-[1.15fr_1fr] items-stretch">
           {/* Before/After */}
           <Reveal className="relative">
             <div
@@ -814,7 +814,25 @@ function SupportedStores() {
           align="center"
         />
 
-        <div className="mt-12 grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <Reveal delay={120} className="mx-auto mt-10 max-w-2xl">
+          <div className="flex items-center gap-2 rounded-2xl border border-violet/35 bg-white/[0.03] px-4 py-3 shadow-[0_0_0_4px_rgba(168,85,247,0.08)] hover:border-violet/55 transition-colors">
+            <LinkIcon size={15} className="text-violet shrink-0" />
+            <input
+              type="text"
+              disabled
+              placeholder="Paste any clothing product link…"
+              className="flex-1 bg-transparent text-[13.5px] text-white/80 placeholder-white/40 outline-none min-w-0"
+            />
+            <button
+              type="button"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-violet to-magenta px-3.5 py-2 text-[12.5px] font-medium text-white shadow-[0_8px_24px_-8px_rgba(168,85,247,0.7)]"
+            >
+              <Wand2 size={12} /> Try On
+            </button>
+          </div>
+        </Reveal>
+
+        <div className="mt-8 grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
           {stores.map((s, i) => (
             <Reveal
               key={s}
@@ -847,8 +865,8 @@ function ShopperGallery() {
     { image: g5a, tag: "Casual Outfit Try-On" },
   ];
   const row2 = [
-    { image: g2c, tag: "Stylo Outfit Suggestion" },
-    { image: g6a, tag: "Pose Studio Result" },
+    { image: g6a, tag: "Stylo Outfit Suggestion" },
+    { image: g4a, tag: "Pose Studio Result" },
     { image: editorialHero, tag: "Showcase Video Frame" },
     { image: heroResult, tag: "Link → Try-On" },
     { image: g2a, tag: "Store Outfit Preview" },
