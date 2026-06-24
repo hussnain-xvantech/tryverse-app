@@ -227,14 +227,14 @@ function BrandStudioMockup() {
   }, [tools.length, variations.length]);
 
   return (
-    <div ref={rootRef} className="relative animate-fade-up [animation-delay:120ms]">
+    <div ref={rootRef} className="relative animate-fade-up [animation-delay:120ms] lg:scale-[1.04] lg:origin-right">
       <div
         aria-hidden
-        className="absolute -inset-10 -z-10 opacity-80"
-        style={{ background: "var(--gradient-glow)", filter: "blur(30px)" }}
+        className="absolute -inset-12 -z-10 opacity-90"
+        style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
       />
 
-      <div className="relative rounded-[2rem] border border-white/[0.08] bg-gradient-to-b from-[#14111d] to-[#0a0810] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] overflow-hidden">
+      <div className="relative rounded-[2rem] border border-white/[0.1] bg-gradient-to-b from-[#14111d] to-[#0a0810] shadow-[0_50px_140px_-40px_rgba(0,0,0,0.95)] overflow-hidden ring-1 ring-violet/15">
         {/* TOP BAR */}
         <div className="flex items-center justify-between gap-3 px-5 sm:px-6 py-3.5 border-b border-white/[0.06]">
           <div className="flex items-center gap-2.5">
