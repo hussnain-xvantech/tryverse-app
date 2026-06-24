@@ -274,6 +274,100 @@
   border-radius: 1.5rem;
 }
 
+/* ============ Premium scroll-reveal for headings ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-lines { display: inline; }
+.reveal-line {
+  display: block;
+  overflow: hidden;
+  line-height: inherit;
+}
+.reveal-line-inner {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(110%);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: inherit;
+  will-change: opacity, transform;
+}
+.reveal-lines[data-visible="true"] .reveal-line-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-accent .reveal-line-inner {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 35%,
+    #E9D5FF 50%,
+    #ffffff 65%,
+    #ffffff 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.reveal-lines[data-visible="true"] .reveal-accent .reveal-line-inner {
+  animation: accent-shimmer 3.2s ease-out 1 forwards;
+  animation-delay: 600ms;
+}
+@keyframes accent-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+/* ============ Button polish ============ */
+.btn-primary {
+  background: linear-gradient(120deg, #6D28FF 0%, #A855F7 35%, #D946EF 65%, #A855F7 100%);
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  transition:
+    transform 220ms ease,
+    box-shadow 260ms ease,
+    background-position 900ms ease,
+    filter 220ms ease;
+}
+.btn-primary:hover {
+  background-position: 100% 50%;
+}
+.btn-secondary {
+  transition:
+    transform 220ms ease,
+    box-shadow 260ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(168,85,247,0.35), 0 10px 30px -16px rgba(168,85,247,0.6);
+}
+
+/* ============ Footer running scan line ============ */
+@keyframes runline {
+  0% { transform: translateX(-30%); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateX(130%); opacity: 0; }
+}
+@utility animate-runline { animation: runline 4.6s linear infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -281,4 +375,6 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  .reveal, .reveal-line-inner { opacity: 1 !important; transform: none !important; }
 }
+
