@@ -1002,18 +1002,23 @@ function MarqueeRow({
 /* =================== 8. FINAL CTA =================== */
 function BrandFinalCTA() {
   return (
-    <section id="try" className="relative overflow-hidden py-24 sm:py-32">
+    <section id="try" className="relative overflow-hidden py-28 sm:py-40">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 opacity-50"
-        style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[780px] w-[1100px] -translate-x-1/2 -translate-y-1/2 opacity-70"
+        style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.35), transparent 70%)", filter: "blur(20px)" }}
       />
 
-      <div className="mx-auto max-w-[720px] px-6 sm:px-10 text-center">
+      <div className="mx-auto max-w-[760px] px-6 sm:px-10 text-center">
         <Reveal as="div" className="eyebrow justify-center">
           For Clothing Brands
         </Reveal>
 
-        <h2 className="font-display mt-6 text-4xl sm:text-5xl lg:text-[60px] leading-[1.05]">
+        <h2 className="font-display mt-7 text-[40px] sm:text-[56px] lg:text-[68px] leading-[1.04]">
           <RevealLines
             lines={["Ready To Create", "Better Product Visuals?"]}
             accentIndices={[1]}
@@ -1021,21 +1026,27 @@ function BrandFinalCTA() {
           />
         </h2>
 
-        <Reveal as="p" delay={340} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+        <Reveal as="p" delay={340} className="mt-7 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
           Build AI photoshoots, ghost mannequin images, videos, and virtual try-on experiences for
           your fashion store with TryVerse.
         </Reveal>
 
-        <Reveal delay={500} className="mt-10 flex flex-wrap justify-center gap-3">
-          <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+        <Reveal delay={500} className="mt-11 flex flex-wrap justify-center gap-3">
+          <Link
+            to="/signup"
+            className="btn-primary !py-4 !px-8 !text-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_60px_-18px_rgba(168,85,247,0.75)]"
+          >
             Start Creating <ArrowRight size={16} />
           </Link>
-          <Link to="/book-demo" className="btn-secondary !py-3.5 !px-7 !text-sm">
+          <Link
+            to="/book-demo"
+            className="btn-secondary !py-4 !px-8 !text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-violet/50"
+          >
             Book Brand Demo
           </Link>
         </Reveal>
 
-        <Reveal delay={640} className="mt-7 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
+        <Reveal delay={640} className="mt-8 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
           <span className="flex items-center gap-1.5">
             <Check size={12} className="text-emerald-400" /> Clothing-only AI
           </span>
