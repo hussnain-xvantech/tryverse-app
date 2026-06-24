@@ -96,21 +96,26 @@ function Hero() {
               AI Fashion Try-On Studio
             </div>
             <h1 className="font-display mt-6 text-[44px] sm:text-[64px] lg:text-[80px] leading-[1.02]">
-              Try Clothes On<br />Before You Buy
+              <RevealLines
+                lines={["Try Clothes On", "Before You Buy"]}
+                accentIndices={[1]}
+                step={130}
+              />
             </h1>
-            <p className="mt-6 text-base sm:text-[17px] text-muted-foreground max-w-xl leading-relaxed">
+            <Reveal as="p" delay={420} className="mt-6 text-base sm:text-[17px] text-muted-foreground max-w-xl leading-relaxed">
               Paste a product link, upload your photo, and see the outfit on you
               instantly. For brands, TryVerse turns clothing photos into model shots,
               videos, poses, and store-ready visuals.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            </Reveal>
+            <Reveal delay={560} className="mt-8 flex flex-wrap gap-3">
               <a href="#try" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Try It Free <ArrowRight size={16} />
               </a>
               <a href="#brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
                 Explore Brand Studio
               </a>
-            </div>
+            </Reveal>
+
             <div className="mt-8 flex flex-wrap gap-2">
               {["Virtual Try-On", "AI Stylist", "Photoshoot", "Brand Widget"].map(
                 (c, i) => (
