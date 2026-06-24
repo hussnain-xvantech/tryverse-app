@@ -118,7 +118,7 @@ function BrandHero() {
       </div>
 
       <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <div className="grid items-center gap-14 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
+        <div className="grid items-center gap-14 lg:gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)]">
           {/* LEFT */}
           <div className="animate-fade-up">
             <div className="eyebrow flex items-center gap-2">
