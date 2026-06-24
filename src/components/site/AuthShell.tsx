@@ -160,17 +160,20 @@ export function AuthShell({
               className="absolute -inset-6 -z-10 rounded-[2.5rem] opacity-70"
               style={{ background: "var(--gradient-glow)", filter: "blur(50px)" }}
             />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#0c0a14] shadow-[0_40px_120px_-40px_rgba(168,85,247,0.55)]">
+            <div
+              className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] shadow-[0_40px_120px_-40px_rgba(168,85,247,0.55)] aspect-[3/4] max-h-[78vh] mx-auto w-full"
+              style={{ background: "linear-gradient(160deg, #1a1530 0%, #120e22 60%, #0c0a14 100%)" }}
+            >
               <img
                 src={authVisual}
-                alt="TryVerse virtual try-on result — lavender blazer outfit"
+                alt="TryVerse fashion try-on result — cream tailored blazer outfit"
                 width={896}
                 height={1216}
                 loading="lazy"
                 decoding="async"
-                className="block w-full h-auto max-h-[78vh] object-cover"
+                className="absolute inset-0 m-auto max-h-full max-w-full w-auto h-auto object-contain"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/35 to-transparent pointer-events-none" />
               <div className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-black/50 backdrop-blur px-3 py-1.5 text-[11.5px] text-white/90 border border-white/10">
                 <Sparkles size={12} className="text-violet" /> Generated with TryVerse
               </div>
