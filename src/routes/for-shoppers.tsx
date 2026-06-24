@@ -186,7 +186,7 @@ function ShopperAppMockup() {
   ];
 
   return (
-    <div className="relative animate-fade-up [animation-delay:120ms] lg:scale-[1.04] lg:origin-right">
+    <div className="relative animate-fade-up [animation-delay:120ms]">
       <div
         aria-hidden
         className="absolute -inset-12 -z-10 opacity-90"
