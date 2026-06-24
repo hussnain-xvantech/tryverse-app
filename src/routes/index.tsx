@@ -24,6 +24,8 @@ import {
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { TryOnDemo } from "@/components/site/TryOnDemo";
+import { Reveal, RevealLines } from "@/components/site/Reveal";
+
 
 import editorialHero from "@/assets/editorial-hero.jpg";
 import userRef from "@/assets/user-reference.jpg";
