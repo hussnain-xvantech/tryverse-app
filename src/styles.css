@@ -260,14 +260,12 @@
 @utility animate-glow-pulse { animation: glow-pulse 2.4s ease-in-out infinite; }
 @utility animate-fade-up { animation: fade-up 0.7s ease-out both; }
 @utility animate-marquee { animation: marquee 40s linear infinite; }
-@utility animate-scan { animation: scan-down 3.2s ease-in-out infinite; }
-@utility animate-progress { animation: progress-fill 3.2s ease-in-out infinite; }
+@utility animate-scan { animation: scan-down 4s ease-in-out infinite; }
+@utility animate-progress { animation: progress-fill 4s ease-in-out infinite; }
 
-@keyframes corner-sweep {
-  0%, 100% { opacity: 0.55; filter: blur(28px); }
-  50% { opacity: 1; filter: blur(34px); }
-}
-@utility animate-corner-sweep { animation: corner-sweep 4.5s ease-in-out infinite; }
+/* corner-sweep replaced with a static soft glow — continuous blur animation
+   on a large element caused major scroll jank. */
+
 
 @utility soft-card {
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
