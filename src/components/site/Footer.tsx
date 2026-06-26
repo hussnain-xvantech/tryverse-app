@@ -9,7 +9,7 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
   {
     title: "Product",
     links: [
-      { label: "Virtual Try-On", to: "/features/virtual-try-on" },
+      { label: "Virtual Try-On", to: "/virtual-try-on" },
       { label: "AI Photoshoot", to: "/features/ai-photoshoot" },
       { label: "Ghost Mannequin", to: "/features/ghost-mannequin" },
       { label: "Pose Studio", to: "/features/pose-studio" },
