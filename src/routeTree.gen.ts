@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VirtualTryOnRouteImport } from './routes/virtual-try-on'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StoresRouteImport } from './routes/stores'
 import { Route as SignupRouteImport } from './routes/signup'
@@ -26,6 +27,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as FeaturesSlugRouteImport } from './routes/features.$slug'
 
+const VirtualTryOnRoute = VirtualTryOnRouteImport.update({
+  id: '/virtual-try-on',
+  path: '/virtual-try-on',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
+  '/virtual-try-on': typeof VirtualTryOnRoute
   '/features/$slug': typeof FeaturesSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
 }
@@ -140,6 +147,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
+  '/virtual-try-on': typeof VirtualTryOnRoute
   '/features/$slug': typeof FeaturesSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
 }
@@ -159,6 +167,7 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
+  '/virtual-try-on': typeof VirtualTryOnRoute
   '/features/$slug': typeof FeaturesSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
 }
@@ -179,6 +188,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/stores'
     | '/terms'
+    | '/virtual-try-on'
     | '/features/$slug'
     | '/resources/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/stores'
     | '/terms'
+    | '/virtual-try-on'
     | '/features/$slug'
     | '/resources/$slug'
   id:
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/stores'
     | '/terms'
+    | '/virtual-try-on'
     | '/features/$slug'
     | '/resources/$slug'
   fileRoutesById: FileRoutesById
@@ -234,11 +246,19 @@ export interface RootRouteChildren {
   SignupRoute: typeof SignupRoute
   StoresRoute: typeof StoresRoute
   TermsRoute: typeof TermsRoute
+  VirtualTryOnRoute: typeof VirtualTryOnRoute
   FeaturesSlugRoute: typeof FeaturesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/virtual-try-on': {
+      id: '/virtual-try-on'
+      path: '/virtual-try-on'
+      fullPath: '/virtual-try-on'
+      preLoaderRoute: typeof VirtualTryOnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -381,6 +401,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignupRoute: SignupRoute,
   StoresRoute: StoresRoute,
   TermsRoute: TermsRoute,
+  VirtualTryOnRoute: VirtualTryOnRoute,
   FeaturesSlugRoute: FeaturesSlugRoute,
 }
 export const routeTree = rootRouteImport
