@@ -23,6 +23,7 @@ import { Route as ForBrandsRouteImport } from './routes/for-brands'
 import { Route as DiscoverRouteImport } from './routes/discover'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookDemoRouteImport } from './routes/book-demo'
+import { Route as AiPhotoshootRouteImport } from './routes/ai-photoshoot'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as FeaturesSlugRouteImport } from './routes/features.$slug'
@@ -97,6 +98,11 @@ const BookDemoRoute = BookDemoRouteImport.update({
   path: '/book-demo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiPhotoshootRoute = AiPhotoshootRouteImport.update({
+  id: '/ai-photoshoot',
+  path: '/ai-photoshoot',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -115,6 +121,7 @@ const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-photoshoot': typeof AiPhotoshootRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
   '/discover': typeof DiscoverRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-photoshoot': typeof AiPhotoshootRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
   '/discover': typeof DiscoverRoute
@@ -154,6 +162,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-photoshoot': typeof AiPhotoshootRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
   '/discover': typeof DiscoverRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ai-photoshoot'
     | '/book-demo'
     | '/contact'
     | '/discover'
@@ -194,6 +204,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ai-photoshoot'
     | '/book-demo'
     | '/contact'
     | '/discover'
@@ -213,6 +224,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/ai-photoshoot'
     | '/book-demo'
     | '/contact'
     | '/discover'
@@ -233,6 +245,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiPhotoshootRoute: typeof AiPhotoshootRoute
   BookDemoRoute: typeof BookDemoRoute
   ContactRoute: typeof ContactRoute
   DiscoverRoute: typeof DiscoverRoute
@@ -350,6 +363,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BookDemoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-photoshoot': {
+      id: '/ai-photoshoot'
+      path: '/ai-photoshoot'
+      fullPath: '/ai-photoshoot'
+      preLoaderRoute: typeof AiPhotoshootRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -388,6 +408,7 @@ const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiPhotoshootRoute: AiPhotoshootRoute,
   BookDemoRoute: BookDemoRoute,
   ContactRoute: ContactRoute,
   DiscoverRoute: DiscoverRoute,
