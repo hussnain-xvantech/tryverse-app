@@ -5,7 +5,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal, RevealLines } from "@/components/site/Reveal";
 
-export const Route = createFileRoute("/pricing")({
+export const Route = createFileRoute("/pricing/shoppers")({
   head: () => ({
     meta: [
       { title: "Pricing — TryVerse" },
