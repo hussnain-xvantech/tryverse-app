@@ -284,7 +284,7 @@ function PricingCard({
       <div className="mt-1 text-[12.5px] text-white/45">{plan.sub}</div>
 
       <Link
-        to="/signup"
+        to="/signup/shoppers"
         className={`mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full py-3.5 text-[14px] font-semibold transition-all ${
           plan.highlight ? "btn-primary" : "btn-secondary"
         }`}
@@ -409,7 +409,7 @@ function CreditPacks() {
                 </div>
                 <div className="mt-1 text-[13px] text-white/55">${p.perCredit} per credit</div>
                 <Link
-                  to="/signup"
+                  to="/signup/shoppers"
                   className={`mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full py-3 text-[13.5px] font-semibold transition-all ${
                     p.best ? "btn-primary" : "btn-secondary"
                   }`}
@@ -640,7 +640,7 @@ function FinalCTA() {
               Start creating stunning AI fashion visuals today. Free to start.
             </Reveal>
             <Reveal delay={460} className="mt-9 flex flex-wrap justify-center gap-3">
-              <Link to="/signup" className="btn-primary !py-4 !px-7 !text-[14px]">
+              <Link to="/signup/shoppers" className="btn-primary !py-4 !px-7 !text-[14px]">
                 Get Started Free <ArrowRight size={16} />
               </Link>
               <Link to="/pricing/brands" className="btn-secondary !py-4 !px-7 !text-[14px]">

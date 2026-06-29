@@ -98,7 +98,7 @@ function Hero() {
               outfit looks on you before checkout.
             </Reveal>
             <Reveal delay={560} className="mt-8 flex flex-wrap gap-3">
-              <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+              <Link to="/signup/shoppers" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Try It Free <ArrowRight size={16} />
               </Link>
               <Link to="/for-shoppers" className="btn-secondary !py-3.5 !px-7 !text-sm">
@@ -470,7 +470,7 @@ function FinalCTA() {
           Try your next outfit with TryVerse before you buy.
         </Reveal>
         <Reveal delay={420} className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+          <Link to="/signup/shoppers" className="btn-primary !py-3.5 !px-7 !text-sm">
             Try It Free <ArrowRight size={16} />
           </Link>
           <Link to="/pricing/shoppers" className="btn-secondary !py-3.5 !px-7 !text-sm">
