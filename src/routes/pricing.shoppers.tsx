@@ -8,19 +8,19 @@ import { Reveal, RevealLines } from "@/components/site/Reveal";
 export const Route = createFileRoute("/pricing/shoppers")({
   head: () => ({
     meta: [
-      { title: "Pricing — TryVerse" },
+      { title: "Pricing for Shoppers — TryVerse" },
       {
         name: "description",
         content:
-          "Simple TryVerse pricing. Start free with 5 daily credits. Upgrade to Plus or Pro for more power, HD downloads and watermark-free results.",
+          "Personal try-on plans. Start free with 5 daily credits. Upgrade to Plus or Pro for HD downloads and watermark-free results.",
       },
-      { property: "og:title", content: "Pricing — TryVerse" },
+      { property: "og:title", content: "Pricing for Shoppers — TryVerse" },
       {
         property: "og:description",
-        content: "Free, Plus and Pro plans for AI fashion creators. One-time credit packs available.",
+        content: "Free, Plus and Pro plans for AI fashion shoppers. One-time credit packs available.",
       },
     ],
-    links: [{ rel: "canonical", href: "/pricing" }],
+    links: [{ rel: "canonical", href: "/pricing/shoppers" }],
   }),
   component: PricingPage,
 });
