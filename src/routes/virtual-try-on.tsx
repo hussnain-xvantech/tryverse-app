@@ -388,9 +388,9 @@ function PreviewSection() {
               <PreviewCard label="Garment" img={clothingBlazer} chip="Matched" chipIcon={<Shirt size={10} />} />
               <div className="col-span-2 relative aspect-[4/3] rounded-xl overflow-hidden ring-1 ring-violet/50 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.55)] bg-[#1a1424]">
                 <img
-                  src={heroResult}
+                  src={blazerAfter}
                   alt="Try-on result"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                   loading="lazy"
                   decoding="async"
                 />
