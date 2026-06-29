@@ -28,6 +28,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PricingIndexRouteImport } from './routes/pricing.index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as PricingShoppersRouteImport } from './routes/pricing.shoppers'
+import { Route as PricingBrandsRouteImport } from './routes/pricing.brands'
 import { Route as FeaturesSlugRouteImport } from './routes/features.$slug'
 
 const VirtualTryOnRoute = VirtualTryOnRouteImport.update({
@@ -125,6 +126,11 @@ const PricingShoppersRoute = PricingShoppersRouteImport.update({
   path: '/shoppers',
   getParentRoute: () => PricingRoute,
 } as any)
+const PricingBrandsRoute = PricingBrandsRouteImport.update({
+  id: '/brands',
+  path: '/brands',
+  getParentRoute: () => PricingRoute,
+} as any)
 const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
   id: '/features/$slug',
   path: '/features/$slug',
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/pricing/brands': typeof PricingBrandsRoute
   '/pricing/shoppers': typeof PricingShoppersRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/pricing/': typeof PricingIndexRoute
@@ -170,6 +177,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/pricing/brands': typeof PricingBrandsRoute
   '/pricing/shoppers': typeof PricingShoppersRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/pricing': typeof PricingIndexRoute
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/pricing/brands': typeof PricingBrandsRoute
   '/pricing/shoppers': typeof PricingShoppersRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/pricing/': typeof PricingIndexRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/virtual-try-on'
     | '/features/$slug'
+    | '/pricing/brands'
     | '/pricing/shoppers'
     | '/resources/$slug'
     | '/pricing/'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/virtual-try-on'
     | '/features/$slug'
+    | '/pricing/brands'
     | '/pricing/shoppers'
     | '/resources/$slug'
     | '/pricing'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/virtual-try-on'
     | '/features/$slug'
+    | '/pricing/brands'
     | '/pricing/shoppers'
     | '/resources/$slug'
     | '/pricing/'
@@ -420,6 +432,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingShoppersRouteImport
       parentRoute: typeof PricingRoute
     }
+    '/pricing/brands': {
+      id: '/pricing/brands'
+      path: '/brands'
+      fullPath: '/pricing/brands'
+      preLoaderRoute: typeof PricingBrandsRouteImport
+      parentRoute: typeof PricingRoute
+    }
     '/features/$slug': {
       id: '/features/$slug'
       path: '/features/$slug'
@@ -431,11 +450,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface PricingRouteChildren {
+  PricingBrandsRoute: typeof PricingBrandsRoute
   PricingShoppersRoute: typeof PricingShoppersRoute
   PricingIndexRoute: typeof PricingIndexRoute
 }
 
 const PricingRouteChildren: PricingRouteChildren = {
+  PricingBrandsRoute: PricingBrandsRoute,
   PricingShoppersRoute: PricingShoppersRoute,
   PricingIndexRoute: PricingIndexRoute,
 }
