@@ -57,7 +57,7 @@ function PricingHero({ billing, setBilling }: { billing: Billing; setBilling: (b
         style={{ background: "var(--gradient-glow)", filter: "blur(60px)" }}
       />
       <div className="mx-auto max-w-[900px] px-6 sm:px-10 text-center">
-        <Reveal as="div" className="eyebrow justify-center">Pricing</Reveal>
+        <Reveal as="div" className="eyebrow justify-center">Pricing for Shoppers</Reveal>
         <h1 className="font-display mt-6 text-4xl sm:text-5xl lg:text-[64px] leading-[1.05]">
           <RevealLines
             lines={["One Tool Packed With AI", "Free To Try"]}
