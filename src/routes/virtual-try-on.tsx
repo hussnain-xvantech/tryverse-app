@@ -106,6 +106,13 @@ function Hero() {
                 Explore Shoppers
               </Link>
             </Reveal>
+            <Reveal
+              as="p"
+              delay={680}
+              className="mt-5 text-[12.5px] text-white/55"
+            >
+              No credit card required · Clothing-only try-on · Ready in seconds
+            </Reveal>
           </div>
         </div>
       </div>
@@ -113,89 +120,112 @@ function Hero() {
   );
 }
 
+/* Replace with your real YouTube video ID when available */
+const DEMO_VIDEO_ID = "ScMzIvxBSi4";
+
 function HeroVisual() {
+  const [playing, setPlaying] = useState(false);
+
   return (
-    <div className="relative mx-auto w-full max-w-[520px]">
+    <div className="relative mx-auto w-full max-w-[560px]">
       <div
         aria-hidden
         className="absolute -inset-10 -z-10 opacity-80"
         style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
       />
-      <div className="grid grid-cols-[0.85fr_1.2fr] items-center gap-3 sm:gap-4">
-        {/* small product card */}
-        <div className="relative">
-          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden ring-1 ring-white/[0.08] bg-[#1a1424] shadow-[0_25px_70px_-25px_rgba(0,0,0,0.8)]">
-            <img
-              src={clothingBlazer}
-              alt="Lavender blazer product"
-              className="h-full w-full object-cover"
-              loading="eager"
-              decoding="async"
-              width={400}
-              height={533}
-            />
-            <span className="absolute top-2 left-2 chip backdrop-blur bg-black/55 text-white !text-[10px]">
-              <Shirt size={10} /> Product
-            </span>
-          </div>
-          <div className="mt-2 rounded-lg border border-white/[0.06] bg-white/[0.02] px-2.5 py-1.5">
-            <div className="text-[10.5px] text-white/85 truncate">Lavender Blazer</div>
-            <div className="text-[9.5px] text-white/45 truncate">store.com/blazer</div>
-          </div>
 
-          {/* curved arrow connector */}
-          <svg
-            aria-hidden
-            viewBox="0 0 120 120"
-            className="pointer-events-none absolute -right-12 top-1/2 hidden sm:block h-24 w-24 -translate-y-1/2 text-violet"
-          >
-            <defs>
-              <linearGradient id="vto-arrow" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#a855f7" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#d946ef" stopOpacity="1" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M5 80 C 40 20, 80 20, 110 60"
-              fill="none"
-              stroke="url(#vto-arrow)"
-              strokeWidth="2"
-              strokeLinecap="round"
+      {/* Video preview card */}
+      <div className="relative rounded-2xl overflow-hidden ring-1 ring-violet/40 shadow-[0_40px_100px_-25px_rgba(168,85,247,0.5)] bg-[#1a1424]">
+        <div className="relative aspect-video">
+          {playing ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${DEMO_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+              title="TryVerse Virtual Try-On Demo"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
             />
-            <path
-              d="M100 52 L 112 60 L 102 70"
-              fill="none"
-              stroke="#d946ef"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-
-        {/* large result card */}
-        <div className="relative">
-          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden ring-1 ring-violet/40 shadow-[0_30px_80px_-20px_rgba(168,85,247,0.45)] bg-[#1a1424]">
-            <img
-              src={blazerAfter}
-              alt="Try-on result on model"
-              className="h-full w-full object-cover"
-              loading="eager"
-              decoding="async"
-              width={520}
-              height={693}
-            />
-            <span className="absolute top-2 left-2 chip backdrop-blur bg-black/55 text-white !text-[10px]">
-              <Sparkles size={10} /> On You
-            </span>
-            <div
-              aria-hidden
-              className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-violet to-transparent animate-scan"
-              style={{ top: "50%" }}
-            />
-          </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              aria-label="Play Virtual Try-On demo video"
+              className="group absolute inset-0 h-full w-full"
+            >
+              <img
+                src={blazerAfter}
+                alt="Virtual Try-On demo preview"
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="eager"
+                decoding="async"
+                width={1280}
+                height={720}
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40"
+              />
+              <span className="absolute top-3 left-3 chip backdrop-blur bg-black/60 text-white !text-[10px] border border-white/10">
+                <Sparkles size={10} /> Virtual Try-On Demo
+              </span>
+              <span className="absolute bottom-3 left-3 text-[11px] text-white/85">
+                Watch Demo
+              </span>
+              <span className="absolute inset-0 grid place-items-center">
+                <span className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center rounded-full bg-white/10 backdrop-blur-md ring-1 ring-white/30 transition-transform duration-300 group-hover:scale-110">
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 rounded-full bg-gradient-to-br from-violet to-magenta opacity-80"
+                  />
+                  <Play
+                    size={26}
+                    className="relative text-white translate-x-[2px] fill-white"
+                  />
+                </span>
+              </span>
+            </button>
+          )}
         </div>
       </div>
+
+      {/* Story strip: product → you → result */}
+      <div className="mt-4 grid grid-cols-3 gap-3">
+        <StoryTile img={clothingBlazer} label="Product" icon={<Shirt size={10} />} />
+        <StoryTile img={userPhoto} label="Your Photo" icon={<Upload size={10} />} />
+        <StoryTile img={blazerAfter} label="On You" icon={<Sparkles size={10} />} accent />
+      </div>
+    </div>
+  );
+}
+
+function StoryTile({
+  img,
+  label,
+  icon,
+  accent = false,
+}: {
+  img: string;
+  label: string;
+  icon: React.ReactNode;
+  accent?: boolean;
+}) {
+  return (
+    <div
+      className={`relative aspect-[4/5] rounded-xl overflow-hidden bg-[#1a1424] ${
+        accent ? "ring-1 ring-violet/50" : "ring-1 ring-white/[0.08]"
+      }`}
+    >
+      <img
+        src={img}
+        alt={label}
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+      <span className="absolute top-1.5 left-1.5 chip backdrop-blur bg-black/55 text-white !text-[9.5px]">
+        {icon} {label}
+      </span>
     </div>
   );
 }
