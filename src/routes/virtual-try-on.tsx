@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -10,6 +11,7 @@ import {
   Eye,
   Timer,
   Layers,
+  Play,
 } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
