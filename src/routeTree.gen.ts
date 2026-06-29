@@ -15,6 +15,7 @@ import { Route as StoresRouteImport } from './routes/stores'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as ForShoppersRouteImport } from './routes/for-shoppers'
@@ -56,6 +57,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -109,9 +115,9 @@ const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
   getParentRoute: () => ResourcesRoute,
 } as any)
 const PricingShoppersRoute = PricingShoppersRouteImport.update({
-  id: '/pricing/shoppers',
-  path: '/pricing/shoppers',
-  getParentRoute: () => rootRouteImport,
+  id: '/shoppers',
+  path: '/shoppers',
+  getParentRoute: () => PricingRoute,
 } as any)
 const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
   id: '/features/$slug',
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/signup': typeof SignupRoute
@@ -149,6 +156,7 @@ export interface FileRoutesByTo {
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/signup': typeof SignupRoute
@@ -170,6 +178,7 @@ export interface FileRoutesById {
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/signup': typeof SignupRoute
@@ -192,6 +201,7 @@ export interface FileRouteTypes {
     | '/for-shoppers'
     | '/forgot-password'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/resources'
     | '/signup'
@@ -212,6 +222,7 @@ export interface FileRouteTypes {
     | '/for-shoppers'
     | '/forgot-password'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/resources'
     | '/signup'
@@ -232,6 +243,7 @@ export interface FileRouteTypes {
     | '/for-shoppers'
     | '/forgot-password'
     | '/login'
+    | '/pricing'
     | '/privacy'
     | '/resources'
     | '/signup'
@@ -253,6 +265,7 @@ export interface RootRouteChildren {
   ForShoppersRoute: typeof ForShoppersRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
+  PricingRoute: typeof PricingRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRouteWithChildren
   SignupRoute: typeof SignupRoute
@@ -260,7 +273,6 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   VirtualTryOnRoute: typeof VirtualTryOnRoute
   FeaturesSlugRoute: typeof FeaturesSlugRoute
-  PricingShoppersRoute: typeof PricingShoppersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -305,6 +317,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -379,10 +398,10 @@ declare module '@tanstack/react-router' {
     }
     '/pricing/shoppers': {
       id: '/pricing/shoppers'
-      path: '/pricing/shoppers'
+      path: '/shoppers'
       fullPath: '/pricing/shoppers'
       preLoaderRoute: typeof PricingShoppersRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PricingRoute
     }
     '/features/$slug': {
       id: '/features/$slug'
@@ -393,6 +412,17 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface PricingRouteChildren {
+  PricingShoppersRoute: typeof PricingShoppersRoute
+}
+
+const PricingRouteChildren: PricingRouteChildren = {
+  PricingShoppersRoute: PricingShoppersRoute,
+}
+
+const PricingRouteWithChildren =
+  PricingRoute._addFileChildren(PricingRouteChildren)
 
 interface ResourcesRouteChildren {
   ResourcesSlugRoute: typeof ResourcesSlugRoute
@@ -416,6 +446,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForShoppersRoute: ForShoppersRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
+  PricingRoute: PricingRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRouteWithChildren,
   SignupRoute: SignupRoute,
@@ -423,7 +454,6 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   VirtualTryOnRoute: VirtualTryOnRoute,
   FeaturesSlugRoute: FeaturesSlugRoute,
-  PricingShoppersRoute: PricingShoppersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
