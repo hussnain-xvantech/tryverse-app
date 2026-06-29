@@ -21,7 +21,6 @@ import { Reveal, RevealLines } from "@/components/site/Reveal";
 import clothingBlazer from "@/assets/clothing-blazer.jpg";
 import blazerAfter from "@/assets/blazer-after.jpg";
 import userPhoto from "@/assets/user-photo.jpg";
-import heroResult from "@/assets/hero-result.jpg";
 
 export const Route = createFileRoute("/virtual-try-on")({
   head: () => ({
