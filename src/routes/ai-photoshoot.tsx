@@ -107,7 +107,7 @@ function Hero() {
               content.
             </Reveal>
             <Reveal delay={560} className="mt-8 flex flex-wrap gap-3">
-              <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+              <Link to="/signup/brands" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Start Creating <ArrowRight size={16} />
               </Link>
               <Link to="/for-brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
@@ -580,7 +580,7 @@ function FinalCTA() {
           Turn one clothing product photo into professional model visuals with TryVerse.
         </Reveal>
         <Reveal delay={420} className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+          <Link to="/signup/brands" className="btn-primary !py-3.5 !px-7 !text-sm">
             Start Creating <ArrowRight size={16} />
           </Link>
           <Link to="/for-brands" className="btn-secondary !py-3.5 !px-7 !text-sm">

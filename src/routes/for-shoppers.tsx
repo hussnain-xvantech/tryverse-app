@@ -144,7 +144,7 @@ function ShopperHero() {
             </Reveal>
 
             <Reveal delay={580} className="mt-8 flex flex-wrap gap-3">
-              <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+              <Link to="/signup/shoppers" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Try It Free <ArrowRight size={16} />
               </Link>
               <Link to="/stores" className="btn-secondary !py-3.5 !px-7 !text-sm">
@@ -1113,7 +1113,7 @@ function FinalCTA() {
         </Reveal>
         <Reveal delay={420} className="mt-10 flex flex-wrap justify-center gap-3">
           <Link
-            to="/signup"
+            to="/signup/shoppers"
             className="btn-primary !py-[18px] !px-10 !text-[15px] hover:-translate-y-0.5 hover:shadow-[0_24px_60px_-18px_rgba(168,85,247,0.75)]"
           >
             Try It Free <ArrowRight size={16} />

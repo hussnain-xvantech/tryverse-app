@@ -149,7 +149,7 @@ function BrandHero() {
               your online store.
             </Reveal>
             <Reveal delay={580} className="mt-8 flex flex-wrap gap-3">
-              <Link to="/signup" className="btn-primary !py-3.5 !px-7 !text-sm">
+              <Link to="/signup/brands" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Start Creating <ArrowRight size={16} />
               </Link>
               <Link to="/book-demo" className="btn-secondary !py-3.5 !px-7 !text-sm">
@@ -1044,7 +1044,7 @@ function BrandFinalCTA() {
 
         <Reveal delay={500} className="mt-12 flex flex-wrap justify-center gap-4">
           <Link
-            to="/signup"
+            to="/signup/brands"
             className="btn-primary !py-[18px] !px-10 !text-[15px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_70px_-18px_rgba(168,85,247,0.85)]"
           >
             Start Creating <ArrowRight size={17} />
