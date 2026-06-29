@@ -643,7 +643,7 @@ function FinalCTA() {
               <Link to="/signup" className="btn-primary !py-4 !px-7 !text-[14px]">
                 Get Started Free <ArrowRight size={16} />
               </Link>
-              <Link to="/for-brands" className="btn-secondary !py-4 !px-7 !text-[14px]">
+              <Link to="/pricing/brands" className="btn-secondary !py-4 !px-7 !text-[14px]">
                 For Brands
               </Link>
             </Reveal>
