@@ -21,15 +21,24 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as ForShoppersRouteImport } from './routes/for-shoppers'
 import { Route as ForBrandsRouteImport } from './routes/for-brands'
 import { Route as DiscoverRouteImport } from './routes/discover'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookDemoRouteImport } from './routes/book-demo'
 import { Route as AiPhotoshootRouteImport } from './routes/ai-photoshoot'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SignupIndexRouteImport } from './routes/signup.index'
 import { Route as PricingIndexRouteImport } from './routes/pricing.index'
+import { Route as LoginIndexRouteImport } from './routes/login.index'
+import { Route as SignupShoppersRouteImport } from './routes/signup.shoppers'
+import { Route as SignupBrandsRouteImport } from './routes/signup.brands'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as PricingShoppersRouteImport } from './routes/pricing.shoppers'
 import { Route as PricingBrandsRouteImport } from './routes/pricing.brands'
+import { Route as LoginShoppersRouteImport } from './routes/login.shoppers'
+import { Route as LoginBrandsRouteImport } from './routes/login.brands'
 import { Route as FeaturesSlugRouteImport } from './routes/features.$slug'
+import { Route as DashboardShoppersRouteImport } from './routes/dashboard.shoppers'
+import { Route as DashboardBrandsRouteImport } from './routes/dashboard.brands'
 
 const VirtualTryOnRoute = VirtualTryOnRouteImport.update({
   id: '/virtual-try-on',
@@ -91,6 +100,11 @@ const DiscoverRoute = DiscoverRouteImport.update({
   path: '/discover',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -111,10 +125,30 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignupIndexRoute = SignupIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SignupRoute,
+} as any)
 const PricingIndexRoute = PricingIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PricingRoute,
+} as any)
+const LoginIndexRoute = LoginIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LoginRoute,
+} as any)
+const SignupShoppersRoute = SignupShoppersRouteImport.update({
+  id: '/shoppers',
+  path: '/shoppers',
+  getParentRoute: () => SignupRoute,
+} as any)
+const SignupBrandsRoute = SignupBrandsRouteImport.update({
+  id: '/brands',
+  path: '/brands',
+  getParentRoute: () => SignupRoute,
 } as any)
 const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
   id: '/$slug',
@@ -131,10 +165,30 @@ const PricingBrandsRoute = PricingBrandsRouteImport.update({
   path: '/brands',
   getParentRoute: () => PricingRoute,
 } as any)
+const LoginShoppersRoute = LoginShoppersRouteImport.update({
+  id: '/shoppers',
+  path: '/shoppers',
+  getParentRoute: () => LoginRoute,
+} as any)
+const LoginBrandsRoute = LoginBrandsRouteImport.update({
+  id: '/brands',
+  path: '/brands',
+  getParentRoute: () => LoginRoute,
+} as any)
 const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
   id: '/features/$slug',
   path: '/features/$slug',
   getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardShoppersRoute = DashboardShoppersRouteImport.update({
+  id: '/shoppers',
+  path: '/shoppers',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardBrandsRoute = DashboardBrandsRouteImport.update({
+  id: '/brands',
+  path: '/brands',
+  getParentRoute: () => DashboardRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -142,45 +196,61 @@ export interface FileRoutesByFullPath {
   '/ai-photoshoot': typeof AiPhotoshootRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
+  '/login': typeof LoginRouteWithChildren
   '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
-  '/signup': typeof SignupRoute
+  '/signup': typeof SignupRouteWithChildren
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
+  '/dashboard/brands': typeof DashboardBrandsRoute
+  '/dashboard/shoppers': typeof DashboardShoppersRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/login/brands': typeof LoginBrandsRoute
+  '/login/shoppers': typeof LoginShoppersRoute
   '/pricing/brands': typeof PricingBrandsRoute
   '/pricing/shoppers': typeof PricingShoppersRoute
   '/resources/$slug': typeof ResourcesSlugRoute
+  '/signup/brands': typeof SignupBrandsRoute
+  '/signup/shoppers': typeof SignupShoppersRoute
+  '/login/': typeof LoginIndexRoute
   '/pricing/': typeof PricingIndexRoute
+  '/signup/': typeof SignupIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai-photoshoot': typeof AiPhotoshootRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
-  '/signup': typeof SignupRoute
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
+  '/dashboard/brands': typeof DashboardBrandsRoute
+  '/dashboard/shoppers': typeof DashboardShoppersRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/login/brands': typeof LoginBrandsRoute
+  '/login/shoppers': typeof LoginShoppersRoute
   '/pricing/brands': typeof PricingBrandsRoute
   '/pricing/shoppers': typeof PricingShoppersRoute
   '/resources/$slug': typeof ResourcesSlugRoute
+  '/signup/brands': typeof SignupBrandsRoute
+  '/signup/shoppers': typeof SignupShoppersRoute
+  '/login': typeof LoginIndexRoute
   '/pricing': typeof PricingIndexRoute
+  '/signup': typeof SignupIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -188,23 +258,32 @@ export interface FileRoutesById {
   '/ai-photoshoot': typeof AiPhotoshootRoute
   '/book-demo': typeof BookDemoRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/discover': typeof DiscoverRoute
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
+  '/login': typeof LoginRouteWithChildren
   '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
-  '/signup': typeof SignupRoute
+  '/signup': typeof SignupRouteWithChildren
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
+  '/dashboard/brands': typeof DashboardBrandsRoute
+  '/dashboard/shoppers': typeof DashboardShoppersRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/login/brands': typeof LoginBrandsRoute
+  '/login/shoppers': typeof LoginShoppersRoute
   '/pricing/brands': typeof PricingBrandsRoute
   '/pricing/shoppers': typeof PricingShoppersRoute
   '/resources/$slug': typeof ResourcesSlugRoute
+  '/signup/brands': typeof SignupBrandsRoute
+  '/signup/shoppers': typeof SignupShoppersRoute
+  '/login/': typeof LoginIndexRoute
   '/pricing/': typeof PricingIndexRoute
+  '/signup/': typeof SignupIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -213,6 +292,7 @@ export interface FileRouteTypes {
     | '/ai-photoshoot'
     | '/book-demo'
     | '/contact'
+    | '/dashboard'
     | '/discover'
     | '/for-brands'
     | '/for-shoppers'
@@ -225,39 +305,55 @@ export interface FileRouteTypes {
     | '/stores'
     | '/terms'
     | '/virtual-try-on'
+    | '/dashboard/brands'
+    | '/dashboard/shoppers'
     | '/features/$slug'
+    | '/login/brands'
+    | '/login/shoppers'
     | '/pricing/brands'
     | '/pricing/shoppers'
     | '/resources/$slug'
+    | '/signup/brands'
+    | '/signup/shoppers'
+    | '/login/'
     | '/pricing/'
+    | '/signup/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/ai-photoshoot'
     | '/book-demo'
     | '/contact'
+    | '/dashboard'
     | '/discover'
     | '/for-brands'
     | '/for-shoppers'
     | '/forgot-password'
-    | '/login'
     | '/privacy'
     | '/resources'
-    | '/signup'
     | '/stores'
     | '/terms'
     | '/virtual-try-on'
+    | '/dashboard/brands'
+    | '/dashboard/shoppers'
     | '/features/$slug'
+    | '/login/brands'
+    | '/login/shoppers'
     | '/pricing/brands'
     | '/pricing/shoppers'
     | '/resources/$slug'
+    | '/signup/brands'
+    | '/signup/shoppers'
+    | '/login'
     | '/pricing'
+    | '/signup'
   id:
     | '__root__'
     | '/'
     | '/ai-photoshoot'
     | '/book-demo'
     | '/contact'
+    | '/dashboard'
     | '/discover'
     | '/for-brands'
     | '/for-shoppers'
@@ -270,11 +366,19 @@ export interface FileRouteTypes {
     | '/stores'
     | '/terms'
     | '/virtual-try-on'
+    | '/dashboard/brands'
+    | '/dashboard/shoppers'
     | '/features/$slug'
+    | '/login/brands'
+    | '/login/shoppers'
     | '/pricing/brands'
     | '/pricing/shoppers'
     | '/resources/$slug'
+    | '/signup/brands'
+    | '/signup/shoppers'
+    | '/login/'
     | '/pricing/'
+    | '/signup/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -282,15 +386,16 @@ export interface RootRouteChildren {
   AiPhotoshootRoute: typeof AiPhotoshootRoute
   BookDemoRoute: typeof BookDemoRoute
   ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   DiscoverRoute: typeof DiscoverRoute
   ForBrandsRoute: typeof ForBrandsRoute
   ForShoppersRoute: typeof ForShoppersRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
-  LoginRoute: typeof LoginRoute
+  LoginRoute: typeof LoginRouteWithChildren
   PricingRoute: typeof PricingRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRouteWithChildren
-  SignupRoute: typeof SignupRoute
+  SignupRoute: typeof SignupRouteWithChildren
   StoresRoute: typeof StoresRoute
   TermsRoute: typeof TermsRoute
   VirtualTryOnRoute: typeof VirtualTryOnRoute
@@ -383,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DiscoverRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -411,12 +523,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/signup/': {
+      id: '/signup/'
+      path: '/'
+      fullPath: '/signup/'
+      preLoaderRoute: typeof SignupIndexRouteImport
+      parentRoute: typeof SignupRoute
+    }
     '/pricing/': {
       id: '/pricing/'
       path: '/'
       fullPath: '/pricing/'
       preLoaderRoute: typeof PricingIndexRouteImport
       parentRoute: typeof PricingRoute
+    }
+    '/login/': {
+      id: '/login/'
+      path: '/'
+      fullPath: '/login/'
+      preLoaderRoute: typeof LoginIndexRouteImport
+      parentRoute: typeof LoginRoute
+    }
+    '/signup/shoppers': {
+      id: '/signup/shoppers'
+      path: '/shoppers'
+      fullPath: '/signup/shoppers'
+      preLoaderRoute: typeof SignupShoppersRouteImport
+      parentRoute: typeof SignupRoute
+    }
+    '/signup/brands': {
+      id: '/signup/brands'
+      path: '/brands'
+      fullPath: '/signup/brands'
+      preLoaderRoute: typeof SignupBrandsRouteImport
+      parentRoute: typeof SignupRoute
     }
     '/resources/$slug': {
       id: '/resources/$slug'
@@ -439,6 +579,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingBrandsRouteImport
       parentRoute: typeof PricingRoute
     }
+    '/login/shoppers': {
+      id: '/login/shoppers'
+      path: '/shoppers'
+      fullPath: '/login/shoppers'
+      preLoaderRoute: typeof LoginShoppersRouteImport
+      parentRoute: typeof LoginRoute
+    }
+    '/login/brands': {
+      id: '/login/brands'
+      path: '/brands'
+      fullPath: '/login/brands'
+      preLoaderRoute: typeof LoginBrandsRouteImport
+      parentRoute: typeof LoginRoute
+    }
     '/features/$slug': {
       id: '/features/$slug'
       path: '/features/$slug'
@@ -446,8 +600,50 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/shoppers': {
+      id: '/dashboard/shoppers'
+      path: '/shoppers'
+      fullPath: '/dashboard/shoppers'
+      preLoaderRoute: typeof DashboardShoppersRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/brands': {
+      id: '/dashboard/brands'
+      path: '/brands'
+      fullPath: '/dashboard/brands'
+      preLoaderRoute: typeof DashboardBrandsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
+
+interface DashboardRouteChildren {
+  DashboardBrandsRoute: typeof DashboardBrandsRoute
+  DashboardShoppersRoute: typeof DashboardShoppersRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardBrandsRoute: DashboardBrandsRoute,
+  DashboardShoppersRoute: DashboardShoppersRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
+interface LoginRouteChildren {
+  LoginBrandsRoute: typeof LoginBrandsRoute
+  LoginShoppersRoute: typeof LoginShoppersRoute
+  LoginIndexRoute: typeof LoginIndexRoute
+}
+
+const LoginRouteChildren: LoginRouteChildren = {
+  LoginBrandsRoute: LoginBrandsRoute,
+  LoginShoppersRoute: LoginShoppersRoute,
+  LoginIndexRoute: LoginIndexRoute,
+}
+
+const LoginRouteWithChildren = LoginRoute._addFileChildren(LoginRouteChildren)
 
 interface PricingRouteChildren {
   PricingBrandsRoute: typeof PricingBrandsRoute
@@ -476,20 +672,36 @@ const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
   ResourcesRouteChildren,
 )
 
+interface SignupRouteChildren {
+  SignupBrandsRoute: typeof SignupBrandsRoute
+  SignupShoppersRoute: typeof SignupShoppersRoute
+  SignupIndexRoute: typeof SignupIndexRoute
+}
+
+const SignupRouteChildren: SignupRouteChildren = {
+  SignupBrandsRoute: SignupBrandsRoute,
+  SignupShoppersRoute: SignupShoppersRoute,
+  SignupIndexRoute: SignupIndexRoute,
+}
+
+const SignupRouteWithChildren =
+  SignupRoute._addFileChildren(SignupRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiPhotoshootRoute: AiPhotoshootRoute,
   BookDemoRoute: BookDemoRoute,
   ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   DiscoverRoute: DiscoverRoute,
   ForBrandsRoute: ForBrandsRoute,
   ForShoppersRoute: ForShoppersRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
-  LoginRoute: LoginRoute,
+  LoginRoute: LoginRouteWithChildren,
   PricingRoute: PricingRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRouteWithChildren,
-  SignupRoute: SignupRoute,
+  SignupRoute: SignupRouteWithChildren,
   StoresRoute: StoresRoute,
   TermsRoute: TermsRoute,
   VirtualTryOnRoute: VirtualTryOnRoute,
@@ -498,13 +710,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
