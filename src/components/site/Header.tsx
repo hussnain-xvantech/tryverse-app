@@ -52,10 +52,9 @@ export function Header() {
 
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
-      if (!navRef.current) return;
-      if (!navRef.current.contains(e.target as Node)) {
-        setOpenDropdown(null);
-      }
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest('[data-dropdown-root="true"]')) return;
+      setOpenDropdown(null);
     };
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
