@@ -11,7 +11,7 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "Virtual Try-On", to: "/virtual-try-on" },
       { label: "AI Photoshoot", to: "/ai-photoshoot" },
-      { label: "Ghost Mannequin", to: "/features/ghost-mannequin" },
+      { label: "Ghost Mannequin", to: "/ghost-mannequin" },
       { label: "Pose Studio", to: "/features/pose-studio" },
       { label: "Video Studio", to: "/features/video-studio" },
       { label: "Stylo AI Stylist", to: "/features/stylo-ai-stylist" },

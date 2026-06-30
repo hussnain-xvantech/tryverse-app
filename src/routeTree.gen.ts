@@ -17,6 +17,7 @@ import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as GhostMannequinRouteImport } from './routes/ghost-mannequin'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as ForShoppersRouteImport } from './routes/for-shoppers'
 import { Route as ForBrandsRouteImport } from './routes/for-brands'
@@ -78,6 +79,11 @@ const PricingRoute = PricingRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GhostMannequinRoute = GhostMannequinRouteImport.update({
+  id: '/ghost-mannequin',
+  path: '/ghost-mannequin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -201,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/ghost-mannequin': typeof GhostMannequinRoute
   '/login': typeof LoginRouteWithChildren
   '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
@@ -233,6 +240,7 @@ export interface FileRoutesByTo {
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/ghost-mannequin': typeof GhostMannequinRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/stores': typeof StoresRoute
@@ -263,6 +271,7 @@ export interface FileRoutesById {
   '/for-brands': typeof ForBrandsRoute
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/ghost-mannequin': typeof GhostMannequinRoute
   '/login': typeof LoginRouteWithChildren
   '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
@@ -297,6 +306,7 @@ export interface FileRouteTypes {
     | '/for-brands'
     | '/for-shoppers'
     | '/forgot-password'
+    | '/ghost-mannequin'
     | '/login'
     | '/pricing'
     | '/privacy'
@@ -329,6 +339,7 @@ export interface FileRouteTypes {
     | '/for-brands'
     | '/for-shoppers'
     | '/forgot-password'
+    | '/ghost-mannequin'
     | '/privacy'
     | '/resources'
     | '/stores'
@@ -358,6 +369,7 @@ export interface FileRouteTypes {
     | '/for-brands'
     | '/for-shoppers'
     | '/forgot-password'
+    | '/ghost-mannequin'
     | '/login'
     | '/pricing'
     | '/privacy'
@@ -391,6 +403,7 @@ export interface RootRouteChildren {
   ForBrandsRoute: typeof ForBrandsRoute
   ForShoppersRoute: typeof ForShoppersRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  GhostMannequinRoute: typeof GhostMannequinRoute
   LoginRoute: typeof LoginRouteWithChildren
   PricingRoute: typeof PricingRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
@@ -458,6 +471,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ghost-mannequin': {
+      id: '/ghost-mannequin'
+      path: '/ghost-mannequin'
+      fullPath: '/ghost-mannequin'
+      preLoaderRoute: typeof GhostMannequinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forgot-password': {
@@ -697,6 +717,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForBrandsRoute: ForBrandsRoute,
   ForShoppersRoute: ForShoppersRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  GhostMannequinRoute: GhostMannequinRoute,
   LoginRoute: LoginRouteWithChildren,
   PricingRoute: PricingRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
