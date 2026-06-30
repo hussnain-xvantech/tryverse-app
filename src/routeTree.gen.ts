@@ -49,6 +49,8 @@ import { Route as DashboardShoppersPoseStudioRouteImport } from './routes/dashbo
 import { Route as DashboardShoppersFashionStoreRouteImport } from './routes/dashboard.shoppers.fashion-store'
 import { Route as DashboardShoppersAiStylistRouteImport } from './routes/dashboard.shoppers.ai-stylist'
 import { Route as DashboardShoppersFashionStoreIndexRouteImport } from './routes/dashboard.shoppers.fashion-store.index'
+import { Route as DashboardShoppersFashionStoreTryOnRouteImport } from './routes/dashboard.shoppers.fashion-store.try-on'
+import { Route as DashboardShoppersFashionStoreResultRouteImport } from './routes/dashboard.shoppers.fashion-store.result'
 
 const VirtualTryOnRoute = VirtualTryOnRouteImport.update({
   id: '/virtual-try-on',
@@ -255,6 +257,18 @@ const DashboardShoppersFashionStoreIndexRoute =
     path: '/',
     getParentRoute: () => DashboardShoppersFashionStoreRoute,
   } as any)
+const DashboardShoppersFashionStoreTryOnRoute =
+  DashboardShoppersFashionStoreTryOnRouteImport.update({
+    id: '/try-on',
+    path: '/try-on',
+    getParentRoute: () => DashboardShoppersFashionStoreRoute,
+  } as any)
+const DashboardShoppersFashionStoreResultRoute =
+  DashboardShoppersFashionStoreResultRouteImport.update({
+    id: '/result',
+    path: '/result',
+    getParentRoute: () => DashboardShoppersFashionStoreRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -296,6 +310,8 @@ export interface FileRoutesByFullPath {
   '/dashboard/shoppers/try-on': typeof DashboardShoppersTryOnRoute
   '/dashboard/shoppers/video-studio': typeof DashboardShoppersVideoStudioRoute
   '/dashboard/shoppers/': typeof DashboardShoppersIndexRoute
+  '/dashboard/shoppers/fashion-store/result': typeof DashboardShoppersFashionStoreResultRoute
+  '/dashboard/shoppers/fashion-store/try-on': typeof DashboardShoppersFashionStoreTryOnRoute
   '/dashboard/shoppers/fashion-store/': typeof DashboardShoppersFashionStoreIndexRoute
 }
 export interface FileRoutesByTo {
@@ -333,6 +349,8 @@ export interface FileRoutesByTo {
   '/dashboard/shoppers/try-on': typeof DashboardShoppersTryOnRoute
   '/dashboard/shoppers/video-studio': typeof DashboardShoppersVideoStudioRoute
   '/dashboard/shoppers': typeof DashboardShoppersIndexRoute
+  '/dashboard/shoppers/fashion-store/result': typeof DashboardShoppersFashionStoreResultRoute
+  '/dashboard/shoppers/fashion-store/try-on': typeof DashboardShoppersFashionStoreTryOnRoute
   '/dashboard/shoppers/fashion-store': typeof DashboardShoppersFashionStoreIndexRoute
 }
 export interface FileRoutesById {
@@ -376,6 +394,8 @@ export interface FileRoutesById {
   '/dashboard/shoppers/try-on': typeof DashboardShoppersTryOnRoute
   '/dashboard/shoppers/video-studio': typeof DashboardShoppersVideoStudioRoute
   '/dashboard/shoppers/': typeof DashboardShoppersIndexRoute
+  '/dashboard/shoppers/fashion-store/result': typeof DashboardShoppersFashionStoreResultRoute
+  '/dashboard/shoppers/fashion-store/try-on': typeof DashboardShoppersFashionStoreTryOnRoute
   '/dashboard/shoppers/fashion-store/': typeof DashboardShoppersFashionStoreIndexRoute
 }
 export interface FileRouteTypes {
@@ -420,6 +440,8 @@ export interface FileRouteTypes {
     | '/dashboard/shoppers/try-on'
     | '/dashboard/shoppers/video-studio'
     | '/dashboard/shoppers/'
+    | '/dashboard/shoppers/fashion-store/result'
+    | '/dashboard/shoppers/fashion-store/try-on'
     | '/dashboard/shoppers/fashion-store/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -457,6 +479,8 @@ export interface FileRouteTypes {
     | '/dashboard/shoppers/try-on'
     | '/dashboard/shoppers/video-studio'
     | '/dashboard/shoppers'
+    | '/dashboard/shoppers/fashion-store/result'
+    | '/dashboard/shoppers/fashion-store/try-on'
     | '/dashboard/shoppers/fashion-store'
   id:
     | '__root__'
@@ -499,6 +523,8 @@ export interface FileRouteTypes {
     | '/dashboard/shoppers/try-on'
     | '/dashboard/shoppers/video-studio'
     | '/dashboard/shoppers/'
+    | '/dashboard/shoppers/fashion-store/result'
+    | '/dashboard/shoppers/fashion-store/try-on'
     | '/dashboard/shoppers/fashion-store/'
   fileRoutesById: FileRoutesById
 }
@@ -808,15 +834,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardShoppersFashionStoreIndexRouteImport
       parentRoute: typeof DashboardShoppersFashionStoreRoute
     }
+    '/dashboard/shoppers/fashion-store/try-on': {
+      id: '/dashboard/shoppers/fashion-store/try-on'
+      path: '/try-on'
+      fullPath: '/dashboard/shoppers/fashion-store/try-on'
+      preLoaderRoute: typeof DashboardShoppersFashionStoreTryOnRouteImport
+      parentRoute: typeof DashboardShoppersFashionStoreRoute
+    }
+    '/dashboard/shoppers/fashion-store/result': {
+      id: '/dashboard/shoppers/fashion-store/result'
+      path: '/result'
+      fullPath: '/dashboard/shoppers/fashion-store/result'
+      preLoaderRoute: typeof DashboardShoppersFashionStoreResultRouteImport
+      parentRoute: typeof DashboardShoppersFashionStoreRoute
+    }
   }
 }
 
 interface DashboardShoppersFashionStoreRouteChildren {
+  DashboardShoppersFashionStoreResultRoute: typeof DashboardShoppersFashionStoreResultRoute
+  DashboardShoppersFashionStoreTryOnRoute: typeof DashboardShoppersFashionStoreTryOnRoute
   DashboardShoppersFashionStoreIndexRoute: typeof DashboardShoppersFashionStoreIndexRoute
 }
 
 const DashboardShoppersFashionStoreRouteChildren: DashboardShoppersFashionStoreRouteChildren =
   {
+    DashboardShoppersFashionStoreResultRoute:
+      DashboardShoppersFashionStoreResultRoute,
+    DashboardShoppersFashionStoreTryOnRoute:
+      DashboardShoppersFashionStoreTryOnRoute,
     DashboardShoppersFashionStoreIndexRoute:
       DashboardShoppersFashionStoreIndexRoute,
   }
