@@ -55,9 +55,9 @@ function UserMenu() {
             <div className="text-[13.5px] font-medium text-white">{SHOPPER_USER.name}</div>
             <div className="text-[12px] text-white/50">{SHOPPER_USER.email}</div>
           </div>
-          <MenuItem icon={User} label="Profile" />
-          <MenuItem icon={CreditCard} label="Credits" />
-          <MenuItem icon={Settings} label="Settings" />
+          <MenuLink to="/dashboard/shoppers/profile" icon={User} label="Profile" onNavigate={() => setOpen(false)} />
+          <MenuLink to="/dashboard/shoppers/credits" icon={CreditCard} label="Credits" onNavigate={() => setOpen(false)} />
+          <MenuLink to="/dashboard/shoppers/settings" icon={Settings} label="Settings" onNavigate={() => setOpen(false)} />
           <button
             onClick={() => {
               setOpen(false);
