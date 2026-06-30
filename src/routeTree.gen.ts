@@ -10,12 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VirtualTryOnRouteImport } from './routes/virtual-try-on'
+import { Route as VideoStudioRouteImport } from './routes/video-studio'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StoresRouteImport } from './routes/stores'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PoseStudioRouteImport } from './routes/pose-studio'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as GhostMannequinRouteImport } from './routes/ghost-mannequin'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
@@ -46,6 +48,11 @@ const VirtualTryOnRoute = VirtualTryOnRouteImport.update({
   path: '/virtual-try-on',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VideoStudioRoute = VideoStudioRouteImport.update({
+  id: '/video-studio',
+  path: '/video-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -74,6 +81,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoseStudioRoute = PoseStudioRouteImport.update({
+  id: '/pose-studio',
+  path: '/pose-studio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -209,12 +221,14 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof ForgotPasswordRoute
   '/ghost-mannequin': typeof GhostMannequinRoute
   '/login': typeof LoginRouteWithChildren
+  '/pose-studio': typeof PoseStudioRoute
   '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/signup': typeof SignupRouteWithChildren
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
+  '/video-studio': typeof VideoStudioRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
   '/dashboard/brands': typeof DashboardBrandsRoute
   '/dashboard/shoppers': typeof DashboardShoppersRoute
@@ -241,10 +255,12 @@ export interface FileRoutesByTo {
   '/for-shoppers': typeof ForShoppersRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/ghost-mannequin': typeof GhostMannequinRoute
+  '/pose-studio': typeof PoseStudioRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
+  '/video-studio': typeof VideoStudioRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
   '/dashboard/brands': typeof DashboardBrandsRoute
   '/dashboard/shoppers': typeof DashboardShoppersRoute
@@ -273,12 +289,14 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/ghost-mannequin': typeof GhostMannequinRoute
   '/login': typeof LoginRouteWithChildren
+  '/pose-studio': typeof PoseStudioRoute
   '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/signup': typeof SignupRouteWithChildren
   '/stores': typeof StoresRoute
   '/terms': typeof TermsRoute
+  '/video-studio': typeof VideoStudioRoute
   '/virtual-try-on': typeof VirtualTryOnRoute
   '/dashboard/brands': typeof DashboardBrandsRoute
   '/dashboard/shoppers': typeof DashboardShoppersRoute
@@ -308,12 +326,14 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/ghost-mannequin'
     | '/login'
+    | '/pose-studio'
     | '/pricing'
     | '/privacy'
     | '/resources'
     | '/signup'
     | '/stores'
     | '/terms'
+    | '/video-studio'
     | '/virtual-try-on'
     | '/dashboard/brands'
     | '/dashboard/shoppers'
@@ -340,10 +360,12 @@ export interface FileRouteTypes {
     | '/for-shoppers'
     | '/forgot-password'
     | '/ghost-mannequin'
+    | '/pose-studio'
     | '/privacy'
     | '/resources'
     | '/stores'
     | '/terms'
+    | '/video-studio'
     | '/virtual-try-on'
     | '/dashboard/brands'
     | '/dashboard/shoppers'
@@ -371,12 +393,14 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/ghost-mannequin'
     | '/login'
+    | '/pose-studio'
     | '/pricing'
     | '/privacy'
     | '/resources'
     | '/signup'
     | '/stores'
     | '/terms'
+    | '/video-studio'
     | '/virtual-try-on'
     | '/dashboard/brands'
     | '/dashboard/shoppers'
@@ -405,12 +429,14 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   GhostMannequinRoute: typeof GhostMannequinRoute
   LoginRoute: typeof LoginRouteWithChildren
+  PoseStudioRoute: typeof PoseStudioRoute
   PricingRoute: typeof PricingRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRouteWithChildren
   SignupRoute: typeof SignupRouteWithChildren
   StoresRoute: typeof StoresRoute
   TermsRoute: typeof TermsRoute
+  VideoStudioRoute: typeof VideoStudioRoute
   VirtualTryOnRoute: typeof VirtualTryOnRoute
   FeaturesSlugRoute: typeof FeaturesSlugRoute
 }
@@ -422,6 +448,13 @@ declare module '@tanstack/react-router' {
       path: '/virtual-try-on'
       fullPath: '/virtual-try-on'
       preLoaderRoute: typeof VirtualTryOnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/video-studio': {
+      id: '/video-studio'
+      path: '/video-studio'
+      fullPath: '/video-studio'
+      preLoaderRoute: typeof VideoStudioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -464,6 +497,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pose-studio': {
+      id: '/pose-studio'
+      path: '/pose-studio'
+      fullPath: '/pose-studio'
+      preLoaderRoute: typeof PoseStudioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -719,12 +759,14 @@ const rootRouteChildren: RootRouteChildren = {
   ForgotPasswordRoute: ForgotPasswordRoute,
   GhostMannequinRoute: GhostMannequinRoute,
   LoginRoute: LoginRouteWithChildren,
+  PoseStudioRoute: PoseStudioRoute,
   PricingRoute: PricingRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRouteWithChildren,
   SignupRoute: SignupRouteWithChildren,
   StoresRoute: StoresRoute,
   TermsRoute: TermsRoute,
+  VideoStudioRoute: VideoStudioRoute,
   VirtualTryOnRoute: VirtualTryOnRoute,
   FeaturesSlugRoute: FeaturesSlugRoute,
 }

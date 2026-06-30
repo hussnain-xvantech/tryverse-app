@@ -17,9 +17,9 @@ export const Route = createFileRoute("/dashboard/brands")({
 
 const CARDS = [
   { icon: Camera, title: "AI Photoshoot", desc: "Turn flat-lays into model shots.", to: "/ai-photoshoot" },
-  { icon: Shirt, title: "Ghost Mannequin", desc: "Clean on-model-free product visuals.", to: "/features/ghost-mannequin" },
+  { icon: Shirt, title: "Ghost Mannequin", desc: "Clean on-model-free product visuals.", to: "/ghost-mannequin" },
   { icon: Layers, title: "Fabric Studio", desc: "Generate fabric and texture variants.", to: "/features/fabric-studio" },
-  { icon: Video, title: "Video Studio", desc: "Create short product videos.", to: "/features/video-studio" },
+  { icon: Video, title: "Video Studio", desc: "Create short product videos.", to: "/video-studio" },
   { icon: LayoutGrid, title: "Widget", desc: "Embed try-on on your store.", to: "/features/brand-widget" },
   { icon: BarChart3, title: "Analytics", desc: "Track try-ons and conversions.", to: "/features/analytics" },
 ];

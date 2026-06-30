@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -16,6 +17,7 @@ import {
   Store,
   BookMarked,
   UserX,
+  Play,
 } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
@@ -121,7 +123,11 @@ function Hero() {
   );
 }
 
+const DEMO_VIDEO_ID = "ScMzIvxBSi4";
+
 function HeroVisual() {
+  const [playing, setPlaying] = useState(false);
+
   return (
     <div className="relative mx-auto w-full max-w-[560px]">
       <div
@@ -130,47 +136,55 @@ function HeroVisual() {
         style={{ background: "var(--gradient-glow)", filter: "blur(40px)" }}
       />
 
-      <div className="grid grid-cols-[1fr_auto_1.4fr] items-center gap-3 sm:gap-4">
-        {/* Input */}
-        <div className="relative aspect-[4/5] rounded-xl overflow-hidden ring-1 ring-white/[0.08] bg-[#1a1424]">
-          <img
-            src={garmentFlatlay}
-            alt="Flat-lay clothing input"
-            className="absolute inset-0 h-full w-full object-cover"
-            loading="eager"
-            decoding="async"
-            width={1024}
-            height={1280}
-          />
-          <span className="absolute top-1.5 left-1.5 chip backdrop-blur bg-black/55 text-white !text-[9.5px]">
-            <Shirt size={10} /> Input
-          </span>
-        </div>
-
-        {/* Arrow */}
-        <div className="grid place-items-center">
-          <span className="relative grid h-9 w-9 sm:h-11 sm:w-11 place-items-center rounded-full bg-gradient-to-br from-violet to-magenta text-white shadow-[0_0_0_4px_rgba(168,85,247,0.18)]">
-            <ArrowRight size={16} />
-          </span>
-        </div>
-
-        {/* Output (larger) */}
-        <div className="relative aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-violet/50 shadow-[0_30px_80px_-25px_rgba(168,85,247,0.55)] bg-[#f6f3ee]">
-          <img
-            src={ghostResult}
-            alt="Ghost mannequin result"
-            className="absolute inset-0 h-full w-full object-cover"
-            loading="eager"
-            decoding="async"
-            width={1024}
-            height={1280}
-          />
-          <span className="absolute top-2 left-2 chip backdrop-blur bg-black/55 text-white !text-[10px]">
-            <Ghost size={11} /> Ghost Mannequin
-          </span>
-          <span className="absolute bottom-2 right-2 chip backdrop-blur bg-black/55 text-white !text-[10px]">
-            <Sparkles size={10} /> Ecommerce-Ready
-          </span>
+      {/* Video preview card */}
+      <div className="relative rounded-2xl overflow-hidden ring-1 ring-violet/40 shadow-[0_40px_100px_-25px_rgba(168,85,247,0.5)] bg-[#1a1424]">
+        <div className="relative aspect-video">
+          {playing ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${DEMO_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+              title="TryVerse Ghost Mannequin Demo"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              aria-label="Play Ghost Mannequin demo video"
+              className="group absolute inset-0 h-full w-full"
+            >
+              <img
+                src={ghostResult}
+                alt="Ghost Mannequin demo preview"
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="eager"
+                decoding="async"
+                width={1280}
+                height={720}
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40"
+              />
+              <span className="absolute top-3 left-3 chip backdrop-blur bg-black/60 text-white !text-[10px] border border-white/10">
+                <Sparkles size={10} /> Ghost Mannequin Demo
+              </span>
+              <span className="absolute bottom-3 left-3 text-[11px] text-white/85">
+                Watch how a clothing photo becomes a clean ghost mannequin visual.
+              </span>
+              <span className="absolute inset-0 grid place-items-center">
+                <span className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center rounded-full bg-white/10 backdrop-blur-md ring-1 ring-white/30 transition-transform duration-300 group-hover:scale-110">
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 rounded-full bg-gradient-to-br from-violet to-magenta opacity-80"
+                  />
+                  <Play size={26} className="relative text-white translate-x-[2px] fill-white" />
+                </span>
+              </span>
+            </button>
+          )}
         </div>
       </div>
 

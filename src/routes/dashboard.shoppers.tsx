@@ -18,8 +18,8 @@ export const Route = createFileRoute("/dashboard/shoppers")({
 const CARDS = [
   { icon: Shirt, title: "Virtual Try-On", desc: "Try outfits on your own photo.", to: "/virtual-try-on" },
   { icon: Sparkles, title: "AI Stylist", desc: "Get outfit ideas from Stylo.", to: "/for-shoppers" },
-  { icon: Camera, title: "Pose Studio", desc: "Generate fresh pose variations.", to: "/features/pose-studio" },
-  { icon: Video, title: "Showcase Video", desc: "Turn looks into short videos.", to: "/features/video-studio" },
+  { icon: Camera, title: "Pose Studio", desc: "Generate fresh pose variations.", to: "/pose-studio" },
+  { icon: Video, title: "Showcase Video", desc: "Turn looks into short videos.", to: "/video-studio" },
 ];
 
 function ShopperDashboard() {
