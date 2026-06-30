@@ -83,66 +83,17 @@ function ShopperHome() {
         }
       />
 
-      <section className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((f) => {
-          const Icon = f.icon;
-          return (
-            <Link
-              key={f.title}
-              to={f.to}
-              className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.4)] hover:border-purple-400/50 hover:shadow-[0_0_50px_rgba(168,85,247,0.3)] hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img src={f.image} alt={f.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40" />
-                <span className="absolute top-3 left-3 grid h-9 w-9 place-items-center rounded-xl bg-white/15 backdrop-blur text-white border border-white/25">
-                  <Icon size={16} />
-                </span>
-                <span className="absolute top-3 right-3 grid h-9 w-9 place-items-center rounded-xl bg-white/15 backdrop-blur text-white border border-white/25 group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-fuchsia-500 group-hover:border-transparent transition">
-                  <ArrowUpRight size={16} />
-                </span>
-                {("video" in f && f.video) && (
-                  <span className="absolute inset-0 grid place-items-center pointer-events-none">
-                    <span className="grid h-14 w-14 place-items-center rounded-full bg-white/15 backdrop-blur border border-white/30">
-                      <span className="ml-0.5 h-0 w-0 border-y-[10px] border-y-transparent border-l-[16px] border-l-white" />
-                    </span>
-                  </span>
-                )}
-              </div>
-              <div className="p-5">
-                <div className="font-display text-[18px] text-white">{f.title}</div>
-                <p className="mt-1.5 text-[13.5px] text-white/60 leading-relaxed">{f.desc}</p>
-              </div>
-            </Link>
-          );
-        })}
-      </section>
-
-      <section className="mt-10 relative overflow-hidden rounded-2xl border border-purple-400/30 bg-gradient-to-br from-purple-700/40 via-fuchsia-700/30 to-indigo-700/30 backdrop-blur-xl p-6 sm:p-8 shadow-[0_0_60px_rgba(168,85,247,0.25)]">
-        <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
-        <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-3 py-1 text-[12px] font-medium text-white">
-              <Sparkles size={12} /> Pro Member
-            </div>
-            <h2 className="font-display text-2xl sm:text-[28px] mt-3 text-white">You're a Pro Member</h2>
-            <p className="mt-2 text-white/80 text-[14.5px] max-w-xl">
-              {SHOPPER_USER.credits} of {SHOPPER_USER.monthly} credits remaining this month. Watermark-free, priority processing enabled.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {["200/mo", "No Watermarks", "Priority AI"].map((b) => (
-              <span key={b} className="rounded-full bg-white/12 border border-white/25 px-3 py-1.5 text-[12.5px] font-medium text-white">{b}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mt-6 flex items-start gap-3 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 backdrop-blur px-5 py-4">
-        <ShieldCheck size={20} className="text-emerald-400 shrink-0 mt-0.5" />
-        <p className="text-[13.5px] text-emerald-100/90 leading-relaxed">
-          <span className="font-semibold text-emerald-200">Your privacy is protected</span> — We do not store any of your uploaded photos or generated images. Everything is automatically deleted after your session.
+      <section className="mt-6 flex items-start gap-3 rounded-xl border border-emerald-400/25 bg-emerald-500/[0.07] backdrop-blur px-4 py-3">
+        <ShieldCheck size={18} className="text-emerald-400 shrink-0 mt-0.5" />
+        <p className="text-[13px] text-emerald-100/85 leading-relaxed">
+          <span className="font-semibold text-emerald-200">Your privacy is protected</span> — We do not store uploaded photos or generated images. Everything is automatically deleted after your session.
         </p>
+      </section>
+
+      <section className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {FEATURES.map((f) => {
+...
+        })}
       </section>
 
       <section className="mt-10">
