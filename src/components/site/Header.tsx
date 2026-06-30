@@ -151,6 +151,7 @@ export function Header() {
             {/* Pricing dropdown */}
             <div
               className="relative"
+              data-dropdown-root="true"
               onMouseEnter={() => openMenu("pricing")}
               onMouseLeave={scheduleClose}
             >
