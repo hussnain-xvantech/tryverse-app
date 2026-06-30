@@ -55,9 +55,9 @@ function UserMenu() {
             <div className="text-[13.5px] font-medium text-white">{SHOPPER_USER.name}</div>
             <div className="text-[12px] text-white/50">{SHOPPER_USER.email}</div>
           </div>
-          <MenuItem icon={User} label="Profile" />
-          <MenuItem icon={CreditCard} label="Credits" />
-          <MenuItem icon={Settings} label="Settings" />
+          <MenuLink to="/dashboard/shoppers/profile" icon={User} label="Profile" onNavigate={() => setOpen(false)} />
+          <MenuLink to="/dashboard/shoppers/credits" icon={CreditCard} label="Credits" onNavigate={() => setOpen(false)} />
+          <MenuLink to="/dashboard/shoppers/settings" icon={Settings} label="Settings" onNavigate={() => setOpen(false)} />
           <button
             onClick={() => {
               setOpen(false);
@@ -78,6 +78,18 @@ function MenuItem({ icon: Icon, label }: { icon: React.ElementType; label: strin
     <button className="w-full flex items-center gap-2.5 px-4 py-2.5 text-[13.5px] text-white/80 hover:bg-white/5 hover:text-white transition">
       <Icon size={15} className="text-white/50" /> {label}
     </button>
+  );
+}
+
+function MenuLink({ to, icon: Icon, label, onNavigate }: { to: string; icon: React.ElementType; label: string; onNavigate: () => void }) {
+  return (
+    <Link
+      to={to}
+      onClick={onNavigate}
+      className="w-full flex items-center gap-2.5 px-4 py-2.5 text-[13.5px] text-white/80 hover:bg-white/5 hover:text-white transition"
+    >
+      <Icon size={15} className="text-white/50" /> {label}
+    </Link>
   );
 }
 

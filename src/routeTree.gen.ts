@@ -45,8 +45,11 @@ import { Route as DashboardBrandsRouteImport } from './routes/dashboard.brands'
 import { Route as DashboardShoppersIndexRouteImport } from './routes/dashboard.shoppers.index'
 import { Route as DashboardShoppersVideoStudioRouteImport } from './routes/dashboard.shoppers.video-studio'
 import { Route as DashboardShoppersTryOnRouteImport } from './routes/dashboard.shoppers.try-on'
+import { Route as DashboardShoppersSettingsRouteImport } from './routes/dashboard.shoppers.settings'
+import { Route as DashboardShoppersProfileRouteImport } from './routes/dashboard.shoppers.profile'
 import { Route as DashboardShoppersPoseStudioRouteImport } from './routes/dashboard.shoppers.pose-studio'
 import { Route as DashboardShoppersFashionStoreRouteImport } from './routes/dashboard.shoppers.fashion-store'
+import { Route as DashboardShoppersCreditsRouteImport } from './routes/dashboard.shoppers.credits'
 import { Route as DashboardShoppersAiStylistRouteImport } from './routes/dashboard.shoppers.ai-stylist'
 import { Route as DashboardShoppersFashionStoreIndexRouteImport } from './routes/dashboard.shoppers.fashion-store.index'
 import { Route as DashboardShoppersFashionStoreTryOnRouteImport } from './routes/dashboard.shoppers.fashion-store.try-on'
@@ -234,6 +237,18 @@ const DashboardShoppersTryOnRoute = DashboardShoppersTryOnRouteImport.update({
   path: '/try-on',
   getParentRoute: () => DashboardShoppersRoute,
 } as any)
+const DashboardShoppersSettingsRoute =
+  DashboardShoppersSettingsRouteImport.update({
+    id: '/settings',
+    path: '/settings',
+    getParentRoute: () => DashboardShoppersRoute,
+  } as any)
+const DashboardShoppersProfileRoute =
+  DashboardShoppersProfileRouteImport.update({
+    id: '/profile',
+    path: '/profile',
+    getParentRoute: () => DashboardShoppersRoute,
+  } as any)
 const DashboardShoppersPoseStudioRoute =
   DashboardShoppersPoseStudioRouteImport.update({
     id: '/pose-studio',
@@ -244,6 +259,12 @@ const DashboardShoppersFashionStoreRoute =
   DashboardShoppersFashionStoreRouteImport.update({
     id: '/fashion-store',
     path: '/fashion-store',
+    getParentRoute: () => DashboardShoppersRoute,
+  } as any)
+const DashboardShoppersCreditsRoute =
+  DashboardShoppersCreditsRouteImport.update({
+    id: '/credits',
+    path: '/credits',
     getParentRoute: () => DashboardShoppersRoute,
   } as any)
 const DashboardShoppersAiStylistRoute =
@@ -312,8 +333,11 @@ export interface FileRoutesByFullPath {
   '/pricing/': typeof PricingIndexRoute
   '/signup/': typeof SignupIndexRoute
   '/dashboard/shoppers/ai-stylist': typeof DashboardShoppersAiStylistRoute
+  '/dashboard/shoppers/credits': typeof DashboardShoppersCreditsRoute
   '/dashboard/shoppers/fashion-store': typeof DashboardShoppersFashionStoreRouteWithChildren
   '/dashboard/shoppers/pose-studio': typeof DashboardShoppersPoseStudioRoute
+  '/dashboard/shoppers/profile': typeof DashboardShoppersProfileRoute
+  '/dashboard/shoppers/settings': typeof DashboardShoppersSettingsRoute
   '/dashboard/shoppers/try-on': typeof DashboardShoppersTryOnRoute
   '/dashboard/shoppers/video-studio': typeof DashboardShoppersVideoStudioRoute
   '/dashboard/shoppers/': typeof DashboardShoppersIndexRoute
@@ -353,7 +377,10 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingIndexRoute
   '/signup': typeof SignupIndexRoute
   '/dashboard/shoppers/ai-stylist': typeof DashboardShoppersAiStylistRoute
+  '/dashboard/shoppers/credits': typeof DashboardShoppersCreditsRoute
   '/dashboard/shoppers/pose-studio': typeof DashboardShoppersPoseStudioRoute
+  '/dashboard/shoppers/profile': typeof DashboardShoppersProfileRoute
+  '/dashboard/shoppers/settings': typeof DashboardShoppersSettingsRoute
   '/dashboard/shoppers/try-on': typeof DashboardShoppersTryOnRoute
   '/dashboard/shoppers/video-studio': typeof DashboardShoppersVideoStudioRoute
   '/dashboard/shoppers': typeof DashboardShoppersIndexRoute
@@ -398,8 +425,11 @@ export interface FileRoutesById {
   '/pricing/': typeof PricingIndexRoute
   '/signup/': typeof SignupIndexRoute
   '/dashboard/shoppers/ai-stylist': typeof DashboardShoppersAiStylistRoute
+  '/dashboard/shoppers/credits': typeof DashboardShoppersCreditsRoute
   '/dashboard/shoppers/fashion-store': typeof DashboardShoppersFashionStoreRouteWithChildren
   '/dashboard/shoppers/pose-studio': typeof DashboardShoppersPoseStudioRoute
+  '/dashboard/shoppers/profile': typeof DashboardShoppersProfileRoute
+  '/dashboard/shoppers/settings': typeof DashboardShoppersSettingsRoute
   '/dashboard/shoppers/try-on': typeof DashboardShoppersTryOnRoute
   '/dashboard/shoppers/video-studio': typeof DashboardShoppersVideoStudioRoute
   '/dashboard/shoppers/': typeof DashboardShoppersIndexRoute
@@ -445,8 +475,11 @@ export interface FileRouteTypes {
     | '/pricing/'
     | '/signup/'
     | '/dashboard/shoppers/ai-stylist'
+    | '/dashboard/shoppers/credits'
     | '/dashboard/shoppers/fashion-store'
     | '/dashboard/shoppers/pose-studio'
+    | '/dashboard/shoppers/profile'
+    | '/dashboard/shoppers/settings'
     | '/dashboard/shoppers/try-on'
     | '/dashboard/shoppers/video-studio'
     | '/dashboard/shoppers/'
@@ -486,7 +519,10 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/signup'
     | '/dashboard/shoppers/ai-stylist'
+    | '/dashboard/shoppers/credits'
     | '/dashboard/shoppers/pose-studio'
+    | '/dashboard/shoppers/profile'
+    | '/dashboard/shoppers/settings'
     | '/dashboard/shoppers/try-on'
     | '/dashboard/shoppers/video-studio'
     | '/dashboard/shoppers'
@@ -530,8 +566,11 @@ export interface FileRouteTypes {
     | '/pricing/'
     | '/signup/'
     | '/dashboard/shoppers/ai-stylist'
+    | '/dashboard/shoppers/credits'
     | '/dashboard/shoppers/fashion-store'
     | '/dashboard/shoppers/pose-studio'
+    | '/dashboard/shoppers/profile'
+    | '/dashboard/shoppers/settings'
     | '/dashboard/shoppers/try-on'
     | '/dashboard/shoppers/video-studio'
     | '/dashboard/shoppers/'
@@ -819,6 +858,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardShoppersTryOnRouteImport
       parentRoute: typeof DashboardShoppersRoute
     }
+    '/dashboard/shoppers/settings': {
+      id: '/dashboard/shoppers/settings'
+      path: '/settings'
+      fullPath: '/dashboard/shoppers/settings'
+      preLoaderRoute: typeof DashboardShoppersSettingsRouteImport
+      parentRoute: typeof DashboardShoppersRoute
+    }
+    '/dashboard/shoppers/profile': {
+      id: '/dashboard/shoppers/profile'
+      path: '/profile'
+      fullPath: '/dashboard/shoppers/profile'
+      preLoaderRoute: typeof DashboardShoppersProfileRouteImport
+      parentRoute: typeof DashboardShoppersRoute
+    }
     '/dashboard/shoppers/pose-studio': {
       id: '/dashboard/shoppers/pose-studio'
       path: '/pose-studio'
@@ -831,6 +884,13 @@ declare module '@tanstack/react-router' {
       path: '/fashion-store'
       fullPath: '/dashboard/shoppers/fashion-store'
       preLoaderRoute: typeof DashboardShoppersFashionStoreRouteImport
+      parentRoute: typeof DashboardShoppersRoute
+    }
+    '/dashboard/shoppers/credits': {
+      id: '/dashboard/shoppers/credits'
+      path: '/credits'
+      fullPath: '/dashboard/shoppers/credits'
+      preLoaderRoute: typeof DashboardShoppersCreditsRouteImport
       parentRoute: typeof DashboardShoppersRoute
     }
     '/dashboard/shoppers/ai-stylist': {
@@ -897,8 +957,11 @@ const DashboardShoppersFashionStoreRouteWithChildren =
 
 interface DashboardShoppersRouteChildren {
   DashboardShoppersAiStylistRoute: typeof DashboardShoppersAiStylistRoute
+  DashboardShoppersCreditsRoute: typeof DashboardShoppersCreditsRoute
   DashboardShoppersFashionStoreRoute: typeof DashboardShoppersFashionStoreRouteWithChildren
   DashboardShoppersPoseStudioRoute: typeof DashboardShoppersPoseStudioRoute
+  DashboardShoppersProfileRoute: typeof DashboardShoppersProfileRoute
+  DashboardShoppersSettingsRoute: typeof DashboardShoppersSettingsRoute
   DashboardShoppersTryOnRoute: typeof DashboardShoppersTryOnRoute
   DashboardShoppersVideoStudioRoute: typeof DashboardShoppersVideoStudioRoute
   DashboardShoppersIndexRoute: typeof DashboardShoppersIndexRoute
@@ -906,9 +969,12 @@ interface DashboardShoppersRouteChildren {
 
 const DashboardShoppersRouteChildren: DashboardShoppersRouteChildren = {
   DashboardShoppersAiStylistRoute: DashboardShoppersAiStylistRoute,
+  DashboardShoppersCreditsRoute: DashboardShoppersCreditsRoute,
   DashboardShoppersFashionStoreRoute:
     DashboardShoppersFashionStoreRouteWithChildren,
   DashboardShoppersPoseStudioRoute: DashboardShoppersPoseStudioRoute,
+  DashboardShoppersProfileRoute: DashboardShoppersProfileRoute,
+  DashboardShoppersSettingsRoute: DashboardShoppersSettingsRoute,
   DashboardShoppersTryOnRoute: DashboardShoppersTryOnRoute,
   DashboardShoppersVideoStudioRoute: DashboardShoppersVideoStudioRoute,
   DashboardShoppersIndexRoute: DashboardShoppersIndexRoute,
