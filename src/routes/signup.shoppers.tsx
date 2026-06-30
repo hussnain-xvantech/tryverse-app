@@ -33,19 +33,18 @@ function ShopperSignupPage() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
+    // Demo signup: only require non-empty fields.
     const next: typeof errors = {};
     if (!name.trim()) next.name = "Full name is required";
     if (!email.trim()) next.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = "Enter a valid email";
     if (!password) next.password = "Password is required";
-    else if (password.length < 8) next.password = "Use at least 8 characters";
     setErrors(next);
     if (Object.keys(next).length) return;
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       navigate({ to: "/dashboard/shoppers" });
-    }, 700);
+    }, 500);
   }
 
   return (
