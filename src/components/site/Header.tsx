@@ -52,10 +52,9 @@ export function Header() {
 
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
-      if (!navRef.current) return;
-      if (!navRef.current.contains(e.target as Node)) {
-        setOpenDropdown(null);
-      }
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest('[data-dropdown-root="true"]')) return;
+      setOpenDropdown(null);
     };
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
@@ -152,6 +151,7 @@ export function Header() {
             {/* Pricing dropdown */}
             <div
               className="relative"
+              data-dropdown-root="true"
               onMouseEnter={() => openMenu("pricing")}
               onMouseLeave={scheduleClose}
             >
@@ -191,6 +191,7 @@ export function Header() {
             {/* Login dropdown */}
             <div
               className="relative hidden sm:block"
+              data-dropdown-root="true"
               onMouseEnter={() => openMenu("login")}
               onMouseLeave={scheduleClose}
             >
@@ -224,6 +225,7 @@ export function Header() {
             {/* Try Free dropdown */}
             <div
               className="relative"
+              data-dropdown-root="true"
               onMouseEnter={() => openMenu("signup")}
               onMouseLeave={scheduleClose}
             >
