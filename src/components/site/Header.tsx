@@ -191,6 +191,7 @@ export function Header() {
             {/* Login dropdown */}
             <div
               className="relative hidden sm:block"
+              data-dropdown-root="true"
               onMouseEnter={() => openMenu("login")}
               onMouseLeave={scheduleClose}
             >
