@@ -7,16 +7,15 @@ import {
   Check,
   Wand2,
   Shirt,
-  Ghost,
-  Image as ImageIcon,
+  Move3d,
   Layers,
   Timer,
   Eye,
+  Image as ImageIcon,
+  Camera,
+  Share2,
   ShoppingBag,
-  BookOpen,
-  Store,
   BookMarked,
-  UserX,
   Play,
 } from "lucide-react";
 
@@ -24,41 +23,40 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal, RevealLines } from "@/components/site/Reveal";
 
-import garmentFlatlay from "@/assets/garment-flatlay.jpg";
-import clothingBlazer from "@/assets/clothing-blazer.jpg";
-import ghostResult from "@/assets/ghost-mannequin-result.jpg";
-import g2After from "@/assets/g2-after.jpg";
-import g6After from "@/assets/g6-after.jpg";
-import g2Catalog from "@/assets/g2-catalog.jpg";
+import blazerAfter from "@/assets/blazer-after.jpg";
+import g3a from "@/assets/g3-after.jpg";
+import g4a from "@/assets/g4-after.jpg";
+import heroResult from "@/assets/hero-result.jpg";
+import editorialHero from "@/assets/editorial-hero.jpg";
 
-export const Route = createFileRoute("/ghost-mannequin")({
+export const Route = createFileRoute("/pose-studio")({
   head: () => ({
     meta: [
-      { title: "Ghost Mannequin — Clean Product Shots Without A Model | TryVerse" },
+      { title: "Pose Studio — Create New Poses From One Outfit | TryVerse" },
       {
         name: "description",
         content:
-          "Turn flat-lay, hanger, or mannequin clothing photos into clean ghost mannequin visuals for ecommerce product pages with TryVerse.",
+          "Generate clean pose variations from one clothing image while keeping the outfit consistent — for try-ons, catalogs, campaigns, and social content.",
       },
-      { property: "og:title", content: "Ghost Mannequin — TryVerse" },
+      { property: "og:title", content: "Pose Studio — TryVerse" },
       {
         property: "og:description",
         content:
-          "Polished ecommerce-ready ghost mannequin apparel visuals from a single product photo.",
+          "Turn one outfit image into multiple polished pose variations with TryVerse Pose Studio.",
       },
     ],
   }),
-  component: GhostMannequinPage,
+  component: PoseStudioPage,
 });
 
-function GhostMannequinPage() {
+function PoseStudioPage() {
   return (
     <div className="min-h-screen text-white overflow-x-hidden">
       <Header />
       <main className="pt-24 sm:pt-28 overflow-x-hidden">
         <Hero />
         <HowItWorks />
-        <WhyBrandsUseIt />
+        <WhyUse />
         <PreviewSection />
         <OutputTypes />
         <FinalCTA />
@@ -88,11 +86,11 @@ function Hero() {
           <div className="order-1 lg:order-2 animate-fade-up">
             <div className="eyebrow flex items-center gap-2">
               <span className="h-1 w-1 rounded-full bg-violet" />
-              Ghost Mannequin
+              Pose Studio
             </div>
             <h1 className="font-display mt-6 text-[40px] sm:text-[48px] lg:text-[58px] leading-[1.05] text-balance">
               <RevealLines
-                lines={["Clean Product Shots", "Without A Model"]}
+                lines={["Create New Poses", "From One Outfit"]}
                 accentIndices={[1]}
                 step={130}
               />
@@ -102,11 +100,12 @@ function Hero() {
               delay={420}
               className="mt-6 text-base sm:text-[17px] text-muted-foreground max-w-xl leading-relaxed"
             >
-              Turn flat-lay, hanger, or mannequin clothing photos into polished
-              ghost mannequin visuals for ecommerce product pages.
+              Generate clean pose variations from one clothing image while
+              keeping the outfit consistent for try-ons, catalogs, campaigns,
+              and social content.
             </Reveal>
             <Reveal delay={560} className="mt-8 flex flex-wrap gap-3">
-              <Link to="/signup/brands" className="btn-primary !py-3.5 !px-7 !text-sm">
+              <Link to="/signup/shoppers" className="btn-primary !py-3.5 !px-7 !text-sm">
                 Start Creating <ArrowRight size={16} />
               </Link>
               <Link to="/for-brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
@@ -114,7 +113,7 @@ function Hero() {
               </Link>
             </Reveal>
             <Reveal as="p" delay={680} className="mt-5 text-[12.5px] text-white/55">
-              No model needed · Clothing-only AI · Ecommerce-ready visuals
+              Same outfit · Clothing-only AI · Multiple pose variations
             </Reveal>
           </div>
         </div>
@@ -142,7 +141,7 @@ function HeroVisual() {
           {playing ? (
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${DEMO_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
-              title="TryVerse Ghost Mannequin Demo"
+              title="TryVerse Pose Studio Demo"
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -152,12 +151,12 @@ function HeroVisual() {
             <button
               type="button"
               onClick={() => setPlaying(true)}
-              aria-label="Play Ghost Mannequin demo video"
+              aria-label="Play Pose Studio demo video"
               className="group absolute inset-0 h-full w-full"
             >
               <img
-                src={ghostResult}
-                alt="Ghost Mannequin demo preview"
+                src={editorialHero}
+                alt="Pose Studio demo preview"
                 className="absolute inset-0 h-full w-full object-cover"
                 loading="eager"
                 decoding="async"
@@ -169,10 +168,10 @@ function HeroVisual() {
                 className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40"
               />
               <span className="absolute top-3 left-3 chip backdrop-blur bg-black/60 text-white !text-[10px] border border-white/10">
-                <Sparkles size={10} /> Ghost Mannequin Demo
+                <Sparkles size={10} /> Pose Studio Demo
               </span>
               <span className="absolute bottom-3 left-3 text-[11px] text-white/85">
-                Watch how a clothing photo becomes a clean ghost mannequin visual.
+                Watch how one outfit becomes multiple pose variations.
               </span>
               <span className="absolute inset-0 grid place-items-center">
                 <span className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center rounded-full bg-white/10 backdrop-blur-md ring-1 ring-white/30 transition-transform duration-300 group-hover:scale-110">
@@ -188,11 +187,12 @@ function HeroVisual() {
         </div>
       </div>
 
-      {/* Story strip */}
-      <div className="mt-4 grid grid-cols-3 gap-3">
-        <StoryTile img={garmentFlatlay} label="Product" icon={<Shirt size={10} />} />
-        <StoryTile img={clothingBlazer} label="Cleaned" icon={<ImageIcon size={10} />} />
-        <StoryTile img={ghostResult} label="Ghost Mannequin" icon={<Ghost size={10} />} accent />
+      {/* Pose variation strip */}
+      <div className="mt-4 grid grid-cols-4 gap-3">
+        <StoryTile img={blazerAfter} label="Input" icon={<Shirt size={10} />} />
+        <StoryTile img={g3a} label="Pose 1" icon={<Move3d size={10} />} accent />
+        <StoryTile img={g4a} label="Pose 2" icon={<Move3d size={10} />} accent />
+        <StoryTile img={heroResult} label="Pose 3" icon={<Move3d size={10} />} accent />
       </div>
     </div>
   );
@@ -234,18 +234,18 @@ function HowItWorks() {
   const steps = [
     {
       icon: <Upload size={18} />,
-      title: "Upload apparel photo",
-      copy: "Add a flat-lay, hanger, or mannequin clothing image.",
+      title: "Upload your outfit image",
+      copy: "Start with a try-on result, model photo, or clothing visual.",
+    },
+    {
+      icon: <Move3d size={18} />,
+      title: "Choose pose direction",
+      copy: "Select natural, editorial, catalog, or social-ready pose styles.",
     },
     {
       icon: <Wand2 size={18} />,
-      title: "Clean the product",
-      copy: "TryVerse removes distractions and prepares the garment for a clean product view.",
-    },
-    {
-      icon: <Ghost size={18} />,
-      title: "Generate ghost mannequin",
-      copy: "Create a polished apparel visual ready for ecommerce and catalogs.",
+      title: "Generate pose variations",
+      copy: "Create multiple clean images with the same outfit in new poses.",
     },
   ];
   return (
@@ -255,7 +255,7 @@ function HowItWorks() {
           <div className="eyebrow justify-center">How it works</div>
           <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
             <RevealLines
-              lines={["From Product Photo", "To Ghost Mannequin"]}
+              lines={["From One Look", "To Multiple Poses"]}
               accentIndices={[1]}
               step={120}
             />
@@ -285,38 +285,38 @@ function HowItWorks() {
   );
 }
 
-/* =================== WHY BRANDS USE IT =================== */
-function WhyBrandsUseIt() {
+/* =================== WHY USE =================== */
+function WhyUse() {
   const points = [
     {
-      icon: <UserX size={16} />,
-      title: "No model required",
-      copy: "Create product visuals without booking models or photoshoots.",
-    },
-    {
       icon: <Layers size={16} />,
-      title: "Cleaner catalog presentation",
-      copy: "Show clothing clearly with a consistent ecommerce look.",
-    },
-    {
-      icon: <Timer size={16} />,
-      title: "Faster product launches",
-      copy: "Prepare product images quickly for new drops and collections.",
+      title: "More pose options",
+      copy: "Create multiple fashion visuals from one image.",
     },
     {
       icon: <Eye size={16} />,
-      title: "Better garment focus",
-      copy: "Highlight shape, fabric, color, and details without distractions.",
+      title: "Consistent outfit details",
+      copy: "Keep the same clothing, color, fabric, and design.",
+    },
+    {
+      icon: <Timer size={16} />,
+      title: "Faster content creation",
+      copy: "Create extra visuals without a new photoshoot.",
+    },
+    {
+      icon: <Share2 size={16} />,
+      title: "Better social content",
+      copy: "Generate pose variations for reels, posts, ads, and product campaigns.",
     },
   ];
   return (
     <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10">
         <div className="mx-auto text-center max-w-3xl">
-          <div className="eyebrow justify-center">Why brands use it</div>
+          <div className="eyebrow justify-center">Why use it</div>
           <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
             <RevealLines
-              lines={["Make Product Pages", "Look Cleaner"]}
+              lines={["Get More Content", "From One Outfit"]}
               accentIndices={[1]}
               step={120}
             />
@@ -347,7 +347,8 @@ function WhyBrandsUseIt() {
 
 /* =================== PREVIEW =================== */
 function PreviewSection() {
-  const steps = ["Upload", "Clean", "Generate", "Ready"];
+  const styles = ["Catalog", "Editorial", "Social", "Lifestyle"];
+  const steps = ["Upload", "Choose Pose", "Generate", "Ready"];
 
   return (
     <section className="py-16 sm:py-20">
@@ -356,7 +357,7 @@ function PreviewSection() {
           <div className="eyebrow justify-center">Feature preview</div>
           <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
             <RevealLines
-              lines={["A Closer Look At", "Ghost Mannequin Studio"]}
+              lines={["A Closer Look", "At Pose Studio"]}
               accentIndices={[1]}
               step={120}
             />
@@ -377,17 +378,20 @@ function PreviewSection() {
                 Tool
               </span>
               <span className="text-[12px] px-3 py-1.5 rounded-full border border-violet/60 bg-violet/15 text-white shadow-[0_0_0_3px_rgba(168,85,247,0.12)] inline-flex items-center gap-1.5">
-                <Ghost size={11} /> Ghost Mannequin
+                <Move3d size={11} /> Pose Studio
               </span>
-              <span className="text-[12px] px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-white/70">
-                Background: Clean
-              </span>
-              <span className="text-[12px] px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-white/70">
-                Output: Ecommerce
-              </span>
-              <span className="text-[12px] px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-white/70">
-                Detail: Preserve fabric
-              </span>
+              {styles.map((s, i) => (
+                <span
+                  key={s}
+                  className={`text-[12px] px-3 py-1.5 rounded-full border ${
+                    i === 0
+                      ? "border-white/20 bg-white/[0.06] text-white"
+                      : "border-white/10 bg-white/[0.03] text-white/70"
+                  }`}
+                >
+                  {s}
+                </span>
+              ))}
               <span className="ml-auto inline-flex items-center gap-1 text-[10.5px] text-emerald-300/90">
                 <Check size={10} /> Ready
               </span>
@@ -397,51 +401,29 @@ function PreviewSection() {
             <div className="relative mt-4 grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
               <PreviewCard
                 label="Uploaded"
-                img={garmentFlatlay}
-                chip="Apparel Photo"
+                img={blazerAfter}
+                chip="Outfit Image"
                 chipIcon={<Upload size={10} />}
               />
-              <PreviewCard
-                label="Cleaned"
-                img={clothingBlazer}
-                chip="Distractions Removed"
-                chipIcon={<Wand2 size={10} />}
-              />
-              <div className="col-span-2 relative aspect-[4/3] rounded-xl overflow-hidden ring-1 ring-violet/50 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.55)] bg-[#f6f3ee]">
-                <img
-                  src={ghostResult}
-                  alt="Ghost mannequin result"
-                  className="h-full w-full object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span className="absolute top-2 left-2 chip backdrop-blur bg-black/55 text-white !text-[10px]">
-                  <Ghost size={10} /> Ghost Mannequin Result
-                </span>
-                <div
-                  aria-hidden
-                  className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-violet to-transparent animate-scan"
-                  style={{ top: "50%" }}
-                />
+              <div className="col-span-2 lg:col-span-3 grid grid-cols-3 gap-3">
+                {[g3a, g4a, heroResult].map((img, i) => (
+                  <div
+                    key={i}
+                    className="relative aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-violet/40 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.45)] bg-[#1a1424]"
+                  >
+                    <img
+                      src={img}
+                      alt={`Pose variation ${i + 1}`}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="absolute top-1.5 left-1.5 chip backdrop-blur bg-black/55 text-white !text-[9.5px]">
+                      <Move3d size={10} /> Pose {i + 1}
+                    </span>
+                  </div>
+                ))}
               </div>
-            </div>
-
-            {/* Variation thumbs */}
-            <div className="relative mt-4 grid grid-cols-4 gap-3">
-              {[ghostResult, g6After, g2After, g2Catalog].map((img, i) => (
-                <div
-                  key={i}
-                  className="relative aspect-[3/4] rounded-lg overflow-hidden ring-1 ring-white/[0.06] bg-[#f6f3ee]"
-                >
-                  <img
-                    src={img}
-                    alt={`Ghost mannequin variation ${i + 1}`}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              ))}
             </div>
 
             {/* Progress row */}
@@ -499,26 +481,26 @@ function PreviewCard({
 
 /* =================== OUTPUT TYPES =================== */
 function OutputTypes() {
-  const outputs = [
+  const items = [
+    {
+      icon: <Sparkles size={16} />,
+      title: "Shopper Try-On Results",
+      copy: "See the same outfit in different natural poses.",
+    },
     {
       icon: <ShoppingBag size={16} />,
-      title: "Product Pages",
-      copy: "Clean ghost mannequin visuals for ecommerce listings.",
+      title: "Product Catalogs",
+      copy: "Create consistent model pose variations for apparel listings.",
     },
     {
-      icon: <BookOpen size={16} />,
-      title: "Collection Catalogs",
-      copy: "Consistent garment visuals for full clothing collections.",
-    },
-    {
-      icon: <Store size={16} />,
-      title: "Marketplace Listings",
-      copy: "Professional product images for fashion marketplaces.",
+      icon: <Camera size={16} />,
+      title: "Social Content",
+      copy: "Generate fresh pose options for posts, ads, and campaigns.",
     },
     {
       icon: <BookMarked size={16} />,
       title: "Brand Lookbooks",
-      copy: "Polished apparel visuals for launches and campaigns.",
+      copy: "Create polished pose variations for collections and launches.",
     },
   ];
   return (
@@ -528,7 +510,7 @@ function OutputTypes() {
           <div className="eyebrow justify-center">Output types</div>
           <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
             <RevealLines
-              lines={["Create Clean Apparel", "Visuals For Every Catalog"]}
+              lines={["Pose Variations", "For Every Workflow"]}
               accentIndices={[1]}
               step={120}
             />
@@ -536,18 +518,18 @@ function OutputTypes() {
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {outputs.map((o, i) => (
+          {items.map((p, i) => (
             <Reveal
-              key={o.title}
+              key={p.title}
               delay={100 + i * 80}
               className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 hover:border-violet/40 transition-colors"
             >
               <div className="grid h-9 w-9 place-items-center rounded-lg bg-violet/15 text-violet ring-1 ring-violet/30">
-                {o.icon}
+                {p.icon}
               </div>
-              <h3 className="mt-4 font-display text-lg leading-snug">{o.title}</h3>
+              <h3 className="mt-4 font-display text-lg leading-snug">{p.title}</h3>
               <p className="mt-2 text-[13.5px] text-muted-foreground leading-relaxed">
-                {o.copy}
+                {p.copy}
               </p>
             </Reveal>
           ))}
@@ -564,21 +546,17 @@ function FinalCTA() {
       <div className="mx-auto max-w-3xl px-6 sm:px-10 text-center">
         <div className="eyebrow justify-center">Get started</div>
         <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
-          <RevealLines
-            lines={["Ready To Create", "Clean Product Shots?"]}
-            accentIndices={[1]}
-            step={120}
-          />
+          <RevealLines lines={["Ready To Create", "New Pose Variations?"]} accentIndices={[1]} step={120} />
         </h2>
         <Reveal as="p" delay={280} className="mt-5 text-base text-muted-foreground">
-          Turn one apparel photo into a polished ghost mannequin visual with TryVerse.
+          Turn one clothing image into multiple polished pose options with TryVerse.
         </Reveal>
-        <Reveal delay={420} className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/signup/brands" className="btn-primary !py-3.5 !px-7 !text-sm">
+        <Reveal delay={420} className="mt-8 flex justify-center flex-wrap gap-3">
+          <Link to="/signup/shoppers" className="btn-primary !py-3.5 !px-7 !text-sm">
             Start Creating <ArrowRight size={16} />
           </Link>
           <Link to="/for-brands" className="btn-secondary !py-3.5 !px-7 !text-sm">
-            Book Brand Demo
+            For Brands
           </Link>
         </Reveal>
       </div>
