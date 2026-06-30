@@ -81,6 +81,18 @@ function MenuItem({ icon: Icon, label }: { icon: React.ElementType; label: strin
   );
 }
 
+function MenuLink({ to, icon: Icon, label, onNavigate }: { to: string; icon: React.ElementType; label: string; onNavigate: () => void }) {
+  return (
+    <Link
+      to={to}
+      onClick={onNavigate}
+      className="w-full flex items-center gap-2.5 px-4 py-2.5 text-[13.5px] text-white/80 hover:bg-white/5 hover:text-white transition"
+    >
+      <Icon size={15} className="text-white/50" /> {label}
+    </Link>
+  );
+}
+
 function ShopperHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [mobileOpen, setMobileOpen] = useState(false);
