@@ -33,9 +33,10 @@ function ShopperLoginPage() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
+    // Demo auth: only require non-empty fields. Any email/password works,
+    // or use the demo account: shopper@tryverse.app / demo123
     const next: typeof errors = {};
     if (!email.trim()) next.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = "Enter a valid email";
     if (!password) next.password = "Password is required";
     setErrors(next);
     if (Object.keys(next).length) return;
@@ -43,7 +44,7 @@ function ShopperLoginPage() {
     setTimeout(() => {
       setLoading(false);
       navigate({ to: "/dashboard/shoppers" });
-    }, 700);
+    }, 500);
   }
 
   return (
@@ -67,6 +68,11 @@ function ShopperLoginPage() {
         </div>
       }
     >
+      <div className="mb-5 rounded-xl border border-purple-400/30 bg-purple-500/10 px-4 py-3 text-[13px] text-white/85">
+        <span className="text-white/60">Demo account:</span>{" "}
+        <span className="font-medium">shopper@tryverse.app</span>{" "}/{" "}
+        <span className="font-medium">demo123</span>
+      </div>
       <SocialButtons />
       <Divider />
       <form onSubmit={submit} className="space-y-4" noValidate>
