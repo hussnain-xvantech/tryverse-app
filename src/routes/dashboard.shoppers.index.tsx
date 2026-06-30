@@ -83,7 +83,14 @@ function ShopperHome() {
         }
       />
 
-      <section className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mt-6 flex items-start gap-3 rounded-xl border border-emerald-400/25 bg-emerald-500/[0.07] backdrop-blur px-4 py-3">
+        <ShieldCheck size={18} className="text-emerald-400 shrink-0 mt-0.5" />
+        <p className="text-[13px] text-emerald-100/85 leading-relaxed">
+          <span className="font-semibold text-emerald-200">Your privacy is protected</span> — We do not store uploaded photos or generated images. Everything is automatically deleted after your session.
+        </p>
+      </section>
+
+      <section className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {FEATURES.map((f) => {
           const Icon = f.icon;
           return (
@@ -116,33 +123,6 @@ function ShopperHome() {
             </Link>
           );
         })}
-      </section>
-
-      <section className="mt-10 relative overflow-hidden rounded-2xl border border-purple-400/30 bg-gradient-to-br from-purple-700/40 via-fuchsia-700/30 to-indigo-700/30 backdrop-blur-xl p-6 sm:p-8 shadow-[0_0_60px_rgba(168,85,247,0.25)]">
-        <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-fuchsia-500/30 blur-3xl" />
-        <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-3 py-1 text-[12px] font-medium text-white">
-              <Sparkles size={12} /> Pro Member
-            </div>
-            <h2 className="font-display text-2xl sm:text-[28px] mt-3 text-white">You're a Pro Member</h2>
-            <p className="mt-2 text-white/80 text-[14.5px] max-w-xl">
-              {SHOPPER_USER.credits} of {SHOPPER_USER.monthly} credits remaining this month. Watermark-free, priority processing enabled.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {["200/mo", "No Watermarks", "Priority AI"].map((b) => (
-              <span key={b} className="rounded-full bg-white/12 border border-white/25 px-3 py-1.5 text-[12.5px] font-medium text-white">{b}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mt-6 flex items-start gap-3 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 backdrop-blur px-5 py-4">
-        <ShieldCheck size={20} className="text-emerald-400 shrink-0 mt-0.5" />
-        <p className="text-[13.5px] text-emerald-100/90 leading-relaxed">
-          <span className="font-semibold text-emerald-200">Your privacy is protected</span> — We do not store any of your uploaded photos or generated images. Everything is automatically deleted after your session.
-        </p>
       </section>
 
       <section className="mt-10">
