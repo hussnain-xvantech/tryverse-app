@@ -225,6 +225,7 @@ export function Header() {
             {/* Try Free dropdown */}
             <div
               className="relative"
+              data-dropdown-root="true"
               onMouseEnter={() => openMenu("signup")}
               onMouseLeave={scheduleClose}
             >
