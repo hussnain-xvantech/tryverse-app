@@ -92,7 +92,36 @@ function ShopperHome() {
 
       <section className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {FEATURES.map((f) => {
-...
+          const Icon = f.icon;
+          return (
+            <Link
+              key={f.title}
+              to={f.to}
+              className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.4)] hover:border-purple-400/50 hover:shadow-[0_0_50px_rgba(168,85,247,0.3)] hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img src={f.image} alt={f.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40" />
+                <span className="absolute top-3 left-3 grid h-9 w-9 place-items-center rounded-xl bg-white/15 backdrop-blur text-white border border-white/25">
+                  <Icon size={16} />
+                </span>
+                <span className="absolute top-3 right-3 grid h-9 w-9 place-items-center rounded-xl bg-white/15 backdrop-blur text-white border border-white/25 group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-fuchsia-500 group-hover:border-transparent transition">
+                  <ArrowUpRight size={16} />
+                </span>
+                {("video" in f && f.video) && (
+                  <span className="absolute inset-0 grid place-items-center pointer-events-none">
+                    <span className="grid h-14 w-14 place-items-center rounded-full bg-white/15 backdrop-blur border border-white/30">
+                      <span className="ml-0.5 h-0 w-0 border-y-[10px] border-y-transparent border-l-[16px] border-l-white" />
+                    </span>
+                  </span>
+                )}
+              </div>
+              <div className="p-5">
+                <div className="font-display text-[18px] text-white">{f.title}</div>
+                <p className="mt-1.5 text-[13.5px] text-white/60 leading-relaxed">{f.desc}</p>
+              </div>
+            </Link>
+          );
         })}
       </section>
 
