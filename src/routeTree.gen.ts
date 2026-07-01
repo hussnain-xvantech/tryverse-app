@@ -52,6 +52,17 @@ import { Route as DashboardShoppersPoseStudioRouteImport } from './routes/dashbo
 import { Route as DashboardShoppersFashionStoreRouteImport } from './routes/dashboard.shoppers.fashion-store'
 import { Route as DashboardShoppersCreditsRouteImport } from './routes/dashboard.shoppers.credits'
 import { Route as DashboardShoppersAiStylistRouteImport } from './routes/dashboard.shoppers.ai-stylist'
+import { Route as DashboardBrandsWidgetRouteImport } from './routes/dashboard.brands.widget'
+import { Route as DashboardBrandsVideoStudioRouteImport } from './routes/dashboard.brands.video-studio'
+import { Route as DashboardBrandsSettingsRouteImport } from './routes/dashboard.brands.settings'
+import { Route as DashboardBrandsProductDesignRouteImport } from './routes/dashboard.brands.product-design'
+import { Route as DashboardBrandsPoseStudioRouteImport } from './routes/dashboard.brands.pose-studio'
+import { Route as DashboardBrandsPhotoshootRouteImport } from './routes/dashboard.brands.photoshoot'
+import { Route as DashboardBrandsGhostMannequinRouteImport } from './routes/dashboard.brands.ghost-mannequin'
+import { Route as DashboardBrandsFabricStudioRouteImport } from './routes/dashboard.brands.fabric-studio'
+import { Route as DashboardBrandsCatalogRouteImport } from './routes/dashboard.brands.catalog'
+import { Route as DashboardBrandsBillingRouteImport } from './routes/dashboard.brands.billing'
+import { Route as DashboardBrandsAnalyticsRouteImport } from './routes/dashboard.brands.analytics'
 import { Route as DashboardShoppersFashionStoreIndexRouteImport } from './routes/dashboard.shoppers.fashion-store.index'
 import { Route as DashboardShoppersFashionStoreTryOnRouteImport } from './routes/dashboard.shoppers.fashion-store.try-on'
 import { Route as DashboardShoppersFashionStoreStoreRouteImport } from './routes/dashboard.shoppers.fashion-store.store'
@@ -279,6 +290,68 @@ const DashboardShoppersAiStylistRoute =
     path: '/ai-stylist',
     getParentRoute: () => DashboardShoppersRoute,
   } as any)
+const DashboardBrandsWidgetRoute = DashboardBrandsWidgetRouteImport.update({
+  id: '/widget',
+  path: '/widget',
+  getParentRoute: () => DashboardBrandsRoute,
+} as any)
+const DashboardBrandsVideoStudioRoute =
+  DashboardBrandsVideoStudioRouteImport.update({
+    id: '/video-studio',
+    path: '/video-studio',
+    getParentRoute: () => DashboardBrandsRoute,
+  } as any)
+const DashboardBrandsSettingsRoute = DashboardBrandsSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardBrandsRoute,
+} as any)
+const DashboardBrandsProductDesignRoute =
+  DashboardBrandsProductDesignRouteImport.update({
+    id: '/product-design',
+    path: '/product-design',
+    getParentRoute: () => DashboardBrandsRoute,
+  } as any)
+const DashboardBrandsPoseStudioRoute =
+  DashboardBrandsPoseStudioRouteImport.update({
+    id: '/pose-studio',
+    path: '/pose-studio',
+    getParentRoute: () => DashboardBrandsRoute,
+  } as any)
+const DashboardBrandsPhotoshootRoute =
+  DashboardBrandsPhotoshootRouteImport.update({
+    id: '/photoshoot',
+    path: '/photoshoot',
+    getParentRoute: () => DashboardBrandsRoute,
+  } as any)
+const DashboardBrandsGhostMannequinRoute =
+  DashboardBrandsGhostMannequinRouteImport.update({
+    id: '/ghost-mannequin',
+    path: '/ghost-mannequin',
+    getParentRoute: () => DashboardBrandsRoute,
+  } as any)
+const DashboardBrandsFabricStudioRoute =
+  DashboardBrandsFabricStudioRouteImport.update({
+    id: '/fabric-studio',
+    path: '/fabric-studio',
+    getParentRoute: () => DashboardBrandsRoute,
+  } as any)
+const DashboardBrandsCatalogRoute = DashboardBrandsCatalogRouteImport.update({
+  id: '/catalog',
+  path: '/catalog',
+  getParentRoute: () => DashboardBrandsRoute,
+} as any)
+const DashboardBrandsBillingRoute = DashboardBrandsBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => DashboardBrandsRoute,
+} as any)
+const DashboardBrandsAnalyticsRoute =
+  DashboardBrandsAnalyticsRouteImport.update({
+    id: '/analytics',
+    path: '/analytics',
+    getParentRoute: () => DashboardBrandsRoute,
+  } as any)
 const DashboardShoppersFashionStoreIndexRoute =
   DashboardShoppersFashionStoreIndexRouteImport.update({
     id: '/',
@@ -338,6 +411,17 @@ export interface FileRoutesByFullPath {
   '/login/': typeof LoginIndexRoute
   '/pricing/': typeof PricingIndexRoute
   '/signup/': typeof SignupIndexRoute
+  '/dashboard/brands/analytics': typeof DashboardBrandsAnalyticsRoute
+  '/dashboard/brands/billing': typeof DashboardBrandsBillingRoute
+  '/dashboard/brands/catalog': typeof DashboardBrandsCatalogRoute
+  '/dashboard/brands/fabric-studio': typeof DashboardBrandsFabricStudioRoute
+  '/dashboard/brands/ghost-mannequin': typeof DashboardBrandsGhostMannequinRoute
+  '/dashboard/brands/photoshoot': typeof DashboardBrandsPhotoshootRoute
+  '/dashboard/brands/pose-studio': typeof DashboardBrandsPoseStudioRoute
+  '/dashboard/brands/product-design': typeof DashboardBrandsProductDesignRoute
+  '/dashboard/brands/settings': typeof DashboardBrandsSettingsRoute
+  '/dashboard/brands/video-studio': typeof DashboardBrandsVideoStudioRoute
+  '/dashboard/brands/widget': typeof DashboardBrandsWidgetRoute
   '/dashboard/shoppers/ai-stylist': typeof DashboardShoppersAiStylistRoute
   '/dashboard/shoppers/credits': typeof DashboardShoppersCreditsRoute
   '/dashboard/shoppers/fashion-store': typeof DashboardShoppersFashionStoreRouteWithChildren
@@ -382,6 +466,17 @@ export interface FileRoutesByTo {
   '/login': typeof LoginIndexRoute
   '/pricing': typeof PricingIndexRoute
   '/signup': typeof SignupIndexRoute
+  '/dashboard/brands/analytics': typeof DashboardBrandsAnalyticsRoute
+  '/dashboard/brands/billing': typeof DashboardBrandsBillingRoute
+  '/dashboard/brands/catalog': typeof DashboardBrandsCatalogRoute
+  '/dashboard/brands/fabric-studio': typeof DashboardBrandsFabricStudioRoute
+  '/dashboard/brands/ghost-mannequin': typeof DashboardBrandsGhostMannequinRoute
+  '/dashboard/brands/photoshoot': typeof DashboardBrandsPhotoshootRoute
+  '/dashboard/brands/pose-studio': typeof DashboardBrandsPoseStudioRoute
+  '/dashboard/brands/product-design': typeof DashboardBrandsProductDesignRoute
+  '/dashboard/brands/settings': typeof DashboardBrandsSettingsRoute
+  '/dashboard/brands/video-studio': typeof DashboardBrandsVideoStudioRoute
+  '/dashboard/brands/widget': typeof DashboardBrandsWidgetRoute
   '/dashboard/shoppers/ai-stylist': typeof DashboardShoppersAiStylistRoute
   '/dashboard/shoppers/credits': typeof DashboardShoppersCreditsRoute
   '/dashboard/shoppers/pose-studio': typeof DashboardShoppersPoseStudioRoute
@@ -431,6 +526,17 @@ export interface FileRoutesById {
   '/login/': typeof LoginIndexRoute
   '/pricing/': typeof PricingIndexRoute
   '/signup/': typeof SignupIndexRoute
+  '/dashboard/brands/analytics': typeof DashboardBrandsAnalyticsRoute
+  '/dashboard/brands/billing': typeof DashboardBrandsBillingRoute
+  '/dashboard/brands/catalog': typeof DashboardBrandsCatalogRoute
+  '/dashboard/brands/fabric-studio': typeof DashboardBrandsFabricStudioRoute
+  '/dashboard/brands/ghost-mannequin': typeof DashboardBrandsGhostMannequinRoute
+  '/dashboard/brands/photoshoot': typeof DashboardBrandsPhotoshootRoute
+  '/dashboard/brands/pose-studio': typeof DashboardBrandsPoseStudioRoute
+  '/dashboard/brands/product-design': typeof DashboardBrandsProductDesignRoute
+  '/dashboard/brands/settings': typeof DashboardBrandsSettingsRoute
+  '/dashboard/brands/video-studio': typeof DashboardBrandsVideoStudioRoute
+  '/dashboard/brands/widget': typeof DashboardBrandsWidgetRoute
   '/dashboard/shoppers/ai-stylist': typeof DashboardShoppersAiStylistRoute
   '/dashboard/shoppers/credits': typeof DashboardShoppersCreditsRoute
   '/dashboard/shoppers/fashion-store': typeof DashboardShoppersFashionStoreRouteWithChildren
@@ -482,6 +588,17 @@ export interface FileRouteTypes {
     | '/login/'
     | '/pricing/'
     | '/signup/'
+    | '/dashboard/brands/analytics'
+    | '/dashboard/brands/billing'
+    | '/dashboard/brands/catalog'
+    | '/dashboard/brands/fabric-studio'
+    | '/dashboard/brands/ghost-mannequin'
+    | '/dashboard/brands/photoshoot'
+    | '/dashboard/brands/pose-studio'
+    | '/dashboard/brands/product-design'
+    | '/dashboard/brands/settings'
+    | '/dashboard/brands/video-studio'
+    | '/dashboard/brands/widget'
     | '/dashboard/shoppers/ai-stylist'
     | '/dashboard/shoppers/credits'
     | '/dashboard/shoppers/fashion-store'
@@ -526,6 +643,17 @@ export interface FileRouteTypes {
     | '/login'
     | '/pricing'
     | '/signup'
+    | '/dashboard/brands/analytics'
+    | '/dashboard/brands/billing'
+    | '/dashboard/brands/catalog'
+    | '/dashboard/brands/fabric-studio'
+    | '/dashboard/brands/ghost-mannequin'
+    | '/dashboard/brands/photoshoot'
+    | '/dashboard/brands/pose-studio'
+    | '/dashboard/brands/product-design'
+    | '/dashboard/brands/settings'
+    | '/dashboard/brands/video-studio'
+    | '/dashboard/brands/widget'
     | '/dashboard/shoppers/ai-stylist'
     | '/dashboard/shoppers/credits'
     | '/dashboard/shoppers/pose-studio'
@@ -574,6 +702,17 @@ export interface FileRouteTypes {
     | '/login/'
     | '/pricing/'
     | '/signup/'
+    | '/dashboard/brands/analytics'
+    | '/dashboard/brands/billing'
+    | '/dashboard/brands/catalog'
+    | '/dashboard/brands/fabric-studio'
+    | '/dashboard/brands/ghost-mannequin'
+    | '/dashboard/brands/photoshoot'
+    | '/dashboard/brands/pose-studio'
+    | '/dashboard/brands/product-design'
+    | '/dashboard/brands/settings'
+    | '/dashboard/brands/video-studio'
+    | '/dashboard/brands/widget'
     | '/dashboard/shoppers/ai-stylist'
     | '/dashboard/shoppers/credits'
     | '/dashboard/shoppers/fashion-store'
@@ -917,6 +1056,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardShoppersAiStylistRouteImport
       parentRoute: typeof DashboardShoppersRoute
     }
+    '/dashboard/brands/widget': {
+      id: '/dashboard/brands/widget'
+      path: '/widget'
+      fullPath: '/dashboard/brands/widget'
+      preLoaderRoute: typeof DashboardBrandsWidgetRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/video-studio': {
+      id: '/dashboard/brands/video-studio'
+      path: '/video-studio'
+      fullPath: '/dashboard/brands/video-studio'
+      preLoaderRoute: typeof DashboardBrandsVideoStudioRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/settings': {
+      id: '/dashboard/brands/settings'
+      path: '/settings'
+      fullPath: '/dashboard/brands/settings'
+      preLoaderRoute: typeof DashboardBrandsSettingsRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/product-design': {
+      id: '/dashboard/brands/product-design'
+      path: '/product-design'
+      fullPath: '/dashboard/brands/product-design'
+      preLoaderRoute: typeof DashboardBrandsProductDesignRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/pose-studio': {
+      id: '/dashboard/brands/pose-studio'
+      path: '/pose-studio'
+      fullPath: '/dashboard/brands/pose-studio'
+      preLoaderRoute: typeof DashboardBrandsPoseStudioRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/photoshoot': {
+      id: '/dashboard/brands/photoshoot'
+      path: '/photoshoot'
+      fullPath: '/dashboard/brands/photoshoot'
+      preLoaderRoute: typeof DashboardBrandsPhotoshootRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/ghost-mannequin': {
+      id: '/dashboard/brands/ghost-mannequin'
+      path: '/ghost-mannequin'
+      fullPath: '/dashboard/brands/ghost-mannequin'
+      preLoaderRoute: typeof DashboardBrandsGhostMannequinRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/fabric-studio': {
+      id: '/dashboard/brands/fabric-studio'
+      path: '/fabric-studio'
+      fullPath: '/dashboard/brands/fabric-studio'
+      preLoaderRoute: typeof DashboardBrandsFabricStudioRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/catalog': {
+      id: '/dashboard/brands/catalog'
+      path: '/catalog'
+      fullPath: '/dashboard/brands/catalog'
+      preLoaderRoute: typeof DashboardBrandsCatalogRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/billing': {
+      id: '/dashboard/brands/billing'
+      path: '/billing'
+      fullPath: '/dashboard/brands/billing'
+      preLoaderRoute: typeof DashboardBrandsBillingRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
+    '/dashboard/brands/analytics': {
+      id: '/dashboard/brands/analytics'
+      path: '/analytics'
+      fullPath: '/dashboard/brands/analytics'
+      preLoaderRoute: typeof DashboardBrandsAnalyticsRouteImport
+      parentRoute: typeof DashboardBrandsRoute
+    }
     '/dashboard/shoppers/fashion-store/': {
       id: '/dashboard/shoppers/fashion-store/'
       path: '/'
@@ -949,10 +1165,32 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardBrandsRouteChildren {
+  DashboardBrandsAnalyticsRoute: typeof DashboardBrandsAnalyticsRoute
+  DashboardBrandsBillingRoute: typeof DashboardBrandsBillingRoute
+  DashboardBrandsCatalogRoute: typeof DashboardBrandsCatalogRoute
+  DashboardBrandsFabricStudioRoute: typeof DashboardBrandsFabricStudioRoute
+  DashboardBrandsGhostMannequinRoute: typeof DashboardBrandsGhostMannequinRoute
+  DashboardBrandsPhotoshootRoute: typeof DashboardBrandsPhotoshootRoute
+  DashboardBrandsPoseStudioRoute: typeof DashboardBrandsPoseStudioRoute
+  DashboardBrandsProductDesignRoute: typeof DashboardBrandsProductDesignRoute
+  DashboardBrandsSettingsRoute: typeof DashboardBrandsSettingsRoute
+  DashboardBrandsVideoStudioRoute: typeof DashboardBrandsVideoStudioRoute
+  DashboardBrandsWidgetRoute: typeof DashboardBrandsWidgetRoute
   DashboardBrandsIndexRoute: typeof DashboardBrandsIndexRoute
 }
 
 const DashboardBrandsRouteChildren: DashboardBrandsRouteChildren = {
+  DashboardBrandsAnalyticsRoute: DashboardBrandsAnalyticsRoute,
+  DashboardBrandsBillingRoute: DashboardBrandsBillingRoute,
+  DashboardBrandsCatalogRoute: DashboardBrandsCatalogRoute,
+  DashboardBrandsFabricStudioRoute: DashboardBrandsFabricStudioRoute,
+  DashboardBrandsGhostMannequinRoute: DashboardBrandsGhostMannequinRoute,
+  DashboardBrandsPhotoshootRoute: DashboardBrandsPhotoshootRoute,
+  DashboardBrandsPoseStudioRoute: DashboardBrandsPoseStudioRoute,
+  DashboardBrandsProductDesignRoute: DashboardBrandsProductDesignRoute,
+  DashboardBrandsSettingsRoute: DashboardBrandsSettingsRoute,
+  DashboardBrandsVideoStudioRoute: DashboardBrandsVideoStudioRoute,
+  DashboardBrandsWidgetRoute: DashboardBrandsWidgetRoute,
   DashboardBrandsIndexRoute: DashboardBrandsIndexRoute,
 }
 

@@ -48,8 +48,8 @@ function BrandLoginPage() {
 
   return (
     <AuthShell
-      title="Log in to Brand Studio"
-      subtitle="Continue creating AI fashion visuals for your clothing brand."
+      title="Brand Login"
+      subtitle="Log in to manage your AI fashion studio."
       footer={
         <div className="space-y-2">
           <p>
