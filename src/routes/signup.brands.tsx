@@ -29,6 +29,7 @@ function BrandSignupPage() {
   const [email, setEmail] = useState("");
   const [brand, setBrand] = useState("");
   const [password, setPassword] = useState("");
+  const [size, setSize] = useState<"Solo / Small team" | "Growing brand" | "Enterprise">("Growing brand");
   const [show, setShow] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; email?: string; brand?: string; password?: string }>({});
   const [loading, setLoading] = useState(false);
@@ -51,10 +52,12 @@ function BrandSignupPage() {
     }, 700);
   }
 
+  const SIZES = ["Solo / Small team", "Growing brand", "Enterprise"] as const;
+
   return (
     <AuthShell
-      title="Create your brand account"
-      subtitle="Start creating AI photoshoots, ghost mannequin images, videos, and try-on experiences for your store."
+      title="Create Your Brand Studio"
+      subtitle="Start creating AI photoshoots, ghost mannequin visuals, pose variations, videos, and store-ready content for your clothing brand."
       footer={
         <p>
           Already have an account?{" "}
@@ -67,9 +70,9 @@ function BrandSignupPage() {
       <SocialButtons />
       <Divider />
       <form onSubmit={submit} className="space-y-4" noValidate>
-        <AuthInput id="name" label="Full name" autoComplete="name" placeholder="Alex Morgan" value={name} onChange={setName} error={errors.name} />
+        <AuthInput id="name" label="Full name" autoComplete="name" placeholder="Hussnain" value={name} onChange={setName} error={errors.name} />
+        <AuthInput id="brand" label="Brand name" autoComplete="organization" placeholder="Maison Studio" value={brand} onChange={setBrand} error={errors.brand} />
         <AuthInput id="email" label="Work email" type="email" autoComplete="email" placeholder="you@yourbrand.com" value={email} onChange={setEmail} error={errors.email} />
-        <AuthInput id="brand" label="Brand name" autoComplete="organization" placeholder="Your brand" value={brand} onChange={setBrand} error={errors.brand} />
         <AuthInput
           id="password"
           label="Password"
@@ -85,6 +88,19 @@ function BrandSignupPage() {
             </button>
           }
         />
+        <div>
+          <div className="text-[12px] font-medium uppercase tracking-widest text-purple-300/80 mb-2">Brand size</div>
+          <div className="grid grid-cols-3 gap-2">
+            {SIZES.map((s) => (
+              <button key={s} type="button" onClick={() => setSize(s)}
+                className={`px-2 py-2 rounded-lg text-[12px] border transition ${
+                  size === s
+                    ? "bg-gradient-to-r from-purple-600 to-fuchsia-500 text-white border-transparent shadow-[0_0_18px_rgba(168,85,247,0.4)]"
+                    : "bg-white/[0.04] text-white/70 border-white/10 hover:bg-white/10 hover:text-white"
+                }`}>{s}</button>
+            ))}
+          </div>
+        </div>
         <button type="submit" disabled={loading} className="btn-primary w-full justify-center !py-3 mt-2 disabled:opacity-60">
           {loading ? "Creating account…" : (<>Create Brand Account <ArrowRight size={16} /></>)}
         </button>

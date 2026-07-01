@@ -48,8 +48,8 @@ function BrandLoginPage() {
 
   return (
     <AuthShell
-      title="Log in to Brand Studio"
-      subtitle="Continue creating AI fashion visuals for your clothing brand."
+      title="Brand Login"
+      subtitle="Log in to manage your AI fashion studio."
       footer={
         <div className="space-y-2">
           <p>
@@ -67,6 +67,11 @@ function BrandLoginPage() {
         </div>
       }
     >
+      <div className="mb-5 rounded-xl border border-purple-400/30 bg-purple-500/10 px-4 py-3 text-[13px] text-white/85">
+        <span className="text-white/60">Demo account:</span>{" "}
+        <span className="font-medium">brand@tryverse.app</span>{" "}/{" "}
+        <span className="font-medium">demo123</span>
+      </div>
       <SocialButtons />
       <Divider />
       <form onSubmit={submit} className="space-y-4" noValidate>
