@@ -77,29 +77,32 @@ function StyleCard({ active, onClick, name, desc }: { active: boolean; onClick: 
 }
 
 /* ---------- Stepper ---------- */
-function Stepper({ step, canStep2 }: { step: 1 | 2 | 3; canStep2: boolean }) {
+function Stepper({ step, canStep2, onStep }: { step: 1 | 2 | 3; canStep2: boolean; onStep: (n: 1 | 2) => void }) {
   const items = [
-    { n: 1, label: "Product → Mannequin" },
-    { n: 2, label: "Mannequin → Model" },
+    { n: 1 as const, label: "Product → Mannequin" },
+    { n: 2 as const, label: "Mannequin → Model" },
   ];
   return (
     <div className="mt-6 overflow-x-auto">
       <div className="flex items-center gap-3 min-w-max">
         {items.map((it, i) => {
-          const active = step === it.n;
-          const done = step > it.n || (it.n === 1 && step >= 2) || (it.n === 2 && step === 3);
+          const active = step === it.n || (step === 3 && it.n === 2);
+          const done = (it.n === 1 && step >= 2) || (it.n === 2 && step === 3);
           const enabled = it.n === 1 || canStep2;
           return (
             <div key={it.n} className="flex items-center gap-3">
-              <div
+              <button
+                type="button"
+                onClick={() => enabled && onStep(it.n)}
+                disabled={!enabled}
                 className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 border text-[12.5px] transition ${
                   active
                     ? "bg-gradient-to-r from-purple-600 to-fuchsia-500 text-white border-transparent shadow-[0_0_18px_rgba(168,85,247,0.45)]"
                     : done
-                    ? "bg-emerald-500/10 border-emerald-400/30 text-emerald-200"
+                    ? "bg-emerald-500/10 border-emerald-400/30 text-emerald-200 hover:bg-emerald-500/15"
                     : enabled
-                    ? "bg-white/[0.04] border-white/10 text-white/70"
-                    : "bg-white/[0.02] border-white/5 text-white/30"
+                    ? "bg-white/[0.04] border-white/10 text-white/70 hover:bg-white/10 hover:text-white cursor-pointer"
+                    : "bg-white/[0.02] border-white/5 text-white/30 cursor-not-allowed"
                 }`}
               >
                 <span className={`grid h-5 w-5 place-items-center rounded-full text-[10.5px] font-semibold ${
@@ -108,7 +111,7 @@ function Stepper({ step, canStep2 }: { step: 1 | 2 | 3; canStep2: boolean }) {
                   {done ? <Check size={11} /> : it.n}
                 </span>
                 {it.label}
-              </div>
+              </button>
               {i < items.length - 1 && <div className="h-px w-8 bg-white/10" />}
             </div>
           );
