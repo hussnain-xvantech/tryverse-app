@@ -182,7 +182,7 @@ function GhostPage() {
           </div>
         </div>
 
-        <Stepper step={step} canStep2={phase1 === "done"} />
+        <Stepper step={step} canStep2={phase1 === "done"} onStep={(n) => setStep(n)} />
 
         {/* STEP 1 */}
         {step === 1 && (
