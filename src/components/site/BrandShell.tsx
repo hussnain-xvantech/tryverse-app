@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import {
   ChevronDown, Menu, X, User, CreditCard, LogOut, Sparkles, Bell,
   LayoutDashboard, Camera, Shirt, Layers, Video, Wand2, LayoutGrid,
-  FolderKanban, BarChart3, Settings, LifeBuoy, ArrowLeft,
+  FolderKanban, BarChart3, Settings, LifeBuoy, ArrowLeft, Store,
 } from "lucide-react";
 import logoAsset from "@/assets/tryverse-logo.png.asset.json";
 
