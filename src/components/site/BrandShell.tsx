@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import {
   ChevronDown, Menu, X, User, CreditCard, LogOut, Sparkles, Bell,
   LayoutDashboard, Camera, Shirt, Layers, Video, Wand2, LayoutGrid,
-  FolderKanban, BarChart3, Settings, LifeBuoy, ArrowLeft,
+  FolderKanban, BarChart3, Settings, LifeBuoy, ArrowLeft, Store,
 } from "lucide-react";
 import logoAsset from "@/assets/tryverse-logo.png.asset.json";
 
@@ -24,6 +24,7 @@ export const BRAND_NAV = [
   { to: "/dashboard/brands/video-studio", label: "Video Studio", icon: Video },
   { to: "/dashboard/brands/pose-studio", label: "Pose Studio", icon: Wand2 },
   { to: "/dashboard/brands/widget", label: "Widget", icon: LayoutGrid },
+  { to: "/dashboard/brands/stores", label: "Stores", icon: Store },
   { to: "/dashboard/brands/catalog", label: "Catalog", icon: FolderKanban },
   { to: "/dashboard/brands/analytics", label: "Analytics", icon: BarChart3 },
   { to: "/dashboard/brands/settings", label: "Settings", icon: Settings },
