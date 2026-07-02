@@ -1,7 +1,7 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { Search, Plus, X, Trash2, BarChart3, LayoutGrid, Store as StoreIcon, Settings } from "lucide-react";
+import { Search, Plus, X, Trash2 } from "lucide-react";
 import { BrandShell, BrandPageHeader } from "@/components/site/BrandShell";
 
 export const Route = createFileRoute("/dashboard/brands/stores")({
@@ -238,5 +238,3 @@ function Modal({ children, onClose, title }: { children: React.ReactNode; onClos
   );
 }
 
-// Exports used by detail page
-export { StoreIcon, LayoutGrid, BarChart3, Settings };
