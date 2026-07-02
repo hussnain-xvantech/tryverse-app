@@ -24,6 +24,7 @@ export const BRAND_NAV = [
   { to: "/dashboard/brands/video-studio", label: "Video Studio", icon: Video },
   { to: "/dashboard/brands/pose-studio", label: "Pose Studio", icon: Wand2 },
   { to: "/dashboard/brands/widget", label: "Widget", icon: LayoutGrid },
+  { to: "/dashboard/brands/stores", label: "Stores", icon: Store },
   { to: "/dashboard/brands/catalog", label: "Catalog", icon: FolderKanban },
   { to: "/dashboard/brands/analytics", label: "Analytics", icon: BarChart3 },
   { to: "/dashboard/brands/settings", label: "Settings", icon: Settings },
